@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "856136906758",
+    "firebase_url": "https://blissful-scout-247114.firebaseio.com",
+    "project_id": "blissful-scout-247114",
+    "storage_bucket": "blissful-scout-247114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856136906758:android:9ab93051500fbb6077eb87",
+        "android_client_info": {
+          "package_name": "fr.android.tennistracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856136906758-9si0pdq2regtnkhn7mi3m3uo0r0flf60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHIYZQ6_BXKHTaCzt49c1M56l-WnnKpTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856136906758-9si0pdq2regtnkhn7mi3m3uo0r0flf60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
