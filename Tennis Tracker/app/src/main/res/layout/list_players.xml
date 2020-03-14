@@ -5,6 +5,6 @@
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="175dp" android:id="@+id/textView2"
+            android:layout_height="86dp" android:id="@+id/textView2"
             android:gravity="center_vertical"/>
 </LinearLayout>
