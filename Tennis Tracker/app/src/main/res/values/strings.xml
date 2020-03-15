@@ -12,6 +12,7 @@
     <string name="saisir_le_type_de_coup">Saisir le type de coup</string>
     <string name="format_du_dernier_set">Format du dernier set</string>
     <string name="startButton">Démarrer</string>
+    <string name="score">SCORE</string>
     <string-array name="matchFormat">
         <item>2 sets, 6 jeux, Avantage ,TB 6–6</item>
         <item>2 sets, 5 jeux, Avantage ,TB 5–5</item>
