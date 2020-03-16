@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tennis Tracker</string>
+    <string name="format_du_dernier_set">Format du dernier set</string>
+    <string name="format_du_match">Format du match</string>
+    <string name="firstPlayerName">Joueur 1</string>
+    <string name="matchs_pr_c_dents">Matchs précédents</string>
+    <string name="nom_joueur_1">Nom Joueur 1</string>
+    <string name="nom_joueur_2">Nom Joueur 2</string>
+    <string name="nouveau_match">Nouveau match</string>
+    <string name="saisir_le_type_de_coup">Saisir le type de coup</string>
+    <string name="score">SCORE</string>
+    <string name="secondPlayerName">Joueur 2</string>
+    <string name="startButton">Démarrer</string>
+</resources>

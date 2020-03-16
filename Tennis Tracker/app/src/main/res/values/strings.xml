@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tennis Tracker</string>
-    <string name="tennis_n_tracker">Tennis\nTracker!</string>
-    <string name="content">tennis ball</string>
+    <string name="tennis_n_tracker" translatable="false">Tennis\nTracker!</string>
+    <string name="content" translatable="false">tennis ball</string>
     <string name="matchs_pr_c_dents">Matchs précédents</string>
     <string name="nouveau_match">Nouveau Match</string>
     <string name="nom_joueur_1">Nom Joueur 1</string>
