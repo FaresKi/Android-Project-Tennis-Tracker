@@ -12,4 +12,30 @@
     <string name="score">SCORE</string>
     <string name="secondPlayerName">Joueur 2</string>
     <string name="startButton">Démarrer</string>
+    <string name="finishButton">Finir</string>
+    <string name="recordingActivityTitle">Enregistrement</string>
+    <string name="voir_les_statistiques">Voir les statistiques</string>
+    <string name="donner_un_point_joueur_1">Donner un point à Joueur 1</string>
+    <string name="donner_un_point_joueur_2">Donner un point à Joueur 2</string>
+    <string name="annuler_l_enregistrement">Annuler l\'enregistrement</string>
+    <string name="winnerButton">Point\ngagnant</string>
+    <string name="forced_error">Faute\ndirecte</string>
+    <string name="unforced_nerror">Faute\nprovo.</string>
+    <string name="double_nfault">Double faute</string>
+    <string name="first_nserve">1ère balle</string>
+    <string name="second_nserve">2ème balle</string>
+    <string name="ace">Ace</string>
+    <string-array name="matchFormat">
+        <item>2 sets, 6 jeux, Avantage ,TB 6–6</item>
+        <item>2 sets, 5 jeux, Avantage ,TB 5–5</item>
+        <item>2 sets, 4 jeux, Avantage ,TB 4–4</item>
+        <item>2 sets, 5 jeux, Pas d\'avantage ,TB 4–4</item>
+        <item>2 sets, 4 jeux, Pas d\'avantage ,TB 3–3</item>
+        <item>2 sets, 3 jeux, Pas d\'avantage ,TB 2–2</item>
+    </string-array>
+    <string-array name="lastSetFormat">
+        <item>Set normal</item>
+        <item>Tie-break en 7 points</item>
+        <item>Super Tie-break en 10 points</item>
+    </string-array>
 </resources>

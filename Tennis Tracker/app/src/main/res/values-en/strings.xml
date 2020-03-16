@@ -12,4 +12,30 @@
     <string name="nouveau_match">New match</string>
     <string name="saisir_le_type_de_coup">Input shot types</string>
     <string name="score">SCORE</string>
+    <string name="finishButton">Finish</string>
+    <string name="recordingActivityTitle">Recording</string>
+    <string name="annuler_l_enregistrement">Cancel recording</string>
+    <string name="donner_un_point_joueur_1">Grant a point to player 1</string>
+    <string name="donner_un_point_joueur_2">Grant a point to player 2</string>
+    <string name="voir_les_statistiques">Statistics</string>
+    <string name="forced_error">Forced error</string>
+    <string name="unforced_nerror">Unforced error</string>
+    <string name="winnerButton">Winner</string>
+    <string name="second_nserve">Second serve</string>
+    <string name="double_nfault">Double fault</string>
+    <string name="first_nserve">First Serve</string>
+    <string name="ace">Ace</string>
+    <string-array name="matchFormat">
+        <item>2 sets, 6 games, Advantage ,TB 6–6</item>
+        <item>2 sets, 5 games, Avantage ,TB 5–5</item>
+        <item>2 sets, 4 games, Avantage ,TB 4–4</item>
+        <item>2 sets, 5 games, No Advantage ,TB 4–4</item>
+        <item>2 sets, 4 games, No Advantage ,TB 3–3</item>
+        <item>2 sets, 3 games, No Advantage ,TB 2–2</item>
+    </string-array>
+    <string-array name="lastSetFormat">
+        <item>Normal set</item>
+        <item>7-point tie-break</item>
+        <item>10-point super tie-break</item>
+    </string-array>
 </resources>

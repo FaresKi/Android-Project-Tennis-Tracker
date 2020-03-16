@@ -26,4 +26,17 @@
         <item>Tie-break en 7 points</item>
         <item>Super Tie-break en 10 points</item>
     </string-array>
+    <string name="finishButton">Finir</string>
+    <string name="recordingActivityTitle">Enregistrement</string>
+    <string name="voir_les_statistiques">Voir les statistiques</string>
+    <string name="donner_un_point_joueur_1">Donner un point à Joueur 1</string>
+    <string name="donner_un_point_joueur_2">Donner un point à Joueur 2</string>
+    <string name="annuler_l_enregistrement">Annuler l\'enregistrement</string>
+    <string name="winnerButton">Winner</string>
+    <string name="unforced_nerror">Unforced\nerror</string>
+    <string name="forced_error">Forced\nerror</string>
+    <string name="first_nserve">First Serve</string>
+    <string name="ace">Ace</string>
+    <string name="second_nserve">Second serve</string>
+    <string name="double_nfault">Double fault</string>
 </resources>
