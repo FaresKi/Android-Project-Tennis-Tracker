@@ -9,19 +9,18 @@ import fr.android.tennistracker.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Intent intent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Button button = findViewById(R.id.button);
+        Button button = findViewById(R.id.buttonNewMatch);
         button.setOnClickListener(view -> onClick(view));
+        getSupportActionBar().setTitle("Tennis•Tracker");
     }
 
 
     public void onClick(View v) {
-        intent = new Intent(getApplicationContext(), NewMatchActivity.class);
+        Intent intent = new Intent(this, NewMatchActivity.class);
         this.startActivity(intent);
     }
 }

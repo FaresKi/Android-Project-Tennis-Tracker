@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Tennis Tracker</string>
     <string name="tennis_n_tracker" translatable="false">Tennis\nTracker!</string>
     <string name="content" translatable="false">tennis ball</string>
@@ -32,11 +32,18 @@
     <string name="donner_un_point_joueur_1">Donner un point à Joueur 1</string>
     <string name="donner_un_point_joueur_2">Donner un point à Joueur 2</string>
     <string name="annuler_l_enregistrement">Annuler l\'enregistrement</string>
-    <string name="winnerButton">Winner</string>
-    <string name="unforced_nerror">Unforced\nerror</string>
-    <string name="forced_error">Forced\nerror</string>
-    <string name="first_nserve">First Serve</string>
+    <string name="winnerButton">Point gagnant</string>
+    <string name="unforced_nerror">Faute provo.</string>
+    <string name="forced_error">Faute directe</string>
+    <string name="first_nserve">1ère balle</string>
     <string name="ace">Ace</string>
-    <string name="second_nserve">Second serve</string>
+    <string name="second_nserve">2ème balle</string>
     <string name="double_nfault">Double fault</string>
+    <string name="firstPlayerScore" translatable="false">0</string>
+    <string name="secondplayerscore" translatable="false">0</string>
+    <string name="serverLabel">"SERVICE : "</string>
+    <string name="rally">ECHANGE</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="_2" translatable="false">2</string>
+    <string name="leavingRecordingWarningMessage">Êtes-vous sûr de vouloir arrêter l\'enregistrement? Toutes vos données seront perdues !</string>
 </resources>

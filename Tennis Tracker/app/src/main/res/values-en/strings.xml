@@ -38,4 +38,8 @@
         <item>7-point tie-break</item>
         <item>10-point super tie-break</item>
     </string-array>
+    <string name="serverLabel">"SERVER : "</string>
+    <string name="rally">RALLY</string>
+    <string name="leavingRecordingWarningMessage">Are you sure you want to stop recording? All data will be lost!
+    </string>
 </resources>

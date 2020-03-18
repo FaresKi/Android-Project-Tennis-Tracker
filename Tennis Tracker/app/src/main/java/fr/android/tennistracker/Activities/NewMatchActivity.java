@@ -8,18 +8,29 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import fr.android.tennistracker.R;
 
 public class NewMatchActivity extends AppCompatActivity {
     Intent intent;
-    
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_match);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("New Match");
+
+        if (savedInstanceState != null) {
+            EditText firstPlayer = findViewById(R.id.firstPlayerName);
+            EditText secondPlayer = findViewById(R.id.secondPlayerName);
+
+            String firstPlayerName = savedInstanceState.getString("firstPlayerName");
+            String secondPlayerName = savedInstanceState.getString("secondPlayerName");
+
+            firstPlayer.setText(firstPlayerName);
+            secondPlayer.setText(secondPlayerName);
+        }
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -27,22 +38,42 @@ public class NewMatchActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu, menu);
         return true;
     }
-    
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId()==R.id.startButton){
-            intent = new Intent(this,RecordingActivity.class);
-            EditText firstPlayer = findViewById(R.id.firstPlayerName);
-            EditText secondPlayer = findViewById(R.id.secondPlayerName);
 
-            String firstPlayerName = String.valueOf(firstPlayer.getText());
-            String secondPlayerName = String.valueOf(secondPlayer.getText());
-            if(!firstPlayerName.isEmpty() && !secondPlayerName.isEmpty()){
-                intent.putExtra("firstPlayerName",firstPlayerName)
-                        .putExtra("secondPlayerName",secondPlayerName);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.startButton :
+                intent = new Intent(this, RecordingActivity.class);
+                EditText firstPlayer = findViewById(R.id.firstPlayerName);
+                EditText secondPlayer = findViewById(R.id.secondPlayerName);
 
-                this.startActivity(intent);
-            }
+                String firstPlayerName = String.valueOf(firstPlayer.getText());
+                String secondPlayerName = String.valueOf(secondPlayer.getText());
+                if (!firstPlayerName.isEmpty() && !secondPlayerName.isEmpty()) {
+                    intent.putExtra("firstPlayerName", firstPlayerName)
+                            .putExtra("secondPlayerName", secondPlayerName);
+
+                    this.startActivity(intent);
+                }
+                break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
         return true;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        EditText firstPlayer = findViewById(R.id.firstPlayerName);
+        EditText secondPlayer = findViewById(R.id.secondPlayerName);
+        String firstPlayerName = String.valueOf(firstPlayer.getText());
+        String secondPlayerName = String.valueOf(secondPlayer.getText());
+        savedInstanceState.putString("firstPlayerName", firstPlayerName);
+        savedInstanceState.putString("secondPlayerName", secondPlayerName);
+    }
+
+
+
 }

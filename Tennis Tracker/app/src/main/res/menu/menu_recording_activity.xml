@@ -5,8 +5,8 @@
             android:title="@string/finishButton"
             app:showAsAction="always">
     </item>
-    <item android:title="@string/annuler_l_enregistrement"/>
-    <item android:title="@string/voir_les_statistiques"/>
-    <item android:title="@string/donner_un_point_joueur_1"/>
-    <item android:title="@string/donner_un_point_joueur_2"/>
+    <item android:title="@string/annuler_l_enregistrement" android:id="@+id/cancelRecordingItem"/>
+    <item android:title="@string/voir_les_statistiques" android:id="@+id/seeStatsItem"/>
+    <item android:title="@string/donner_un_point_joueur_1" android:id="@+id/givePointToFPItem"/>
+    <item android:title="@string/donner_un_point_joueur_2" android:id="@+id/givePointToSPItem"/>
 </menu>
