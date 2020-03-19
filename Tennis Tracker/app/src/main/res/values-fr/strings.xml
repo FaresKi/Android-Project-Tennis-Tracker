@@ -27,11 +27,7 @@
     <string name="ace">Ace</string>
     <string-array name="matchFormat">
         <item>2 sets, 6 jeux, Avantage ,TB 6–6</item>
-        <item>2 sets, 5 jeux, Avantage ,TB 5–5</item>
-        <item>2 sets, 4 jeux, Avantage ,TB 4–4</item>
         <item>2 sets, 5 jeux, Pas d\'avantage ,TB 4–4</item>
-        <item>2 sets, 4 jeux, Pas d\'avantage ,TB 3–3</item>
-        <item>2 sets, 3 jeux, Pas d\'avantage ,TB 2–2</item>
     </string-array>
     <string-array name="lastSetFormat">
         <item>Set normal</item>

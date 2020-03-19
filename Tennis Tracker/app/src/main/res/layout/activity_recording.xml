@@ -49,7 +49,7 @@
 
             </TableRow>
             <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
-            >
+                      android:layout_weight="1">
 
                 <TextView
                         android:text="@string/secondPlayerName"
@@ -197,14 +197,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="58dp" android:id="@+id/buttonWinnerFP"
                         android:backgroundTint="#FFFFFF" android:textAllCaps="false"
-                        android:fontFamily="@font/montserrat" android:onClick="onServiceClick"/>
+                        android:fontFamily="@font/montserrat" android:onClick="onRallyClick"/>
                 <Button
                         android:text="@string/winnerButton"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="58dp" android:id="@+id/buttonWinnerSP"
                         android:backgroundTint="#FFFFFF" android:textAllCaps="false"
-                        android:fontFamily="@font/montserrat" android:onClick="onServiceClick"/>
+                        android:fontFamily="@font/montserrat" android:onClick="onRallyClick"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
@@ -216,14 +216,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/buttonUnforcedErrorFP"
                         android:backgroundTint="#FFFFFF" android:textAllCaps="false"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat" android:onClick="onRallyClick"/>
                 <Button
                         android:text="@string/unforced_nerror"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/buttonUnforcedErrorSP"
                         android:backgroundTint="#FFFFFF" android:textAllCaps="false"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat" android:onClick="onRallyClick"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
@@ -235,14 +235,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/buttonForcedErrorFP"
                         android:backgroundTint="#FFFFFF" android:textAllCaps="false"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat" android:onClick="onRallyClick"/>
                 <Button
                         android:text="@string/forced_error"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/buttonForcedErrorSP"
                         android:backgroundTint="#FFFFFF" android:textAllCaps="false"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat" android:onClick="onRallyClick"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

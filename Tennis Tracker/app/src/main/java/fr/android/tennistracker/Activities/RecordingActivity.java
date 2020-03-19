@@ -49,12 +49,19 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         return true;
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.cancelRecordingItem:
                 leaveRecordingDialog = new LeaveRecordingDialog();
                 leaveRecordingDialog.show(getSupportFragmentManager(), "leaving dialog");
+                break;
+            case R.id.givePointToFPItem:
+                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                break;
+            case R.id.givePointToSPItem:
+                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
                 break;
         }
         return true;
@@ -99,7 +106,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         startActivity(intent);
     }
 
-    public void onServiceClick(View view) {
+    public void onRallyClick(View view) {
         switch (view.getId()) {
             case R.id.buttonWinnerFP:
                 scoringPlayer(firstPlayerScore, firstPlayerGameScore);
@@ -107,9 +114,21 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
             case R.id.buttonWinnerSP:
                 scoringPlayer(secondPlayerScore, secondPlayerGameScore);
                 break;
+            case R.id.buttonUnforcedErrorFP:
+                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
+                break;
+            case R.id.buttonUnforcedErrorSP:
+                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                break;
+            case R.id.buttonForcedErrorFP:
+                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
+                break;
+            case R.id.buttonForcedErrorSP:
+                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                break;
         }
     }
-
+    
     private void scoringPlayer(TextView PlayerScore, TextView PlayerGameScore) {
         switch (PlayerScore.getText().toString()) {
             case "0":
@@ -122,14 +141,34 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 PlayerScore.setText("40");
                 break;
             case "40":
-                PlayerScore.setText("0");
+                if (firstPlayerScore.getText() == secondPlayerScore.getText() && firstPlayerScore.getText() == "40") {
+                    PlayerScore.setText("A");
+                } else if ((firstPlayerScore.getText() == "A" || secondPlayerScore.getText() == "A")) {
+                    if (firstPlayerScore.getText() == "A") {
+                        firstPlayerScore.setText("40");
+                    } else {
+                        secondPlayerScore.setText("40");
+                    }
+                } else {
+                    PlayerGameScore.setText(String.valueOf(Integer.parseInt(PlayerGameScore.getText().toString()) + 1));
+                    firstPlayerScore.setText("0");
+                    secondPlayerScore.setText("0");
+                    if (serverName.getText().equals(firstName)) {
+                        serverName.setText(secondName);
+                    } else {
+                        serverName.setText(firstName);
+                    }
+                }
+                break;
+            case "A":
                 PlayerGameScore.setText(String.valueOf(Integer.parseInt(PlayerGameScore.getText().toString()) + 1));
+                firstPlayerScore.setText("0");
+                secondPlayerScore.setText("0");
                 if (serverName.getText().equals(firstName)) {
                     serverName.setText(secondName);
                 } else {
                     serverName.setText(firstName);
                 }
-                break;
         }
     }
 }
