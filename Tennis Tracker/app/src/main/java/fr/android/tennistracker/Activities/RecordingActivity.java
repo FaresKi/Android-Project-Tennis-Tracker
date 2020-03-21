@@ -128,7 +128,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 break;
         }
     }
-    
+
     private void scoringPlayer(TextView PlayerScore, TextView PlayerGameScore) {
         switch (PlayerScore.getText().toString()) {
             case "0":
