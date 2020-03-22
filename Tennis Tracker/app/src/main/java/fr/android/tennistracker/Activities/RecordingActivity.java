@@ -19,6 +19,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     private LeaveRecordingDialog leaveRecordingDialog;
     private TextView firstPlayerGameScore, firstPlayerSetScore, secondPlayerGameScore, secondPlayerSetScore, firstPlayerScore, secondPlayerScore, serverLabel, serverName;
     private String currentServer, firstName, secondName;
+    private int actualSet = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,8 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         dialogFragment.show(getSupportFragmentManager(), "test dialog");
         firstPlayerScore = findViewById(R.id.tabFirstPlayerScore);
         secondPlayerScore = findViewById(R.id.tabSecondPlayerScore);
-        firstPlayerGameScore = findViewById(R.id.firstPlayerGameScore);
-        secondPlayerGameScore = findViewById(R.id.secondPlayerGameScore);
+        firstPlayerGameScore = findViewById(R.id.firstPlayerSet_1);
+        secondPlayerGameScore = findViewById(R.id.secondPlayerSet_1);
         firstPlayerGameScore.setText("0");
         secondPlayerGameScore.setText("0");
 

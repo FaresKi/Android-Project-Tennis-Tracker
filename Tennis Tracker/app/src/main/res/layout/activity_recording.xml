@@ -39,14 +39,20 @@
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/firstPlayerGameScore"
+                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_1"
                         android:layout_margin="10dip"
                         android:layout_gravity="center_vertical" android:layout_column="2" android:layout_span="1"/>
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSetScore"
+                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_2"
                         android:layout_gravity="center_vertical" android:layout_column="3"
+                        android:layout_margin="10dip"/>
+                <TextView
+                        android:text="-"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_3"
+                        android:layout_gravity="center_vertical" android:layout_column="4"
                         android:layout_margin="10dip"/>
 
             </TableRow>
@@ -69,14 +75,20 @@
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/secondPlayerGameScore"
+                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_1"
                         android:layout_margin="10dip"
                         android:layout_gravity="center_vertical"/>
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSetScore"
+                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_2"
                         android:layout_gravity="center_vertical" android:layout_margin="10dip"/>
+                <TextView
+                        android:text="-"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_3"
+                        android:layout_gravity="center_vertical" android:layout_column="4"
+                        android:layout_margin="10dip"/>
             </TableRow>
         </TableLayout>
     </LinearLayout>
