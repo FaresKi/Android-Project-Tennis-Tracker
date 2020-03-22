@@ -11,37 +11,63 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.android.tennistracker.Fragments.FirstServerDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
+import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.R;
 
 public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener {
 
     private FirstServerDialog dialogFragment;
     private LeaveRecordingDialog leaveRecordingDialog;
-    private TextView firstPlayerGameScore, firstPlayerSetScore, secondPlayerGameScore, secondPlayerSetScore, firstPlayerScore, secondPlayerScore, serverLabel, serverName;
-    private String currentServer, firstName, secondName;
-    private int actualSet = 1;
+    private TextView firstPlayerSet_1, firstPlayerSet_2, firstPlayerSet_3, firstPlayerScore;
+    private TextView secondPlayerSet_1, secondPlayerSet_2, secondPlayerSet_3, secondPlayerScore;
+    private TextView server;
+    private int currentSet = 1;
+    private Player playerOne;
+    private Player playerTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
-        firstName = getIntent().getStringExtra("firstPlayerName");
-        getSupportActionBar().setTitle(R.string.recordingActivityTitle);
+
+        // Initialize first player
+        String playerOneName = getIntent().getStringExtra("firstPlayerName");
         TextView tabFirstName = findViewById(R.id.tabFirstName);
-        tabFirstName.setText(firstName);
-        secondName = getIntent().getStringExtra("secondPlayerName");
+        playerOne = initializePlayer(playerOneName, tabFirstName);
+
+        // Initialize second player
+        String playerTwoName = getIntent().getStringExtra("secondPlayerName");
         TextView tabSecondName = findViewById(R.id.tabSecondName);
-        tabSecondName.setText(secondName);
-        serverName = findViewById(R.id.serverName);
+        playerTwo = initializePlayer(playerTwoName, tabSecondName);
+
+        initializeElements();
+
+    }
+
+    public void initializeElements(){
+        getSupportActionBar().setTitle(R.string.recordingActivityTitle);
+        server = findViewById(R.id.serverName);
         dialogFragment = new FirstServerDialog();
         dialogFragment.show(getSupportFragmentManager(), "test dialog");
-        firstPlayerScore = findViewById(R.id.tabFirstPlayerScore);
-        secondPlayerScore = findViewById(R.id.tabSecondPlayerScore);
-        firstPlayerGameScore = findViewById(R.id.firstPlayerSet_1);
-        secondPlayerGameScore = findViewById(R.id.secondPlayerSet_1);
-        firstPlayerGameScore.setText("0");
-        secondPlayerGameScore.setText("0");
 
+        firstPlayerSet_1 = findViewById(R.id.firstPlayerSet_1);
+        firstPlayerSet_2 = findViewById(R.id.firstPlayerSet_2);
+        firstPlayerSet_3 = findViewById(R.id.firstPlayerSet_3);
+        firstPlayerScore = findViewById(R.id.tabFirstPlayerScore);
+
+        secondPlayerSet_1 = findViewById(R.id.secondPlayerSet_1);
+        secondPlayerSet_2 = findViewById(R.id.secondPlayerSet_2);
+        secondPlayerSet_3 = findViewById(R.id.secondPlayerSet_3);
+        secondPlayerScore = findViewById(R.id.tabSecondPlayerScore);
+
+        firstPlayerSet_1.setText("0");
+        secondPlayerSet_1.setText("0");
+    }
+
+    public Player initializePlayer(String name, TextView tabName){
+        Player player = new Player(name);
+        tabName.setText(name);
+        return player;
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,10 +85,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 leaveRecordingDialog.show(getSupportFragmentManager(), "leaving dialog");
                 break;
             case R.id.givePointToFPItem:
-                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                scoringPlayer(firstPlayerScore, firstPlayerSet_1);
                 break;
             case R.id.givePointToSPItem:
-                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
+                scoringPlayer(secondPlayerScore, secondPlayerSet_1);
                 break;
         }
         return true;
@@ -73,9 +99,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         Button clickedButton = view.findViewById(view.getId());
         String playerName = clickedButton.getText().toString();
         dialogFragment.dismiss();
-        serverLabel = findViewById(R.id.serverLabel);
-        currentServer = playerName;
-        serverName.setText(playerName);
+        server.setText(playerName);
     }
 
 
@@ -110,22 +134,22 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     public void onRallyClick(View view) {
         switch (view.getId()) {
             case R.id.buttonWinnerFP:
-                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                scoringPlayer(firstPlayerScore, firstPlayerSet_1);
                 break;
             case R.id.buttonWinnerSP:
-                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
+                scoringPlayer(secondPlayerScore, secondPlayerSet_1);
                 break;
             case R.id.buttonUnforcedErrorFP:
-                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
+                scoringPlayer(secondPlayerScore, secondPlayerSet_1);
                 break;
             case R.id.buttonUnforcedErrorSP:
-                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                scoringPlayer(firstPlayerScore, firstPlayerSet_1);
                 break;
             case R.id.buttonForcedErrorFP:
-                scoringPlayer(secondPlayerScore, secondPlayerGameScore);
+                scoringPlayer(secondPlayerScore, secondPlayerSet_1);
                 break;
             case R.id.buttonForcedErrorSP:
-                scoringPlayer(firstPlayerScore, firstPlayerGameScore);
+                scoringPlayer(firstPlayerScore, firstPlayerSet_1);
                 break;
         }
     }
@@ -154,10 +178,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                     PlayerGameScore.setText(String.valueOf(Integer.parseInt(PlayerGameScore.getText().toString()) + 1));
                     firstPlayerScore.setText("0");
                     secondPlayerScore.setText("0");
-                    if (serverName.getText().equals(firstName)) {
-                        serverName.setText(secondName);
+                    if (server.getText().equals(playerOne.getName())) {
+                        server.setText(playerOne.getName());
                     } else {
-                        serverName.setText(firstName);
+                        server.setText(playerOne.getName());
                     }
                 }
                 break;
@@ -165,10 +189,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 PlayerGameScore.setText(String.valueOf(Integer.parseInt(PlayerGameScore.getText().toString()) + 1));
                 firstPlayerScore.setText("0");
                 secondPlayerScore.setText("0");
-                if (serverName.getText().equals(firstName)) {
-                    serverName.setText(secondName);
+                if (server.getText().equals(playerOne.getName())) {
+                    server.setText(playerOne.getName());
                 } else {
-                    serverName.setText(firstName);
+                    server.setText(playerOne.getName());
                 }
         }
     }
