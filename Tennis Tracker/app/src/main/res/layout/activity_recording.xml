@@ -39,14 +39,20 @@
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/firstPlayerGameScore"
+                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_1"
                         android:layout_margin="10dip"
                         android:layout_gravity="center_vertical" android:layout_column="2" android:layout_span="1"/>
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSetScore"
+                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_2"
                         android:layout_gravity="center_vertical" android:layout_column="3"
+                        android:layout_margin="10dip"/>
+                <TextView
+                        android:text="-"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_3"
+                        android:layout_gravity="center_vertical" android:layout_column="4"
                         android:layout_margin="10dip"/>
 
             </TableRow>
@@ -69,14 +75,20 @@
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/secondPlayerGameScore"
+                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_1"
                         android:layout_margin="10dip"
                         android:layout_gravity="center_vertical"/>
                 <TextView
                         android:text="-"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSetScore"
+                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_2"
                         android:layout_gravity="center_vertical" android:layout_margin="10dip"/>
+                <TextView
+                        android:text="-"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_3"
+                        android:layout_gravity="center_vertical" android:layout_column="4"
+                        android:layout_margin="10dip"/>
             </TableRow>
         </TableLayout>
     </LinearLayout>
@@ -119,7 +131,8 @@
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
                         android:backgroundTint="#FFFFFF" android:hapticFeedbackEnabled="false"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat"
+                        android:onClick="onAceClick"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
@@ -138,7 +151,8 @@
                         android:layout_height="wrap_content" android:id="@+id/buttonSecondAceFP"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
-                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"/>
+                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"
+                        android:onClick="onAceClick"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
@@ -150,7 +164,8 @@
                         android:layout_height="111dp" android:id="@+id/buttonDoubleFaultFP"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
-                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"/>
+                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"
+                        android:onClick="onDoubleFaultClick"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-Project-Tennis-Tracker.Tennis Tracker.iml" filepath="$PROJECT_DIR$/Android-Project-Tennis-Tracker.Tennis Tracker.iml" group="Tennis Tracker" />
       <module fileurl="file://$PROJECT_DIR$/Tennis Tracker.iml" filepath="$PROJECT_DIR$/Tennis Tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Tennis Tracker.app.iml" filepath="$PROJECT_DIR$/app/Tennis Tracker.app.iml" group="Tennis Tracker/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
