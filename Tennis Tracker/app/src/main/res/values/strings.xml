@@ -40,5 +40,11 @@
     <string name="rally">ECHANGE</string>
     <string name="_1" translatable="false">1</string>
     <string name="_2" translatable="false">2</string>
-    <string name="leavingRecordingWarningMessage">Êtes-vous sûr de vouloir arrêter l\'enregistrement? Toutes vos données seront perdues !</string>
+    <string name="leavingRecordingWarningMessage">Êtes-vous sûr de vouloir arrêter l\'enregistrement? Toutes vos données
+        seront perdues !
+    </string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="take_a_picture">Take a picture!</string>
 </resources>

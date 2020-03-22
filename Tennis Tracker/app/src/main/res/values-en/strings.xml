@@ -38,4 +38,5 @@
     <string name="rally">RALLY</string>
     <string name="leavingRecordingWarningMessage">Are you sure you want to stop recording? All data will be lost!
     </string>
+    <string name="take_a_picture">Take a picture!</string>
 </resources>

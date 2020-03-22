@@ -39,4 +39,5 @@
     <string name="leavingRecordingWarningMessage">Êtes-vous sûr de vouloir arrêter l\\\'enregistrement? Toutes vos
         données seront perdues !
     </string>
+    <string name="take_a_picture">Prenez une photo!</string>
 </resources>

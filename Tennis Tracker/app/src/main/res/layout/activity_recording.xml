@@ -20,14 +20,16 @@
                 android:layout_height="match_parent" android:weightSum="2">
 
             <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:background="#003F3E3E"
                       android:layout_weight="1">
                 <TextView
+
                         android:text="@string/firstPlayerName"
                         android:layout_column="0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/tabFirstName"
                         android:fontFamily="@font/montserrat" android:layout_gravity="center_vertical"
-                        android:layout_span="1" android:layout_margin="10dip" android:background="#005C5B5B"/>
+                        android:layout_span="1" android:layout_margin="10dip" android:background="#003F3E3E"/>
                 <TextView
                         android:text="@string/firstPlayerScore"
                         android:layout_column="1"
