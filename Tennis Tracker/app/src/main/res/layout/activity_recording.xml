@@ -131,7 +131,8 @@
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
                         android:backgroundTint="#FFFFFF" android:hapticFeedbackEnabled="false"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat"
+                        android:onClick="onAceClick"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
@@ -150,7 +151,8 @@
                         android:layout_height="wrap_content" android:id="@+id/buttonSecondAceFP"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
-                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"/>
+                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"
+                        android:onClick="onAceClick"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
@@ -162,7 +164,8 @@
                         android:layout_height="111dp" android:id="@+id/buttonDoubleFaultFP"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
-                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"/>
+                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"
+                        android:onClick="onDoubleFaultClick"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
