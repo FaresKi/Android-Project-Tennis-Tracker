@@ -8,18 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import fr.android.tennistracker.Fragments.FirstServerDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
 import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener {
 
@@ -317,11 +313,11 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     private void scoringTieBreak(TextView playerScore, TextView playerSet, boolean firstPoint) {
         int score = Integer.parseInt(playerScore.getText().toString()) + 1;
         playerScore.setText(String.valueOf(score));
-        if (firstPoint){
+        if (firstPoint) {
             changeServer();
         } else {
-            serverTB ++;
-            if (serverTB == 2){
+            serverTB++;
+            if (serverTB == 2) {
                 changeServer();
                 serverTB = 0;
             }
@@ -346,7 +342,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     }
 
     private void scoringPlayer(TextView playerScore, TextView playerSet, TextView challengerSet) {
-        if (tieBreak){
+        if (tieBreak) {
             scoringTieBreak(playerScore, playerSet, false);
         } else {
             int gamesPlayer = Integer.parseInt(playerSet.getText().toString());

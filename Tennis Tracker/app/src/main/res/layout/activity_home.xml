@@ -31,7 +31,7 @@
             android:foregroundGravity="center"
             app:layout_constraintTop_toBottomOf="@+id/buttonNewMatch" android:layout_marginBottom="27dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/buttonNewPicture"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" android:onClick="onClick"/>
     <Button
             android:text="@string/take_a_picture"
             android:layout_width="wrap_content"
@@ -39,11 +39,11 @@
             app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="11dp"
             app:layout_constraintTop_toBottomOf="@+id/buttonPreviousMatches" android:layout_marginBottom="98dp"
-            android:onClick="takePicture"/>
+            android:onClick="onClick"/>
     <Button
             android:text="@string/nouveau_match"
             android:layout_width="wrap_content"
-            android:onClick="takePicture"
+            android:onClick="onClick"
             android:layout_height="wrap_content" android:id="@+id/buttonNewMatch"
             android:foregroundGravity="center"
             app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
