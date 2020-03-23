@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.android.tennistracker.Fragments.FirstServerDialog;
+import fr.android.tennistracker.Fragments.GameNotOverDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
 import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.R;
@@ -17,7 +18,7 @@ import fr.android.tennistracker.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener {
+public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
 
     private FirstServerDialog dialogFragment;
     private LeaveRecordingDialog leaveRecordingDialog;
@@ -31,6 +32,8 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     private int nbSets = 6;
     private int serverTB = 0;
     private boolean tieBreak = false;
+    
+    private GameNotOverDialog gameNotOverDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +101,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 break;
             case R.id.givePointToSPItem:
                 scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                break;
+            case R.id.finishButton:
+                gameNotOverDialog = new GameNotOverDialog();
+                gameNotOverDialog.show(getSupportFragmentManager(),"game not over");
                 break;
         }
         return true;
@@ -362,4 +369,27 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     }
 
 
+    @Override
+    public void closeDialog() {
+        gameNotOverDialog.dismiss();
+    }
+
+    @Override
+    public void gameNotOverButtons(View view) {
+        switch(view.getId()){
+            case R.id.buttonCancelRecording:
+                leaveRecordingDialog = new LeaveRecordingDialog();
+                leaveRecordingDialog.show(getSupportFragmentManager(), "leaving dialog");
+                break;
+            case R.id.buttonFinishWithoutWinner:
+                //todo
+                break;
+            case R.id.buttonFPWinner:
+                //todo @larry
+                break;
+            case R.id.buttonSPWinner:
+                //todo @larry
+                break;
+        }
+    }
 }

@@ -40,4 +40,9 @@
         données seront perdues !
     </string>
     <string name="take_a_picture">Prenez une photo!</string>
+    <string name="finish_the_match_without_winner">Le terminer sans déclarer de vainqueur</string>
+    <string name="declare_player_1_as_winner">Déclarer Joueur 1 vainqueur</string>
+    <string name="declare_player_2_as_winner">Déclarer Joueur 2 vainqueur</string>
+    <string name="first_server">Premier service</string>
+    <string name="game_not_over_message">Le match n\'est pas encore terminé. Que voulez-vous faire?</string>
 </resources>

@@ -10,7 +10,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dataAPI" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="203dp"
-            android:layout_marginStart="172dp"/>
+            android:id="@+id/dataAPI"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="204dp" android:layout_marginStart="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,13 @@
 package fr.android.tennistracker.Activities;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import fr.android.tennistracker.DAO.DataAPIAccess;
 import fr.android.tennistracker.R;
+
+import java.io.IOException;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -13,8 +17,31 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         dataAPI = findViewById(R.id.dataAPI);
-        String allMatches = getIntent().getStringExtra("allMatches");
-        dataAPI.setText(allMatches);
+        new APIAccessAsyncTask().execute("");
+        
+        
+    }
+    
+    
+    private class APIAccessAsyncTask extends AsyncTask <String, Void, String>{
+
+        String allMatches;
+        DataAPIAccess dataAPIAccess = new DataAPIAccess();
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                allMatches = dataAPIAccess.getAllMatches();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            return allMatches;
+        }
+        
+        @Override
+        protected void onPostExecute(String s) {
+            dataAPI.setText(s);
+        }
     }
     
 }

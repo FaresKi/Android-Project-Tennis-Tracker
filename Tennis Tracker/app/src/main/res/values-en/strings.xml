@@ -39,4 +39,9 @@
     <string name="leavingRecordingWarningMessage">Are you sure you want to stop recording? All data will be lost!
     </string>
     <string name="take_a_picture">Take a picture!</string>
+    <string name="finish_the_match_without_winner">Finish the match without winner</string>
+    <string name="declare_player_2_as_winner">Declare Player 2 as winner</string>
+    <string name="declare_player_1_as_winner">Declare Player 1 as winner</string>
+    <string name="first_server">First server</string>
+    <string name="game_not_over_message">The game is not completed yet. What do you want to do?</string>
 </resources>
