@@ -120,14 +120,15 @@
                 <Button
                         android:text="@string/first_nserve"
                         android:layout_width="wrap_content"
-                        android:layout_height="83dp" android:id="@+id/buttonFirstServeFP"
+                        android:layout_height="83dp" android:id="@+id/buttonFirstServe"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
-                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"/>
+                        android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"
+                        android:onClick="onServiceClick"/>
                 <Button
                         android:text="@string/ace"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/buttonAceFP"
+                        android:layout_height="wrap_content" android:id="@+id/buttonAce"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
                         android:backgroundTint="#FFFFFF" android:hapticFeedbackEnabled="false"
@@ -141,14 +142,14 @@
                 <Button
                         android:text="@string/second_nserve"
                         android:layout_width="wrap_content"
-                        android:layout_height="83dp" android:id="@+id/buttonSecondServeFP"
+                        android:layout_height="83dp" android:id="@+id/buttonSecondServe"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
                         android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"/>
                 <Button
                         android:text="@string/ace"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/buttonSecondAceFP"
+                        android:layout_height="wrap_content" android:id="@+id/buttonSecondAce"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
                         android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"
@@ -161,7 +162,7 @@
                 <Button
                         android:text="@string/double_nfault"
                         android:layout_width="wrap_content"
-                        android:layout_height="111dp" android:id="@+id/buttonDoubleFaultFP"
+                        android:layout_height="111dp" android:id="@+id/buttonDoubleFault"
                         android:gravity="center|center_horizontal|center_vertical" android:layout_gravity="center"
                         android:foregroundGravity="center" android:textAllCaps="false"
                         android:backgroundTint="#FFFFFF" android:fontFamily="@font/montserrat"

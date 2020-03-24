@@ -1,10 +1,13 @@
 package fr.android.tennistracker.Model;
 
+import java.util.List;
+
 public class Match {
     private int id;
     private String accountID;
     private String firstPlayer;
     private String secondPlayer;
+    private List<Statistics> playersStats;
     public Match(String accountID, String firstPlayer, String secondPlayer) {
         this.accountID = accountID;
         this.firstPlayer = firstPlayer;
@@ -41,5 +44,13 @@ public class Match {
 
     public void setSecondPlayer(String secondPlayer) {
         this.secondPlayer = secondPlayer;
+    }
+
+    public List<Statistics> getPlayersStats() {
+        return playersStats;
+    }
+
+    public void setPlayersStats(List<Statistics> playersStats) {
+        this.playersStats = playersStats;
     }
 }

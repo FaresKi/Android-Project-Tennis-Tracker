@@ -13,26 +13,41 @@ import fr.android.tennistracker.Fragments.FirstServerDialog;
 import fr.android.tennistracker.Fragments.GameNotOverDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
 import fr.android.tennistracker.Model.Player;
+import fr.android.tennistracker.Model.Set;
+import fr.android.tennistracker.Model.Statistics;
 import fr.android.tennistracker.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
 
     private FirstServerDialog dialogFragment;
     private LeaveRecordingDialog leaveRecordingDialog;
+
     private TextView firstPlayerSet_1, firstPlayerSet_2, firstPlayerSet_3, firstPlayerScore;
     private TextView secondPlayerSet_1, secondPlayerSet_2, secondPlayerSet_3, secondPlayerScore;
     private TextView server;
-    private int currentSet = 1;
+
+    private Set setOne, setTwo, setThree;
+
     private Player playerOne;
     private Player playerTwo;
-    private boolean avantage = true;
+
+    private Statistics firstPlayerStats;
+    private Statistics secondPlayerStats;
+
+    private boolean advantage = true;
+    private boolean firstServeFP = false;
+    private boolean firstServeSP = false;
+    private boolean tieBreak = false;
+
     private int nbSets = 6;
     private int serverTB = 0;
-    private boolean tieBreak = false;
-    
+    private int currentSet = 1;
+
+
     private GameNotOverDialog gameNotOverDialog;
 
     @Override
@@ -44,11 +59,13 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         String playerOneName = getIntent().getStringExtra("firstPlayerName");
         TextView tabFirstName = findViewById(R.id.tabFirstName);
         playerOne = initializePlayer(playerOneName, tabFirstName);
+        firstPlayerStats = playerOne.getPlayerStats();
 
         // Initialize second player
         String playerTwoName = getIntent().getStringExtra("secondPlayerName");
         TextView tabSecondName = findViewById(R.id.tabSecondName);
         playerTwo = initializePlayer(playerTwoName, tabSecondName);
+        secondPlayerStats = playerTwo.getPlayerStats();
 
         initializeElements();
 
@@ -104,7 +121,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 break;
             case R.id.finishButton:
                 gameNotOverDialog = new GameNotOverDialog();
-                gameNotOverDialog.show(getSupportFragmentManager(),"game not over");
+                gameNotOverDialog.show(getSupportFragmentManager(), "game not over");
                 break;
         }
         return true;
@@ -147,18 +164,21 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     }
 
     public List<TextView> selectSet() {
-        List<TextView> sets = new ArrayList<TextView>();
+        List<TextView> sets = new ArrayList<>();
 
         switch (currentSet) {
             case 1:
+                setOne = new Set(currentSet);
                 sets.add(firstPlayerSet_1);
                 sets.add(secondPlayerSet_1);
                 break;
             case 2:
+                setTwo = new Set(currentSet);
                 sets.add(firstPlayerSet_2);
                 sets.add(secondPlayerSet_2);
                 break;
             case 3:
+                setThree = new Set(currentSet);
                 sets.add(firstPlayerSet_3);
                 sets.add(secondPlayerSet_3);
                 break;
@@ -174,23 +194,41 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         switch (view.getId()) {
             case R.id.buttonWinnerFP:
                 scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+                firstPlayerStats.setWinners(firstPlayerStats.getWinners() + 1);
+                if (firstServeFP) {
+                    if (firstPlayerStats.getPointsWonOnFirstServe() != 30) {
+                        firstPlayerStats.setPointsWonOnFirstServe(firstPlayerStats.getPointsWonOnFirstServe() + 15);
+                    } else {
+                        firstPlayerStats.setPointsWonOnFirstServe(firstPlayerStats.getPointsWonOnFirstServe() + 10);
+                    }
+                }
                 break;
             case R.id.buttonWinnerSP:
                 scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                secondPlayerStats.setWinners(secondPlayerStats.getWinners() + 1);
+                if (firstServeSP) {
+                    if (secondPlayerStats.getPointsWonOnFirstServe() != 30) {
+                        secondPlayerStats.setPointsWonOnFirstServe(secondPlayerStats.getPointsWonOnFirstServe() + 15);
+                    } else {
+                        secondPlayerStats.setPointsWonOnFirstServe(secondPlayerStats.getPointsWonOnFirstServe() + 10);
+                    }
+                }
                 break;
             case R.id.buttonUnforcedErrorFP:
                 scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                firstPlayerStats.setUnforcedErrors(firstPlayerStats.getForcedErrors() + 1);
                 break;
             case R.id.buttonUnforcedErrorSP:
                 scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
-
+                secondPlayerStats.setUnforcedErrors(secondPlayerStats.getForcedErrors() + 1);
                 break;
             case R.id.buttonForcedErrorFP:
                 scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                firstPlayerStats.setForcedErrors(firstPlayerStats.getForcedErrors() + 1);
                 break;
             case R.id.buttonForcedErrorSP:
                 scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
-
+                secondPlayerStats.setForcedErrors(secondPlayerStats.getForcedErrors() + 1);
                 break;
         }
     }
@@ -201,9 +239,11 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         TextView secondPlayerSet = sets.get(1);
         if (server.getText().equals(playerOne.getName())) {
             scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+            firstPlayerStats.setAces(firstPlayerStats.getAces() + 1);
 
         } else {
             scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+            secondPlayerStats.setAces(secondPlayerStats.getAces() + 1);
         }
     }
 
@@ -242,15 +282,27 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     }
 
     private void changeSet() {
+        if (currentSet == 1) {
+            setOne = new Set(1);
+            setOne.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+            playerOne.reinitialiseStats();
+            playerTwo.reinitialiseStats();
+        }
         currentSet++;
         switch (currentSet) {
             case 2:
                 firstPlayerSet_2.setText("0");
                 secondPlayerSet_2.setText("0");
+                setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                playerOne.reinitialiseStats();
+                playerTwo.reinitialiseStats();
                 break;
             case 3:
                 firstPlayerSet_3.setText("0");
                 secondPlayerSet_3.setText("0");
+                setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                playerOne.reinitialiseStats();
+                playerTwo.reinitialiseStats();
                 break;
         }
     }
@@ -271,7 +323,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
 
     }
 
-    private void scoringWihtoutAvantage(TextView playerScore, TextView playerSet) {
+    private void scoringWithoutAdvantage(TextView playerScore, TextView playerSet) {
         switch (playerScore.getText().toString()) {
             case "0":
                 playerScore.setText("15");
@@ -288,7 +340,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         }
     }
 
-    private void scoringWithAvantage(TextView playerScore, TextView playerSet) {
+    private void scoringWithAdvantage(TextView playerScore, TextView playerSet) {
         switch (playerScore.getText().toString()) {
             case "0":
                 playerScore.setText("15");
@@ -358,10 +410,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 tieBreak = true;
                 scoringTieBreak(playerScore, playerSet, true);
             } else {
-                if (avantage) {
-                    scoringWithAvantage(playerScore, playerSet);
+                if (advantage) {
+                    scoringWithAdvantage(playerScore, playerSet);
                 } else {
-                    scoringWihtoutAvantage(playerScore, playerSet);
+                    scoringWithoutAdvantage(playerScore, playerSet);
                 }
             }
         }
@@ -376,7 +428,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
 
     @Override
     public void gameNotOverButtons(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.buttonCancelRecording:
                 leaveRecordingDialog = new LeaveRecordingDialog();
                 leaveRecordingDialog.show(getSupportFragmentManager(), "leaving dialog");
@@ -391,5 +443,18 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 //todo @larry
                 break;
         }
+    }
+
+    public void onServiceClick(View view) {
+        
+        switch (view.getId()) {
+            case R.id.buttonFirstServe:
+                if (server.getText().equals(playerOne.getName())) {
+                    firstServeFP = true;
+                } else {
+                    firstServeSP = true;
+                }
+        }
+
     }
 }

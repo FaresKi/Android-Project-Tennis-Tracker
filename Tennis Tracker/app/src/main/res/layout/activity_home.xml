@@ -29,17 +29,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/buttonPreviousMatches"
             android:foregroundGravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/buttonNewMatch" android:layout_marginBottom="27dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/buttonNewPicture"
-            app:layout_constraintStart_toStartOf="parent" android:onClick="onClick"/>
+            android:onClick="onClick"
+            app:layout_constraintTop_toBottomOf="@+id/buttonNewMatch" android:layout_marginEnd="102dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/buttonNewPicture"/>
     <Button
             android:text="@string/take_a_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/buttonNewPicture"
+            android:onClick="onClick"
             app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="11dp"
-            app:layout_constraintTop_toBottomOf="@+id/buttonPreviousMatches" android:layout_marginBottom="98dp"
-            android:onClick="onClick"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPreviousMatches" android:layout_marginBottom="97dp"/>
     <Button
             android:text="@string/nouveau_match"
             android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content" android:id="@+id/buttonNewMatch"
             android:foregroundGravity="center"
             app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
-            android:layout_marginStart="21dp" app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:layout_marginBottom="25dp" app:layout_constraintBottom_toTopOf="@+id/buttonPreviousMatches"/>
+            android:layout_marginStart="4dp" app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginBottom="23dp" app:layout_constraintBottom_toTopOf="@+id/buttonPreviousMatches"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Activities.StatisticsActivity" android:orientation="vertical">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="205dp">
+            <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:weightSum="2">
+
+                <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:background="#003F3E3E"
+                          android:layout_weight="1">
+                    <TextView
+
+                            android:text="@string/firstPlayerName"
+                            android:layout_column="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/tabFirstName"
+                            android:fontFamily="@font/montserrat" android:layout_gravity="center_vertical"
+                            android:layout_span="1" android:layout_margin="10dip" android:background="#003F3E3E"/>
+                    <TextView
+                            android:text="@string/firstPlayerScore"
+                            android:layout_column="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/tabFirstPlayerScore"
+                            android:layout_gravity="center_vertical" android:layout_span="1"
+                            android:layout_margin="10dip" android:fontFamily="@font/montserrat"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_1"
+                            android:layout_margin="10dip"
+                            android:layout_gravity="center_vertical" android:layout_column="2" android:layout_span="1"
+                            android:fontFamily="@font/montserrat"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_2"
+                            android:layout_gravity="center_vertical" android:layout_column="3"
+                            android:layout_margin="10dip" android:fontFamily="@font/montserrat"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/firstPlayerSet_3"
+                            android:layout_gravity="center_vertical" android:layout_column="4"
+                            android:layout_margin="10dip" android:fontFamily="@font/montserrat"/>
+
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:layout_weight="1">
+
+                    <TextView
+                            android:text="@string/secondPlayerName"
+                            android:layout_column="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/tabSecondName"
+                            android:fontFamily="@font/montserrat" android:layout_gravity="center_vertical"
+                            android:layout_span="1" android:layout_margin="10dip"/>
+                    <TextView
+                            android:text="@string/secondplayerscore"
+                            android:layout_column="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/tabSecondPlayerScore"
+                            android:layout_gravity="center_vertical" android:layout_span="1"
+                            android:layout_margin="10dip" android:fontFamily="@font/montserrat"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_1"
+                            android:layout_margin="10dip"
+                            android:layout_gravity="center_vertical" android:fontFamily="@font/montserrat"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_2"
+                            android:layout_gravity="center_vertical" android:layout_margin="10dip"
+                            android:fontFamily="@font/montserrat"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/secondPlayerSet_3"
+                            android:layout_gravity="center_vertical" android:layout_column="4"
+                            android:layout_margin="10dip" android:fontFamily="@font/montserrat"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
+            <ToggleButton
+                    android:text="Match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/toggleButton" android:layout_weight="1"
+                    android:textOff="Match" android:textOn="Match" android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"/>
+            <ToggleButton
+                    android:text="Set 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/toggleButton2" android:layout_weight="1"
+                    tools:text="Set 1" android:textOff="Set 1" android:textOn="Set 1" android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"/>
+            <ToggleButton
+                    android:text="Set 2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/toggleButton3" android:layout_weight="1"
+                    android:textOff="Set 2" android:textOn="Set 2" android:textAllCaps="false"
+                    android:fontFamily="@font/montserrat"/>
+            <ToggleButton
+                    android:text="Set 3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/toggleButton4" android:layout_weight="1"
+                    android:textOff="Set 3" android:textOn="Set 3" android:textAllCaps="false" android:enabled="false"
+                    android:fontFamily="@font/montserrat"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="General Statistics"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView5" android:layout_weight="1"
+                    android:textAllCaps="true" android:background="#03A9F4" android:fontFamily="@font/montserrat"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/firstPlayerStats" android:layout_weight="1"
+                    android:background="#03A9F4" android:fontFamily="@font/montserrat" android:gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/secondPlayerStats" android:layout_weight="1"
+                    android:background="#03A9F4" android:fontFamily="@font/montserrat" android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp">
+            <TextView
+                    android:text="Won rallies"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView12" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:textAllCaps="true" android:textStyle="bold"
+                    android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/FPWonRallies" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:gravity="center" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/SPWonRallies" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:gravity="center" android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="Service Statistics"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView15" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:background="#03A9F4" android:textAllCaps="true"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView16" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:background="#03A9F4" android:layout_gravity="center"
+                    android:gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView17" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:background="#03A9F4" android:layout_gravity="center"
+                    android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="31dp" android:layout_gravity="center">
+            <TextView
+                    android:text="@string/first_server"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView18" android:layout_weight="1"
+                    android:textAllCaps="true" android:textStyle="bold" android:fontFamily="@font/montserrat"
+                    android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView19" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView20" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="31dp">
+            <TextView
+                    android:text="ACES"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView21" android:layout_weight="1"
+                    android:textStyle="bold" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView22" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView23" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="31dp">
+            <TextView
+                    android:text="DOUBLE FAULTS"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView24" android:layout_weight="1"
+                    android:textStyle="bold" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView25" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView26" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+            <TextView
+                    android:text="POINTS WON ON OWN 1ST SERVE"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView30" android:layout_weight="1"
+                    android:textStyle="bold" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView31" android:layout_weight="1"
+                    android:gravity="center" android:fontFamily="@font/montserrat" android:layout_gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView10" android:layout_weight="1"
+                    android:fontFamily="@font/montserrat" android:gravity="center" android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="RALLY STATISTICS"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView11" android:layout_weight="1"
+                    android:background="#03A9F4" android:fontFamily="@font/montserrat"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView13" android:layout_weight="1"
+                    android:background="#03A9F4" android:fontFamily="@font/montserrat" android:gravity="center"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView14" android:layout_weight="1"
+                    android:background="#03A9F4" android:fontFamily="@font/montserrat" android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="WINNERS"
+                    android:layout_width="147dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView32" android:layout_weight="1"
+                    android:layout_gravity="center" android:fontFamily="@font/montserrat" android:textStyle="bold"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView33" android:layout_weight="1"
+                    android:gravity="center" android:layout_gravity="center" android:fontFamily="@font/montserrat"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView34" android:layout_weight="1"
+                    android:gravity="center" android:layout_gravity="center" android:fontFamily="@font/montserrat"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="UNFORCED ERRORS"
+                    android:layout_width="147dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView35" android:layout_weight="1"
+                    android:layout_gravity="center" android:fontFamily="@font/montserrat" android:textStyle="bold"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView36" android:layout_weight="1"
+                    android:gravity="center" android:layout_gravity="center" android:fontFamily="@font/montserrat"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView37" android:layout_weight="1"
+                    android:gravity="center" android:layout_gravity="center" android:fontFamily="@font/montserrat"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="FORCED ERRORS"
+                    android:layout_width="147dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView38" android:layout_weight="1"
+                    android:layout_gravity="center" android:fontFamily="@font/montserrat" android:textStyle="bold"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView39" android:layout_weight="1"
+                    android:gravity="center" android:layout_gravity="center" android:fontFamily="@font/montserrat"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView40" android:layout_weight="1"
+                    android:gravity="center" android:layout_gravity="center" android:fontFamily="@font/montserrat"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -24,12 +24,7 @@ public class GameNotOverDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.layout_game_not_over_dialog,null);
         builder.setTitle(R.string.game_not_over_message);
         builder.setView(view);
-        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                
-            }
-        });
+        builder.setNegativeButton("CANCEL", (dialog, which) -> listener.closeDialog());
         return builder.create();
         
     }
@@ -48,8 +43,8 @@ public class GameNotOverDialog extends DialogFragment {
     
     public interface GameNotOverDialogListener {
         
-        public void closeDialog();
-        public void gameNotOverButtons(View view);
+        void closeDialog();
+        void gameNotOverButtons(View view);
         
     }
 }
