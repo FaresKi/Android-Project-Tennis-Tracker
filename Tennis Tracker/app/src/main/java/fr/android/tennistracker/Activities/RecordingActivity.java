@@ -216,11 +216,11 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 break;
             case R.id.buttonUnforcedErrorFP:
                 scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
-                firstPlayerStats.setUnforcedErrors(firstPlayerStats.getForcedErrors() + 1);
+                firstPlayerStats.setUnforcedErrors(firstPlayerStats.getUnforcedErrors() + 1);
                 break;
             case R.id.buttonUnforcedErrorSP:
                 scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
-                secondPlayerStats.setUnforcedErrors(secondPlayerStats.getForcedErrors() + 1);
+                secondPlayerStats.setUnforcedErrors(secondPlayerStats.getUnforcedErrors() + 1);
                 break;
             case R.id.buttonForcedErrorFP:
                 scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
@@ -253,8 +253,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         TextView secondPlayerSet = sets.get(1);
         if (server.getText().equals(playerOne.getName())) {
             scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+            firstPlayerStats.setDoubleFaults(firstPlayerStats.getDoubleFaults() + 1);
         } else {
             scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+            secondPlayerStats.setDoubleFaults(secondPlayerStats.getDoubleFaults() + 1);
 
         }
     }
@@ -272,10 +274,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         firstPlayerScore.setText("0");
         secondPlayerScore.setText("0");
         changeServer();
-        isWinSet();
+        isSetWon();
     }
 
-    private void isWinSet() {
+    private void isSetWon() {
         if (setIsDone()) {
             changeSet();
         }
@@ -291,19 +293,23 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         currentSet++;
         switch (currentSet) {
             case 2:
+                setTwo = new Set(2);
                 firstPlayerSet_2.setText("0");
                 secondPlayerSet_2.setText("0");
-                setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
-                playerOne.reinitialiseStats();
-                playerTwo.reinitialiseStats();
                 break;
             case 3:
                 firstPlayerSet_3.setText("0");
                 secondPlayerSet_3.setText("0");
+                setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                playerOne.reinitialiseStats();
+                playerTwo.reinitialiseStats();
+                break;
+            default:
                 setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
                 playerOne.reinitialiseStats();
                 playerTwo.reinitialiseStats();
                 break;
+                
         }
     }
 
@@ -446,15 +452,20 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     }
 
     public void onServiceClick(View view) {
-        
+        List<TextView> sets = selectSet();
+        TextView firstPlayerSet = sets.get(0);
+        TextView secondPlayerSet = sets.get(1);
+
         switch (view.getId()) {
             case R.id.buttonFirstServe:
                 if (server.getText().equals(playerOne.getName())) {
                     firstServeFP = true;
+                    firstPlayerStats.setFirstServes(firstPlayerStats.getFirstServes() + 1);
                 } else {
                     firstServeSP = true;
+                    secondPlayerStats.setFirstServes(secondPlayerStats.getFirstServes() + 1);
                 }
+                break;
         }
-
     }
 }

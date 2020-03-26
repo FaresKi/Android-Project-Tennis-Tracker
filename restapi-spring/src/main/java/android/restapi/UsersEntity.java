@@ -3,7 +3,7 @@ package android.restapi;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "Players")
 public class UsersEntity {
     @Id
     @GeneratedValue

@@ -1,7 +1,6 @@
 package fr.android.tennistracker.Model;
 
 public class Statistics {
-    private int wonRallies = 0;
     private int firstServes = 0;
     private int aces = 0;
     private int doubleFaults = 0;
@@ -11,13 +10,7 @@ public class Statistics {
     private int unforcedErrors = 0;
     private int forcedErrors = 0;
 
-    public int getWonRallies() {
-        return wonRallies;
-    }
 
-    public void setWonRallies(int wonRallies) {
-        this.wonRallies = wonRallies;
-    }
 
     public int getFirstServes() {
         return firstServes;
