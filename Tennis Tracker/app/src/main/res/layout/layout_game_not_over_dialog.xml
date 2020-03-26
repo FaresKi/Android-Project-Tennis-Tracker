@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:id="@+id/relativeLayout2" android:layout_gravity="center_vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical">
 
     <Button
-            android:text="@string/annuler_l_enregistrement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/buttonCancelRecording"
-            android:gravity="center|center_horizontal"
-            android:foregroundGravity="center_vertical|center" android:layout_gravity="center_horizontal"
-            android:padding="10dp" android:onClick="gameNotOverButtons"/>
+        android:id="@+id/buttonCancelRecording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_vertical|center"
+        android:gravity="center|center_horizontal"
+        android:onClick="gameNotOverButtons"
+        android:padding="10dp"
+        android:text="@string/annuler_l_enregistrement" />
+
     <Button
-            android:text="@string/finish_the_match_without_winner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/buttonFinishWithoutWinner"
-            android:gravity="center|center_horizontal"
-            android:foregroundGravity="center_vertical|center" android:layout_gravity="center_horizontal"
-            android:padding="10dp" android:onClick="gameNotOverButtons"/>
+        android:id="@+id/buttonFinishWithoutWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_vertical|center"
+        android:gravity="center|center_horizontal"
+        android:onClick="gameNotOverButtons"
+        android:padding="10dp"
+        android:text="@string/finish_the_match_without_winner" />
+
     <Button
-            android:text="@string/declare_player_1_as_winner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/buttonFPWinner"
-            android:gravity="center|center_horizontal"
-            android:foregroundGravity="center_vertical|center" android:layout_gravity="center_horizontal"
-            android:padding="10dp" android:onClick="gameNotOverButtons"/>
+        android:id="@+id/buttonFPWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_vertical|center"
+        android:gravity="center|center_horizontal"
+        android:onClick="gameNotOverButtons"
+        android:padding="10dp"
+        android:text="@string/declare_player_1_as_winner" />
+
     <Button
-            android:text="@string/declare_player_2_as_winner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/buttonSPWinner"
-            android:gravity="center|center_horizontal"
-            android:foregroundGravity="center_vertical|center" android:layout_gravity="center_horizontal"
-            android:padding="10dp" android:onClick="gameNotOverButtons"/>
+        android:id="@+id/buttonSPWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_vertical|center"
+        android:gravity="center|center_horizontal"
+        android:onClick="gameNotOverButtons"
+        android:padding="10dp"
+        android:text="@string/declare_player_2_as_winner" />
 </LinearLayout>

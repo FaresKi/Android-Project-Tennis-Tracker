@@ -8,7 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import fr.android.tennistracker.Fragments.FirstServerDialog;
 import fr.android.tennistracker.Fragments.GameNotOverDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
@@ -38,12 +40,12 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     private Statistics firstPlayerStats;
     private Statistics secondPlayerStats;
 
-    private boolean advantage = true;
+    private boolean advantage;
     private boolean firstServeFP = false;
     private boolean firstServeSP = false;
     private boolean tieBreak = false;
 
-    private int nbSets = 6;
+    private int nbGames = 6;
     private int serverTB = 0;
     private int currentSet = 1;
 
@@ -54,6 +56,38 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
+
+        int matchFormatPos = getIntent().getIntExtra("matchFormatPos", 0);
+        int lastSetFormatPos = getIntent().getIntExtra("lastFormatPos", 0);
+
+        switch (matchFormatPos) {
+            case 0:
+                advantage = true;
+                nbGames = 6;
+                break;
+            case 1:
+                advantage = true;
+                nbGames = 5;
+                break;
+            case 2:
+                advantage = true;
+                nbGames = 4;
+                break;
+            case 3:
+                advantage = false;
+                nbGames = 5;
+                break;
+            case 4:
+                advantage = false;
+                nbGames = 4;
+                break;
+            case 5:
+                advantage = false;
+                nbGames = 3;
+                break;
+
+        }
+
 
         // Initialize first player
         String playerOneName = getIntent().getStringExtra("firstPlayerName");
@@ -309,7 +343,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 playerOne.reinitialiseStats();
                 playerTwo.reinitialiseStats();
                 break;
-                
+
         }
     }
 
@@ -320,9 +354,9 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         int gamesPlayerOne = Integer.parseInt((String) firstPlayerSet.getText());
         int gamesPlayerTwo = Integer.parseInt((String) secondPlayerSet.getText());
 
-        return ((gamesPlayerOne == nbSets && gamesPlayerTwo < nbSets - 1) || (gamesPlayerOne < nbSets - 1 && gamesPlayerTwo == nbSets) ||
-                (gamesPlayerOne == nbSets - 1 && gamesPlayerTwo == nbSets + 1) || (gamesPlayerOne == nbSets + 1 && gamesPlayerTwo == nbSets - 1) ||
-                (gamesPlayerOne == nbSets && gamesPlayerTwo == nbSets + 1) || (gamesPlayerOne == nbSets + 1 && gamesPlayerTwo == nbSets));
+        return ((gamesPlayerOne == nbGames && gamesPlayerTwo < nbGames - 1) || (gamesPlayerOne < nbGames - 1 && gamesPlayerTwo == nbGames) ||
+                (gamesPlayerOne == nbGames - 1 && gamesPlayerTwo == nbGames + 1) || (gamesPlayerOne == nbGames + 1 && gamesPlayerTwo == nbGames - 1) ||
+                (gamesPlayerOne == nbGames && gamesPlayerTwo == nbGames + 1) || (gamesPlayerOne == nbGames + 1 && gamesPlayerTwo == nbGames));
     }
 
     public void matchIsDone() {
@@ -412,7 +446,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         } else {
             int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
             int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
-            if (gamesChallenger == nbSets && gamesPlayer == nbSets) {
+            if (gamesChallenger == nbGames && gamesPlayer == nbGames) {
                 tieBreak = true;
                 scoringTieBreak(playerScore, playerSet, true);
             } else {

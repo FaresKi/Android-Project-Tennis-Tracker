@@ -7,8 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
+
 import fr.android.tennistracker.R;
 
 public class NewMatchActivity extends AppCompatActivity {
@@ -40,9 +43,16 @@ public class NewMatchActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.startButton :
+        switch (item.getItemId()) {
+            case R.id.startButton:
                 intent = new Intent(this, RecordingActivity.class);
+
+                Spinner matchFormat = findViewById(R.id.matchFormat);
+                int matchFormatPos = matchFormat.getSelectedItemPosition();
+
+                Spinner lastSetFormat = findViewById(R.id.lastSetFormat);
+                int lastSetFormatPos = lastSetFormat.getSelectedItemPosition();
+
                 EditText firstPlayer = findViewById(R.id.firstPlayerName);
                 EditText secondPlayer = findViewById(R.id.secondPlayerName);
 
@@ -50,7 +60,9 @@ public class NewMatchActivity extends AppCompatActivity {
                 String secondPlayerName = String.valueOf(secondPlayer.getText());
                 if (!firstPlayerName.isEmpty() && !secondPlayerName.isEmpty()) {
                     intent.putExtra("firstPlayerName", firstPlayerName)
-                            .putExtra("secondPlayerName", secondPlayerName);
+                            .putExtra("secondPlayerName", secondPlayerName)
+                            .putExtra("matchFormatPos", matchFormatPos)
+                            .putExtra("lastSetFormatPos", lastSetFormatPos);
 
                     this.startActivity(intent);
                 }
@@ -73,7 +85,6 @@ public class NewMatchActivity extends AppCompatActivity {
         savedInstanceState.putString("firstPlayerName", firstPlayerName);
         savedInstanceState.putString("secondPlayerName", secondPlayerName);
     }
-
 
 
 }
