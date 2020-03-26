@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.android.tennistracker.DAO.DataAPIAccess;
 import fr.android.tennistracker.R;
+import org.json.JSONException;
 
 import java.io.IOException;
 
@@ -31,7 +32,8 @@ public class HistoryActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try {
                 allMatches = dataAPIAccess.getAllMatches();
-            } catch (IOException e) {
+                dataAPIAccess.matchList();
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
             

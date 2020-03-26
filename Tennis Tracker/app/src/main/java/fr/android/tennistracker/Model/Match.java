@@ -14,6 +14,13 @@ public class Match {
         this.secondPlayer = secondPlayer;
     }
 
+    public Match(int id, String accountID, String firstPlayer, String secondPlayer) {
+        this.id = id;
+        this.accountID = accountID;
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+    }
+
     public int getId() {
         return id;
     }
