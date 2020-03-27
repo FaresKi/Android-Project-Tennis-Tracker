@@ -48,4 +48,5 @@
     <string name="declare_player_1_as_winner">Declare Player 1 as winner</string>
     <string name="first_server">First server</string>
     <string name="game_not_over_message">The game is not completed yet. What do you want to do?</string>
+    <string name="won_game">won the game</string>
 </resources>

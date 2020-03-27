@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import fr.android.tennistracker.Fragments.DoneMatchDialog;
 import fr.android.tennistracker.Fragments.FirstServerDialog;
 import fr.android.tennistracker.Fragments.GameNotOverDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
@@ -23,11 +24,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
+public class RecordingActivity extends AppCompatActivity implements  DoneMatchDialog.DoneMatchDialogListener, FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
 
     private Intent intent;
     private FirstServerDialog dialogFragment;
     private LeaveRecordingDialog leaveRecordingDialog;
+    private DoneMatchDialog doneMatchDialog;
 
     private TextView firstPlayerSet_1, firstPlayerSet_2, firstPlayerSet_3, firstPlayerScore;
     private TextView secondPlayerSet_1, secondPlayerSet_2, secondPlayerSet_3, secondPlayerScore;
@@ -37,6 +39,8 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
 
     private Player playerOne;
     private Player playerTwo;
+    private Player winner;
+
 
     private Statistics firstPlayerStats;
     private Statistics secondPlayerStats;
@@ -171,6 +175,17 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void redirectToStats(){
+        intent = new Intent(this, StatisticsActivity.class);
+        this.startActivity(intent);
+    }
+
+    @Override
+    public Player getWinner(){
+        return winner;
     }
 
     @Override
@@ -380,7 +395,13 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
 
     public void matchIsDone() {
         if (playerOne.getSet() == 2 || playerTwo.getSet() == 2) {
-            server.setText(playerOne.getName() + " won");
+            if (playerOne.getSet() == 2){
+                winner = playerOne;
+            } else {
+                winner = playerTwo;
+            }
+            doneMatchDialog = new DoneMatchDialog();
+            doneMatchDialog.show(getSupportFragmentManager(), "doneMatch");
         }
     }
 
@@ -515,17 +536,16 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 break;
             case R.id.buttonFinishWithoutWinner:
                 intent = new Intent(this, StatisticsActivity.class);
-                intent.putExtra("winner", "no one");
                 this.startActivity(intent);
                 break;
             case R.id.buttonFPWinner:
                 intent = new Intent(this, StatisticsActivity.class);
-                intent.putExtra("winner", playerOne.getName());
+                intent.putExtra("winner", playerOne);
                 this.startActivity(intent);
                 break;
             case R.id.buttonSPWinner:
                 intent = new Intent(this, StatisticsActivity.class);
-                intent.putExtra("winner", playerTwo.getName());
+                intent.putExtra("winner", playerTwo);
                 this.startActivity(intent);
                 break;
         }

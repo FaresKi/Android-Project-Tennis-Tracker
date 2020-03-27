@@ -7,13 +7,15 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
 import fr.android.tennistracker.R;
 
 public class LeaveRecordingDialog extends DialogFragment {
-    private  LeaveRecordingDialogListener listener;
+    private LeaveRecordingDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -41,8 +43,9 @@ public class LeaveRecordingDialog extends DialogFragment {
         super.onAttach(context);
     }
 
-    public interface LeaveRecordingDialogListener{
+    public interface LeaveRecordingDialogListener {
         void stayInThisActivity();
+
         void goToHomeActivity();
     }
 }

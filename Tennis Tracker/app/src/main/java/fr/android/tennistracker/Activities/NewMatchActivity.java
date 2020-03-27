@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
@@ -59,7 +60,7 @@ public class NewMatchActivity extends AppCompatActivity {
 
                 String firstPlayerName = String.valueOf(firstPlayer.getText());
                 String secondPlayerName = String.valueOf(secondPlayer.getText());
-                
+
                 if (!firstPlayerName.isEmpty() && !secondPlayerName.isEmpty()) {
                     intent.putExtra("firstPlayerName", firstPlayerName)
                             .putExtra("secondPlayerName", secondPlayerName)

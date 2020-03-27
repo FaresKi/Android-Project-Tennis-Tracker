@@ -1,6 +1,9 @@
 package fr.android.tennistracker.Model;
 
-public class Player {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Player implements Parcelable {
     public String name;
     private int sets;
     private Statistics playerStats = new Statistics();
@@ -45,9 +48,18 @@ public class Player {
     public void setPlayerStats(Statistics playerStats) {
         this.playerStats = playerStats;
     }
-    
-    public void reinitialiseStats(){
+
+    public void reinitialiseStats() {
         this.playerStats = new Statistics();
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

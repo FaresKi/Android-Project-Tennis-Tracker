@@ -49,4 +49,5 @@
     <string name="declare_player_2_as_winner">Déclarer Joueur 2 vainqueur</string>
     <string name="first_server">Premier service</string>
     <string name="game_not_over_message">Le match n\'est pas encore terminé. Que voulez-vous faire?</string>
+    <string name="won_game">a remporté le match</string>
 </resources>
