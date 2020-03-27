@@ -9,12 +9,13 @@
 
     <ImageView
             android:src="@drawable/tennisball"
-            android:layout_width="228dp"
-            android:layout_height="0dp" android:id="@+id/imageView"
+            android:layout_width="211dp"
+            android:layout_height="213dp" android:id="@+id/imageView"
             android:contentDescription="@string/content"
             android:layout_marginBottom="9dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,32 +31,27 @@
             android:layout_height="wrap_content" android:id="@+id/buttonPreviousMatches"
             android:foregroundGravity="center"
             android:onClick="onClick"
-            app:layout_constraintTop_toBottomOf="@+id/buttonNewMatch" android:layout_marginEnd="102dp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonNewMatch" android:layout_marginEnd="132dp"
             android:layout_marginBottom="30dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/buttonNewPicture"/>
-
     <Button
-        android:id="@+id/buttonNewPicture"
-        android:layout_width="172dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="97dp"
-        android:onClick="onClick"
-        android:text="@string/take_a_picture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPreviousMatches" />
-
+            android:text="@string/take_a_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/buttonNewPicture"
+            android:onClick="onClick"
+            app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPreviousMatches" android:layout_marginBottom="97dp"
+            android:layout_marginStart="16dp"/>
     <Button
-        android:id="@+id/buttonNewMatch"
-        android:layout_width="168dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="23dp"
-        android:foregroundGravity="center"
-        android:onClick="onClick"
-        android:text="@string/nouveau_match"
-        app:layout_constraintBottom_toTopOf="@+id/buttonPreviousMatches"
-        app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:text="@string/nouveau_match"
+            android:layout_width="wrap_content"
+            android:onClick="onClick"
+            android:layout_height="wrap_content" android:id="@+id/buttonNewMatch"
+            android:foregroundGravity="center"
+            app:layout_constraintStart_toStartOf="@+id/buttonPreviousMatches"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginBottom="23dp" app:layout_constraintBottom_toTopOf="@+id/buttonPreviousMatches"
+            android:layout_marginStart="24dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

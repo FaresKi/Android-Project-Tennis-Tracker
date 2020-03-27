@@ -1,6 +1,9 @@
 package fr.android.tennistracker.Model;
 
-public class Statistics {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Statistics implements Parcelable {
     private int firstServes = 0;
     private int aces = 0;
     private int doubleFaults = 0;
@@ -9,8 +12,42 @@ public class Statistics {
     private int winners = 0;
     private int unforcedErrors = 0;
     private int forcedErrors = 0;
+    
+    public Statistics(){
+        
+    }
 
+    public Statistics(int firstServes, int aces, int doubleFaults, int pointsWonOnFirstServe, int winners, int unforcedErrors, int forcedErrors) {
+        this.firstServes = firstServes;
+        this.aces = aces;
+        this.doubleFaults = doubleFaults;
+        this.pointsWonOnFirstServe = pointsWonOnFirstServe;
+        this.winners = winners;
+        this.unforcedErrors = unforcedErrors;
+        this.forcedErrors = forcedErrors;
+    }
 
+    protected Statistics(Parcel in) {
+        firstServes = in.readInt();
+        aces = in.readInt();
+        doubleFaults = in.readInt();
+        pointsWonOnFirstServe = in.readInt();
+        winners = in.readInt();
+        unforcedErrors = in.readInt();
+        forcedErrors = in.readInt();
+    }
+
+    public static final Creator<Statistics> CREATOR = new Creator<Statistics>() {
+        @Override
+        public Statistics createFromParcel(Parcel in) {
+            return new Statistics(in);
+        }
+
+        @Override
+        public Statistics[] newArray(int size) {
+            return new Statistics[size];
+        }
+    };
 
     public int getFirstServes() {
         return firstServes;
@@ -66,5 +103,21 @@ public class Statistics {
 
     public void setForcedErrors(int forcedErrors) {
         this.forcedErrors = forcedErrors;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(firstServes);
+        dest.writeInt(aces);
+        dest.writeInt(doubleFaults);
+        dest.writeInt(pointsWonOnFirstServe);
+        dest.writeInt(winners);
+        dest.writeInt(unforcedErrors);
+        dest.writeInt(forcedErrors);
     }
 }
