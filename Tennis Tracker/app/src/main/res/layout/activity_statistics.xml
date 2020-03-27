@@ -321,7 +321,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/FPFirstServer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -331,7 +331,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/SPFirstServer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -357,7 +357,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/FPAces"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -367,7 +367,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/SPAces"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -378,39 +378,39 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:orientation="horizontal" android:id="@+id/SPDoubleFaults">
 
             <TextView
-                android:id="@+id/textView24"
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="DOUBLE FAULTS"
-                android:textStyle="bold" />
+                    android:id="@+id/textView24"
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="DOUBLE FAULTS"
+                    android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/textView25"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/FPDoubleFaults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/textView26"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
@@ -429,7 +429,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/FPPointsWonOnFirstService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -439,7 +439,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/SPPointsWonOnFirstService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -500,7 +500,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/FPWinners"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -510,7 +510,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/SPWinners"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -536,7 +536,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView36"
+                android:id="@+id/FPUnforcedErrors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -546,7 +546,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/SPUnforcedErrors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -572,7 +572,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/FPForcedErrors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -582,7 +582,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView40"
+                android:id="@+id/SPForcedErrors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

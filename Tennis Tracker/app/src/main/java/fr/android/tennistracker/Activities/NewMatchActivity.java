@@ -8,16 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
-import fr.android.tennistracker.DAO.MyDBHandler;
-import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.R;
 
 public class NewMatchActivity extends AppCompatActivity {
     Intent intent;
-    private MyDBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +41,8 @@ public class NewMatchActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.startButton :
-                dbHandler = new MyDBHandler(this,null,null,1);
+        switch (item.getItemId()) {
+            case R.id.startButton:
                 intent = new Intent(this, RecordingActivity.class);
 
                 Spinner matchFormat = findViewById(R.id.matchFormat);
@@ -61,11 +56,7 @@ public class NewMatchActivity extends AppCompatActivity {
 
                 String firstPlayerName = String.valueOf(firstPlayer.getText());
                 String secondPlayerName = String.valueOf(secondPlayer.getText());
-                Player playerOne, playerTwo;
-                playerOne=new Player(firstPlayerName);
-                playerTwo = new Player(secondPlayerName);
-                dbHandler.addHandler(playerOne);
-                dbHandler.addHandler(playerTwo);
+                
                 if (!firstPlayerName.isEmpty() && !secondPlayerName.isEmpty()) {
                     intent.putExtra("firstPlayerName", firstPlayerName)
                             .putExtra("secondPlayerName", secondPlayerName)

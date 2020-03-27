@@ -48,7 +48,7 @@
     <string name="leavingRecordingWarningMessage">Êtes-vous sûr de vouloir arrêter l\'enregistrement? Toutes vos données
         seront perdues !
     </string>
-    <string name="take_a_picture">Take a picture!</string>
+    <string name="take_a_picture">Prenez une photo!</string>
     <string name="finish_the_match_without_winner">Le terminer sans déclarer de vainqueur</string>
     <string name="declare_player_2_as_winner">Déclarer Joueur 2 vainqueur</string>
     <string name="declare_player_1_as_winner">Déclarer Joueur 1 vainqueur</string>
