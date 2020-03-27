@@ -25,6 +25,7 @@ import java.util.List;
 
 public class RecordingActivity extends AppCompatActivity implements FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
 
+    private Intent intent;
     private FirstServerDialog dialogFragment;
     private LeaveRecordingDialog leaveRecordingDialog;
 
@@ -159,10 +160,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 leaveRecordingDialog.show(getSupportFragmentManager(), "leaving dialog");
                 break;
             case R.id.givePointToFPItem:
-                scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+                scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
                 break;
             case R.id.givePointToSPItem:
-                scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 break;
             case R.id.finishButton:
                 gameNotOverDialog = new GameNotOverDialog();
@@ -238,7 +239,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
 
         switch (view.getId()) {
             case R.id.buttonWinnerFP:
-                scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+                scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
                 firstPlayerStats.setWinners(firstPlayerStats.getWinners() + 1);
                 if (firstServeFP) {
                     if (firstPlayerStats.getPointsWonOnFirstServe() != 30) {
@@ -249,7 +250,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 }
                 break;
             case R.id.buttonWinnerSP:
-                scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 secondPlayerStats.setWinners(secondPlayerStats.getWinners() + 1);
                 if (firstServeSP) {
                     if (secondPlayerStats.getPointsWonOnFirstServe() != 30) {
@@ -260,19 +261,19 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 }
                 break;
             case R.id.buttonUnforcedErrorFP:
-                scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 firstPlayerStats.setUnforcedErrors(firstPlayerStats.getUnforcedErrors() + 1);
                 break;
             case R.id.buttonUnforcedErrorSP:
-                scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+                scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
                 secondPlayerStats.setUnforcedErrors(secondPlayerStats.getUnforcedErrors() + 1);
                 break;
             case R.id.buttonForcedErrorFP:
-                scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+                scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 firstPlayerStats.setForcedErrors(firstPlayerStats.getForcedErrors() + 1);
                 break;
             case R.id.buttonForcedErrorSP:
-                scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+                scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
                 secondPlayerStats.setForcedErrors(secondPlayerStats.getForcedErrors() + 1);
                 break;
         }
@@ -283,11 +284,11 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         TextView firstPlayerSet = sets.get(0);
         TextView secondPlayerSet = sets.get(1);
         if (server.getText().equals(playerOne.getName())) {
-            scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+            scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
             firstPlayerStats.setAces(firstPlayerStats.getAces() + 1);
 
         } else {
-            scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+            scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
             secondPlayerStats.setAces(secondPlayerStats.getAces() + 1);
         }
     }
@@ -297,10 +298,10 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         TextView firstPlayerSet = sets.get(0);
         TextView secondPlayerSet = sets.get(1);
         if (server.getText().equals(playerOne.getName())) {
-            scoringPlayer(secondPlayerScore, secondPlayerSet, firstPlayerSet);
+            scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
             firstPlayerStats.setDoubleFaults(firstPlayerStats.getDoubleFaults() + 1);
         } else {
-            scoringPlayer(firstPlayerScore, firstPlayerSet, secondPlayerSet);
+            scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
             secondPlayerStats.setDoubleFaults(secondPlayerStats.getDoubleFaults() + 1);
 
         }
@@ -314,16 +315,18 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         }
     }
 
-    private void winGame(TextView playerSet) {
+    private void winGame(Player player, TextView playerSet) {
         playerSet.setText(String.valueOf(Integer.parseInt(playerSet.getText().toString()) + 1));
         firstPlayerScore.setText("0");
         secondPlayerScore.setText("0");
         changeServer();
-        isSetWon();
+        setDone(player);
     }
 
-    private void isSetWon() {
+    private void setDone(Player player) {
         if (setIsDone()) {
+            player.winSet();
+            matchIsDone();
             changeSet();
         }
     }
@@ -376,10 +379,13 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     }
 
     public void matchIsDone() {
-
+        if (playerOne.getSet() == 2 || playerTwo.getSet() == 2) {
+            server.setText(playerOne.getName() + " won");
+        }
     }
 
-    private void scoringWithoutAdvantage(TextView playerScore, TextView playerSet) {
+    private void scoringWithoutAdvantage(Player player, TextView playerScore, TextView playerSet) {
+
         switch (playerScore.getText().toString()) {
             case "0":
                 playerScore.setText("15");
@@ -391,12 +397,12 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 playerScore.setText("40");
                 break;
             case "40":
-                winGame(playerSet);
+                winGame(player, playerSet);
                 break;
         }
     }
 
-    private void scoringWithAdvantage(TextView playerScore, TextView playerSet) {
+    private void scoringWithAdvantage(Player player, TextView playerScore, TextView playerSet) {
         switch (playerScore.getText().toString()) {
             case "0":
                 playerScore.setText("15");
@@ -417,15 +423,15 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                         secondPlayerScore.setText("40");
                     }
                 } else {
-                    winGame(playerSet);
+                    winGame(player, playerSet);
                 }
                 break;
             case "A":
-                winGame(playerSet);
+                winGame(player, playerSet);
         }
     }
 
-    private void scoringTieBreak(TextView playerScore, TextView playerSet, boolean firstPoint, int TB) {
+    private void scoringTieBreak(Player player, TextView playerScore, TextView playerSet, boolean firstPoint, int TB) {
         int score = Integer.parseInt(playerScore.getText().toString()) + 1;
         playerScore.setText(String.valueOf(score));
         if (firstPoint) {
@@ -456,39 +462,39 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 || (scorePlayerOne + scorePlayerTwo >= (TB - 1) * 2 && Math.abs(scorePlayerOne - scorePlayerTwo) == 2));
     }
 
-    private void lastSetTieBreak(TextView playerScore, TextView playerSet, int TB) {
+    private void lastSetTieBreak(Player player, TextView playerScore, TextView playerSet, int TB) {
         if (tieBreak) {
-            scoringTieBreak(playerScore, playerSet, false, TB);
+            scoringTieBreak(player, playerScore, playerSet, false, TB);
         } else {
             tieBreak = true;
-            scoringTieBreak(playerScore, playerSet, true, TB);
+            scoringTieBreak(player, playerScore, playerSet, true, TB);
         }
     }
 
-    private void scoringPlayer(TextView playerScore, TextView playerSet, TextView challengerSet) {
+    private void scoringPlayer(Player player, TextView playerScore, TextView playerSet, TextView challengerSet) {
         if (currentSet == 3 && lastSetFormat != 0) {
             switch (lastSetFormat) {
                 case 1:
-                    lastSetTieBreak(playerScore, playerSet, 7);
+                    lastSetTieBreak(player, playerScore, playerSet, 7);
                     break;
                 case 2:
-                    lastSetTieBreak(playerScore, playerSet, 10);
+                    lastSetTieBreak(player, playerScore, playerSet, 10);
                     break;
             }
         } else {
             if (tieBreak) {
-                scoringTieBreak(playerScore, playerSet, false, 7);
+                scoringTieBreak(player, playerScore, playerSet, false, 7);
             } else {
                 int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
                 int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
                 if (gamesChallenger == pointsTieBreak && gamesPlayer == pointsTieBreak) {
                     tieBreak = true;
-                    scoringTieBreak(playerScore, playerSet, true, 7);
+                    scoringTieBreak(player, playerScore, playerSet, true, 7);
                 } else {
                     if (advantage) {
-                        scoringWithAdvantage(playerScore, playerSet);
+                        scoringWithAdvantage(player, playerScore, playerSet);
                     } else {
-                        scoringWithoutAdvantage(playerScore, playerSet);
+                        scoringWithoutAdvantage(player, playerScore, playerSet);
                     }
                 }
             }
@@ -508,13 +514,19 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 leaveRecordingDialog.show(getSupportFragmentManager(), "leaving dialog");
                 break;
             case R.id.buttonFinishWithoutWinner:
-                //todo
+                intent = new Intent(this, StatisticsActivity.class);
+                intent.putExtra("winner", "no one");
+                this.startActivity(intent);
                 break;
             case R.id.buttonFPWinner:
-                //todo @larry
+                intent = new Intent(this, StatisticsActivity.class);
+                intent.putExtra("winner", playerOne.getName());
+                this.startActivity(intent);
                 break;
             case R.id.buttonSPWinner:
-                //todo @larry
+                intent = new Intent(this, StatisticsActivity.class);
+                intent.putExtra("winner", playerTwo.getName());
+                this.startActivity(intent);
                 break;
         }
     }
