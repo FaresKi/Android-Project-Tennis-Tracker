@@ -40,12 +40,14 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
     private Statistics firstPlayerStats;
     private Statistics secondPlayerStats;
 
-    private boolean advantage;
+    private boolean advantage = true;
     private boolean firstServeFP = false;
     private boolean firstServeSP = false;
     private boolean tieBreak = false;
 
-    private int nbGames = 6;
+    private int nbGames;
+    private int pointsTieBreak;
+    private int lastSetFormat;
     private int serverTB = 0;
     private int currentSet = 1;
 
@@ -57,36 +59,45 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
 
-        int matchFormatPos = getIntent().getIntExtra("matchFormatPos", 0);
-        int lastSetFormatPos = getIntent().getIntExtra("lastFormatPos", 0);
+        int matchFormat = getIntent().getIntExtra("matchFormatPos", 0);
 
-        switch (matchFormatPos) {
+        switch (matchFormat) {
             case 0:
                 advantage = true;
                 nbGames = 6;
+                pointsTieBreak = 6;
                 break;
             case 1:
                 advantage = true;
                 nbGames = 5;
+                pointsTieBreak = 5;
                 break;
             case 2:
                 advantage = true;
                 nbGames = 4;
+                pointsTieBreak = 4;
                 break;
+
             case 3:
                 advantage = false;
                 nbGames = 5;
+                pointsTieBreak = 4;
+
                 break;
             case 4:
                 advantage = false;
                 nbGames = 4;
+                pointsTieBreak = 3;
+
                 break;
             case 5:
                 advantage = false;
                 nbGames = 3;
+                pointsTieBreak = 2;
                 break;
 
         }
+        lastSetFormat = getIntent().getIntExtra("lastSetFormatPos", 0);
 
 
         // Initialize first player
@@ -354,9 +365,14 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         int gamesPlayerOne = Integer.parseInt((String) firstPlayerSet.getText());
         int gamesPlayerTwo = Integer.parseInt((String) secondPlayerSet.getText());
 
-        return ((gamesPlayerOne == nbGames && gamesPlayerTwo < nbGames - 1) || (gamesPlayerOne < nbGames - 1 && gamesPlayerTwo == nbGames) ||
-                (gamesPlayerOne == nbGames - 1 && gamesPlayerTwo == nbGames + 1) || (gamesPlayerOne == nbGames + 1 && gamesPlayerTwo == nbGames - 1) ||
-                (gamesPlayerOne == nbGames && gamesPlayerTwo == nbGames + 1) || (gamesPlayerOne == nbGames + 1 && gamesPlayerTwo == nbGames));
+        if (advantage) {
+            return ((gamesPlayerOne == nbGames && gamesPlayerTwo < nbGames - 1) || (gamesPlayerOne < nbGames - 1 && gamesPlayerTwo == nbGames) ||
+                    (gamesPlayerOne == nbGames - 1 && gamesPlayerTwo == nbGames + 1) || (gamesPlayerOne == nbGames + 1 && gamesPlayerTwo == nbGames - 1) ||
+                    (gamesPlayerOne == nbGames && gamesPlayerTwo == nbGames + 1) || (gamesPlayerOne == nbGames + 1 && gamesPlayerTwo == nbGames));
+        } else {
+            return ((gamesPlayerOne == nbGames || gamesPlayerTwo == nbGames));
+        }
+
     }
 
     public void matchIsDone() {
@@ -409,7 +425,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         }
     }
 
-    private void scoringTieBreak(TextView playerScore, TextView playerSet, boolean firstPoint) {
+    private void scoringTieBreak(TextView playerScore, TextView playerSet, boolean firstPoint, int TB) {
         int score = Integer.parseInt(playerScore.getText().toString()) + 1;
         playerScore.setText(String.valueOf(score));
         if (firstPoint) {
@@ -421,7 +437,7 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
                 serverTB = 0;
             }
         }
-        if (winTieBreak()) {
+        if (winTieBreak(TB)) {
             playerSet.setText(String.valueOf(Integer.parseInt(playerSet.getText().toString()) + 1));
             firstPlayerScore.setText("0");
             secondPlayerScore.setText("0");
@@ -432,34 +448,52 @@ public class RecordingActivity extends AppCompatActivity implements FirstServerD
         }
     }
 
-    private boolean winTieBreak() {
+    private boolean winTieBreak(int TB) {
         int scorePlayerOne = Integer.parseInt(firstPlayerScore.getText().toString());
         int scorePlayerTwo = Integer.parseInt(secondPlayerScore.getText().toString());
 
-        return ((scorePlayerOne == 7 && scorePlayerTwo < 6) || (scorePlayerTwo == 7 && scorePlayerOne < 6)
-                || (scorePlayerOne + scorePlayerTwo >= 12 && Math.abs(scorePlayerOne - scorePlayerTwo) == 2));
+        return ((scorePlayerOne == TB && scorePlayerTwo < TB - 1) || (scorePlayerTwo == TB && scorePlayerOne < TB - 1)
+                || (scorePlayerOne + scorePlayerTwo >= (TB - 1) * 2 && Math.abs(scorePlayerOne - scorePlayerTwo) == 2));
+    }
+
+    private void lastSetTieBreak(TextView playerScore, TextView playerSet, int TB) {
+        if (tieBreak) {
+            scoringTieBreak(playerScore, playerSet, false, TB);
+        } else {
+            tieBreak = true;
+            scoringTieBreak(playerScore, playerSet, true, TB);
+        }
     }
 
     private void scoringPlayer(TextView playerScore, TextView playerSet, TextView challengerSet) {
-        if (tieBreak) {
-            scoringTieBreak(playerScore, playerSet, false);
+        if (currentSet == 3 && lastSetFormat != 0) {
+            switch (lastSetFormat) {
+                case 1:
+                    lastSetTieBreak(playerScore, playerSet, 7);
+                    break;
+                case 2:
+                    lastSetTieBreak(playerScore, playerSet, 10);
+                    break;
+            }
         } else {
-            int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
-            int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
-            if (gamesChallenger == nbGames && gamesPlayer == nbGames) {
-                tieBreak = true;
-                scoringTieBreak(playerScore, playerSet, true);
+            if (tieBreak) {
+                scoringTieBreak(playerScore, playerSet, false, 7);
             } else {
-                if (advantage) {
-                    scoringWithAdvantage(playerScore, playerSet);
+                int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
+                int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
+                if (gamesChallenger == pointsTieBreak && gamesPlayer == pointsTieBreak) {
+                    tieBreak = true;
+                    scoringTieBreak(playerScore, playerSet, true, 7);
                 } else {
-                    scoringWithoutAdvantage(playerScore, playerSet);
+                    if (advantage) {
+                        scoringWithAdvantage(playerScore, playerSet);
+                    } else {
+                        scoringWithoutAdvantage(playerScore, playerSet);
+                    }
                 }
             }
         }
-
     }
-
 
     @Override
     public void closeDialog() {

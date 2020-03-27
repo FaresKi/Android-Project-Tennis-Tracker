@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
+
+import fr.android.tennistracker.DAO.MyDBHandler;
+import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.R;
 
 public class NewMatchActivity extends AppCompatActivity {
