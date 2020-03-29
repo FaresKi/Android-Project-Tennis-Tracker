@@ -2,11 +2,30 @@ package fr.android.tennistracker.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.google.gson.annotations.Expose;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Player implements Parcelable {
-    public String name;
-    private int sets;
-    private Statistics playerStats = new Statistics();
+
+    public static final Creator<Player> CREATOR = new Creator<Player>() {
+        @Override
+        public Player createFromParcel(Parcel in) {
+            return new Player(in);
+        }
+
+        @Override
+        public Player[] newArray(int size) {
+            return new Player[size];
+        }
+    };
+    private static final AtomicInteger count = new AtomicInteger(0);
+    private int playerId;
+    private  String name;
+    
+    private transient int sets;
+    private transient Statistics playerStats = new Statistics();
+
 
     /**
      * Constructor for a Player.
@@ -18,6 +37,15 @@ public class Player implements Parcelable {
     public Player(String name) {
         sets = 0;
         this.name = name;
+        this.playerId = count.incrementAndGet();
+        playerStats.setPlayerId(playerId);
+    }
+
+    protected Player(Parcel in) {
+        playerId = in.readInt();
+        name = in.readString();
+        sets = in.readInt();
+        playerStats = in.readParcelable(Statistics.class.getClassLoader());
     }
 
     /**
@@ -53,6 +81,11 @@ public class Player implements Parcelable {
         this.playerStats = new Statistics();
     }
 
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -60,6 +93,17 @@ public class Player implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(playerId);
+        dest.writeString(name);
+        dest.writeInt(sets);
+        dest.writeParcelable(playerStats, flags);
+    }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerId=" + playerId +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

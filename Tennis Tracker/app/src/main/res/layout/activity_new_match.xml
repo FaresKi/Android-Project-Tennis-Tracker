@@ -1,122 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="9"
-    tools:context=".Activities.NewMatchActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="9"
+              tools:context=".Activities.NewMatchActivity" android:background="#79DFEC">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="87dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:weightSum="2">
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/nom_joueur_1"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/firstPlayerName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_horizontal|fill_vertical"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:text="@string/firstPlayerName" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/nom_joueur_1"
+                    android:textStyle="bold"/>
+
+            <EditText
+                    android:id="@+id/firstPlayerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_horizontal|fill_vertical"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:text="@string/firstPlayerName"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/nom_joueur_2"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/secondPlayerName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_horizontal|fill_vertical"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:text="@string/secondPlayerName" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/nom_joueur_2"
+                    android:textStyle="bold"/>
+
+            <EditText
+                    android:id="@+id/secondPlayerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_horizontal|fill_vertical"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:text="@string/secondPlayerName"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foregroundGravity="center_vertical|center|center_horizontal"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/format_du_match"
-            android:textStyle="bold" />
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:foregroundGravity="center_vertical|center|center_horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/format_du_match"
+                android:textStyle="bold"/>
 
         <Spinner
-            android:id="@+id/matchFormat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:entries="@array/matchFormat"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:textAlignment="center" />
+                android:id="@+id/matchFormat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:entries="@array/matchFormat"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:textAlignment="center"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:foregroundGravity="center"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/format_du_dernier_set"
-            android:textStyle="bold" />
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:foregroundGravity="center"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/format_du_dernier_set"
+                android:textStyle="bold"/>
 
         <Spinner
-            android:id="@+id/lastSetFormat"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:entries="@array/lastSetFormat"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:textAlignment="center" />
+                android:id="@+id/lastSetFormat"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:entries="@array/lastSetFormat"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:textAlignment="center"/>
     </LinearLayout>
 </LinearLayout>
 

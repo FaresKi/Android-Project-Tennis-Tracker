@@ -1,5 +1,7 @@
 package fr.android.tennistracker.Activities;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,13 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import fr.android.tennistracker.Fragments.DoneMatchDialog;
 import fr.android.tennistracker.Fragments.FirstServerDialog;
 import fr.android.tennistracker.Fragments.GameNotOverDialog;
 import fr.android.tennistracker.Fragments.LeaveRecordingDialog;
+import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.Model.Set;
 import fr.android.tennistracker.Model.Statistics;
@@ -24,18 +25,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RecordingActivity extends AppCompatActivity implements  DoneMatchDialog.DoneMatchDialogListener, FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
+public class RecordingActivity extends AppCompatActivity implements DoneMatchDialog.DoneMatchDialogListener, FirstServerDialog.FirstServerDialogListener, LeaveRecordingDialog.LeaveRecordingDialogListener, GameNotOverDialog.GameNotOverDialogListener {
 
     private Intent intent;
     private FirstServerDialog dialogFragment;
     private LeaveRecordingDialog leaveRecordingDialog;
     private DoneMatchDialog doneMatchDialog;
 
-    private TextView firstPlayerSet_1, firstPlayerSet_2, firstPlayerSet_3, firstPlayerScore;
+    private TextView firstPlayerSet_1, firstPlayerSet_2, firstPlayerSet_3, firstPlayerScore, tabFirstName, tabSecondName;
     private TextView secondPlayerSet_1, secondPlayerSet_2, secondPlayerSet_3, secondPlayerScore;
     private TextView server;
 
     private Set setOne, setTwo, setThree;
+    
+    private Match match;
 
     private Player playerOne;
     private Player playerTwo;
@@ -55,6 +58,8 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
     private int lastSetFormat;
     private int serverTB = 0;
     private int currentSet = 1;
+
+    private boolean matchFinished = false;
 
 
     private GameNotOverDialog gameNotOverDialog;
@@ -107,16 +112,17 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
 
         // Initialize first player
         String playerOneName = getIntent().getStringExtra("firstPlayerName");
-        TextView tabFirstName = findViewById(R.id.tabFirstName);
+        tabFirstName = findViewById(R.id.tabFirstName);
         playerOne = initializePlayer(playerOneName, tabFirstName);
         firstPlayerStats = playerOne.getPlayerStats();
 
         // Initialize second player
         String playerTwoName = getIntent().getStringExtra("secondPlayerName");
-        TextView tabSecondName = findViewById(R.id.tabSecondName);
+        tabSecondName = findViewById(R.id.tabSecondName);
         playerTwo = initializePlayer(playerTwoName, tabSecondName);
         secondPlayerStats = playerTwo.getPlayerStats();
-
+        
+        match = new Match(playerOne,playerTwo);
         initializeElements();
 
     }
@@ -140,7 +146,7 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
         firstPlayerSet_1.setText("0");
         secondPlayerSet_1.setText("0");
     }
-
+    
     public Player initializePlayer(String name, TextView tabName) {
         Player player = new Player(name);
         tabName.setText(name);
@@ -178,13 +184,19 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
     }
 
     @Override
-    public void redirectToStats(){
+    public void redirectToStats() {
         intent = new Intent(this, StatisticsActivity.class);
+        intent.putExtra("playerOne", playerOne);
+        intent.putExtra("playerTwo", playerTwo);
+        intent.putExtra("setOne", setOne);
+        intent.putExtra("setTwo", setTwo);
+        intent.putExtra("setThree", setThree);
+        intent.putExtra("match",match);
         this.startActivity(intent);
     }
 
     @Override
-    public Player getWinner(){
+    public Player getWinner() {
         return winner;
     }
 
@@ -350,6 +362,10 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
         if (currentSet == 1) {
             setOne = new Set(1);
             setOne.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+            setOne.setScoreFP((String) firstPlayerScore.getText());
+            setOne.setScoreSP((String) secondPlayerScore.getText());
+            setOne.setSetScoreFirstPlayer((String) firstPlayerSet_1.getText());
+            setOne.setSetScoreSecondPlayer((String) secondPlayerSet_1.getText());
             playerOne.reinitialiseStats();
             playerTwo.reinitialiseStats();
         }
@@ -364,11 +380,19 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
                 firstPlayerSet_3.setText("0");
                 secondPlayerSet_3.setText("0");
                 setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                setTwo.setSetScoreFirstPlayer((String) firstPlayerSet_2.getText());
+                setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
+                setTwo.setScoreFP((String) tabFirstName.getText());
+                setTwo.setScoreSP((String) tabSecondName.getText());
                 playerOne.reinitialiseStats();
                 playerTwo.reinitialiseStats();
                 break;
             default:
                 setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                setThree.setSetScoreFirstPlayer((String) firstPlayerSet_3.getText());
+                setThree.setSetScoreSecondPlayer((String) secondPlayerSet_3.getText());
+                setThree.setScoreFP((String) tabFirstName.getText());
+                setThree.setScoreSP((String) tabSecondName.getText());
                 playerOne.reinitialiseStats();
                 playerTwo.reinitialiseStats();
                 break;
@@ -395,13 +419,15 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
 
     public void matchIsDone() {
         if (playerOne.getSet() == 2 || playerTwo.getSet() == 2) {
-            if (playerOne.getSet() == 2){
+            if (playerOne.getSet() == 2) {
                 winner = playerOne;
             } else {
                 winner = playerTwo;
             }
+            matchFinished = true;
             doneMatchDialog = new DoneMatchDialog();
             doneMatchDialog.show(getSupportFragmentManager(), "doneMatch");
+            
         }
     }
 
@@ -493,29 +519,31 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
     }
 
     private void scoringPlayer(Player player, TextView playerScore, TextView playerSet, TextView challengerSet) {
-        if (currentSet == 3 && lastSetFormat != 0) {
-            switch (lastSetFormat) {
-                case 1:
-                    lastSetTieBreak(player, playerScore, playerSet, 7);
-                    break;
-                case 2:
-                    lastSetTieBreak(player, playerScore, playerSet, 10);
-                    break;
-            }
-        } else {
-            if (tieBreak) {
-                scoringTieBreak(player, playerScore, playerSet, false, 7);
+        if (!matchFinished) {
+            if (currentSet == 3 && lastSetFormat != 0) {
+                switch (lastSetFormat) {
+                    case 1:
+                        lastSetTieBreak(player, playerScore, playerSet, 7);
+                        break;
+                    case 2:
+                        lastSetTieBreak(player, playerScore, playerSet, 10);
+                        break;
+                }
             } else {
-                int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
-                int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
-                if (gamesChallenger == pointsTieBreak && gamesPlayer == pointsTieBreak) {
-                    tieBreak = true;
-                    scoringTieBreak(player, playerScore, playerSet, true, 7);
+                if (tieBreak) {
+                    scoringTieBreak(player, playerScore, playerSet, false, 7);
                 } else {
-                    if (advantage) {
-                        scoringWithAdvantage(player, playerScore, playerSet);
+                    int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
+                    int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
+                    if (gamesChallenger == pointsTieBreak && gamesPlayer == pointsTieBreak) {
+                        tieBreak = true;
+                        scoringTieBreak(player, playerScore, playerSet, true, 7);
                     } else {
-                        scoringWithoutAdvantage(player, playerScore, playerSet);
+                        if (advantage) {
+                            scoringWithAdvantage(player, playerScore, playerSet);
+                        } else {
+                            scoringWithoutAdvantage(player, playerScore, playerSet);
+                        }
                     }
                 }
             }
@@ -536,25 +564,37 @@ public class RecordingActivity extends AppCompatActivity implements  DoneMatchDi
                 break;
             case R.id.buttonFinishWithoutWinner:
                 intent = new Intent(this, StatisticsActivity.class);
+                intent.putExtra("playerOne", playerOne);
+                intent.putExtra("playerTwo", playerTwo);
+                intent.putExtra("setOne", setOne);
+                intent.putExtra("setTwo", setTwo);
+                intent.putExtra("setThree", setThree);
                 this.startActivity(intent);
                 break;
             case R.id.buttonFPWinner:
                 intent = new Intent(this, StatisticsActivity.class);
                 intent.putExtra("winner", playerOne);
+                intent.putExtra("playerOne", playerOne);
+                intent.putExtra("playerTwo", playerTwo);
+                intent.putExtra("setOne", setOne);
+                intent.putExtra("setTwo", setTwo);
+                intent.putExtra("setThree", setThree);
                 this.startActivity(intent);
                 break;
             case R.id.buttonSPWinner:
                 intent = new Intent(this, StatisticsActivity.class);
                 intent.putExtra("winner", playerTwo);
+                intent.putExtra("playerOne", playerOne);
+                intent.putExtra("playerTwo", playerTwo);
+                intent.putExtra("setOne", setOne);
+                intent.putExtra("setTwo", setTwo);
+                intent.putExtra("setThree", setThree);
                 this.startActivity(intent);
                 break;
         }
     }
 
     public void onServiceClick(View view) {
-        List<TextView> sets = selectSet();
-        TextView firstPlayerSet = sets.get(0);
-        TextView secondPlayerSet = sets.get(1);
 
         switch (view.getId()) {
             case R.id.buttonFirstServe:

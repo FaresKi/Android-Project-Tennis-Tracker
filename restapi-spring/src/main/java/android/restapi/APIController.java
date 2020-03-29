@@ -10,14 +10,14 @@ import java.util.List;
 @RestController
 public class APIController {
     @Autowired
-    UserDAO userDAO;
+    PlayerDAO playerDAO;
 
     @Autowired
     MatchDAO matchDAO;
 
     @GetMapping(value = "/Users")
-    public List<UsersEntity> usersEntityList() {
-        return userDAO.findAll();
+    public List<PlayersEntity> usersEntityList() {
+        return playerDAO.findAll();
     }
 
     @GetMapping(value = "/Matches")

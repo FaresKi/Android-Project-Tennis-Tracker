@@ -49,4 +49,14 @@
     <string name="first_server">First server</string>
     <string name="game_not_over_message">The game is not completed yet. What do you want to do?</string>
     <string name="won_game">won the game</string>
+    <string name="general_statistics">General Statistics</string>
+    <string name="won_rallies">Won rallies</string>
+    <string name="service_statistics">Service Statistics</string>
+    <string name="aces">ACES</string>
+    <string name="double_faults">DOUBLE FAULTS</string>
+    <string name="points_won_on_own_1st_serve">POINTS WON ON OWN 1ST SERVE</string>
+    <string name="rally_statistics">RALLY STATISTICS</string>
+    <string name="winners">WINNERS</string>
+    <string name="unforced_errors">UNFORCED ERRORS</string>
+    <string name="forced_errors">FORCED ERRORS</string>
 </resources>

@@ -2,7 +2,9 @@ package fr.android.tennistracker.DAO;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import fr.android.tennistracker.Model.Match;
+import fr.android.tennistracker.Model.Statistics;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,13 +19,14 @@ import java.util.Scanner;
 public class DataAPIAccess {
     private URL endpointAPI;
     private String jsonResponse = "";
-
+    private Gson g = new Gson();
+    private HttpURLConnection myConnection;
     public DataAPIAccess() {
     }
 
     public String getAllMatches() throws IOException {
         endpointAPI = new URL("http://10.0.2.2:8080/Matches"); //create URL
-        HttpURLConnection myConnection = (HttpURLConnection) endpointAPI.openConnection();
+        myConnection = (HttpURLConnection) endpointAPI.openConnection();
         myConnection.setRequestMethod("GET");
         myConnection.setRequestProperty("Content-type", "application/json");
         Scanner sc = new Scanner(endpointAPI.openStream());
@@ -35,7 +38,7 @@ public class DataAPIAccess {
     }
 
     public void matchList() throws JSONException {
-        Gson g = new Gson();
+        
         List<Match> matchList = new ArrayList<>();
         JSONArray array = new JSONArray(jsonResponse);
         for (int i = 0; i < array.length(); i++) {
@@ -45,8 +48,19 @@ public class DataAPIAccess {
         }
     }
     
-    public void getStatisticsByMatch(){
+    public void sendNewMatch(Match match) throws IOException {
+        /*
+        myConnection = (HttpURLConnection) endpointAPI.openConnection();
+        myConnection.setRequestMethod("POST");
+        myConnection.setRequestProperty("Content-type", "application/json");
+         */
         
+        String jsonInString = g.toJson(match);
+
+        System.out.println("JSON String : " + jsonInString);
+        
+        
+
     }
 
 

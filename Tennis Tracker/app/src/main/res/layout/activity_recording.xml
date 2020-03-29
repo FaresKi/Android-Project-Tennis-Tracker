@@ -1,421 +1,424 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:theme="@style/AppTheme"
-    android:weightSum="3"
-    tools:context=".Activities.RecordingActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/scoreLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableBottom="@android:drawable/divider_horizontal_dark"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="5dp"
-            android:text="@string/score"
-            android:textStyle="bold" />
-
-        <TableLayout
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="2">
+            android:layout_height="match_parent" android:background="#79DFEC">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:theme="@style/AppTheme"
+            android:weightSum="3"
+            tools:context=".Activities.RecordingActivity">
 
-            <TableRow
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="183dp"
                 android:layout_weight="1"
-                android:background="#003F3E3E">
+                android:orientation="vertical">
 
-                <TextView
-
-                    android:id="@+id/tabFirstName"
+            <TextView
+                    android:id="@+id/scoreLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:layout_span="1"
-                    android:background="#003F3E3E"
+                    android:drawableBottom="@android:drawable/divider_horizontal_dark"
                     android:fontFamily="@font/montserrat"
-                    android:text="@string/firstPlayerName" />
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="5dp"
+                    android:text="@string/score"
+                    android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/tabFirstPlayerScore"
+            <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="2">
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#003F3E3E">
+
+                    <TextView
+
+                            android:id="@+id/tabFirstName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:background="#003F3E3E"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/firstPlayerName"/>
+
+                    <TextView
+                            android:id="@+id/tabFirstPlayerScore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:text="@string/firstPlayerScore"/>
+
+                    <TextView
+                            android:id="@+id/firstPlayerSet_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="2"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:text="-"/>
+
+                    <TextView
+                            android:id="@+id/firstPlayerSet_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="3"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:text="-"/>
+
+                    <TextView
+                            android:id="@+id/firstPlayerSet_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="4"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:text="-"/>
+
+                </TableRow>
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    <TextView
+                            android:id="@+id/tabSecondName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/secondPlayerName"/>
+
+                    <TextView
+                            android:id="@+id/tabSecondPlayerScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:text="@string/secondplayerscore"/>
+
+                    <TextView
+                            android:id="@+id/secondPlayerSet_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:text="-"/>
+
+                    <TextView
+                            android:id="@+id/secondPlayerSet_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:text="-"/>
+
+                    <TextView
+                            android:id="@+id/secondPlayerSet_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="4"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:text="-"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="217dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:layout_span="1"
-                    android:text="@string/firstPlayerScore" />
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/firstPlayerSet_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:layout_span="1"
-                    android:text="-" />
+                        android:id="@+id/serverLabel"
+                        android:layout_width="86dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/montserrat"
+                        android:foregroundGravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="@string/serverLabel"
+                        android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/firstPlayerSet_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:text="-" />
-
-                <TextView
-                    android:id="@+id/firstPlayerSet_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="4"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:text="-" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tabSecondName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:layout_span="1"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/secondPlayerName" />
-
-                <TextView
-                    android:id="@+id/tabSecondPlayerScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:layout_span="1"
-                    android:text="@string/secondplayerscore" />
-
-                <TextView
-                    android:id="@+id/secondPlayerSet_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:text="-" />
-
-                <TextView
-                    android:id="@+id/secondPlayerSet_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:text="-" />
-
-                <TextView
-                    android:id="@+id/secondPlayerSet_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="4"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="10dip"
-                    android:text="-" />
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <TextView
-                android:id="@+id/serverLabel"
-                android:layout_width="86dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:fontFamily="@font/montserrat"
-                android:foregroundGravity="center_vertical"
-                android:gravity="center_vertical"
-                android:text="@string/serverLabel"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/serverName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:fontFamily="@font/montserrat" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="139dp"
-            android:baselineAligned="false"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/buttonFirstServe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="83dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:foregroundGravity="center"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onServiceClick"
-                    android:text="@string/first_nserve"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/buttonAce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:foregroundGravity="center"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:hapticFeedbackEnabled="false"
-                    android:onClick="onAceClick"
-                    android:text="@string/ace"
-                    android:textAllCaps="false" />
+                        android:id="@+id/serverName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/montserrat"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="139dp"
+                    android:baselineAligned="false"
+                    android:weightSum="3">
 
-                <Button
-                    android:id="@+id/buttonSecondServe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="83dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:foregroundGravity="center"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:text="@string/second_nserve"
-                    android:textAllCaps="false" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/buttonSecondAce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:foregroundGravity="center"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onAceClick"
-                    android:text="@string/ace"
-                    android:textAllCaps="false" />
-            </LinearLayout>
+                    <Button
+                            android:id="@+id/buttonFirstServe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="83dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:foregroundGravity="center"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onServiceClick"
+                            android:text="@string/first_nserve"
+                            android:textAllCaps="false"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:backgroundTint="#FFFFFF"
-                android:orientation="vertical">
+                    <Button
+                            android:id="@+id/buttonAce"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:foregroundGravity="center"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:hapticFeedbackEnabled="false"
+                            android:onClick="onAceClick"
+                            android:text="@string/ace"
+                            android:textAllCaps="false"/>
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonDoubleFault"
-                    android:layout_width="wrap_content"
-                    android:layout_height="111dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:foregroundGravity="center"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onDoubleFaultClick"
-                    android:text="@string/double_nfault"
-                    android:textAllCaps="false" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <Button
+                            android:id="@+id/buttonSecondServe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="83dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:foregroundGravity="center"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:text="@string/second_nserve"
+                            android:textAllCaps="false"/>
+
+                    <Button
+                            android:id="@+id/buttonSecondAce"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:foregroundGravity="center"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onAceClick"
+                            android:text="@string/ace"
+                            android:textAllCaps="false"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#FFFFFF"
+                        android:orientation="vertical">
+
+                    <Button
+                            android:id="@+id/buttonDoubleFault"
+                            android:layout_width="wrap_content"
+                            android:layout_height="111dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:foregroundGravity="center"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onDoubleFaultClick"
+                            android:text="@string/double_nfault"
+                            android:textAllCaps="false"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/rallyLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center_vertical"
-                android:text="@string/rally"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="85dp"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#3C3B3B"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center"
-                    android:text="@string/_1"
-                    android:textStyle="bold" />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="85dp"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center"
-                    android:text="@string/_2"
-                    android:textStyle="bold" />
+                        android:id="@+id/rallyLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center_vertical"
+                        android:text="@string/rally"
+                        android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/buttonWinnerFP"
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onRallyClick"
-                    android:text="@string/winnerButton"
-                    android:textAllCaps="false" />
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/buttonWinnerSP"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onRallyClick"
-                    android:text="@string/winnerButton"
-                    android:textAllCaps="false" />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                    <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="85dp"
+                            android:layout_height="52dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#3C3B3B"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center"
+                            android:text="@string/_1"
+                            android:textStyle="bold"/>
 
-                <Button
-                    android:id="@+id/buttonUnforcedErrorFP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onRallyClick"
-                    android:text="@string/unforced_nerror"
-                    android:textAllCaps="false" />
+                    <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="85dp"
+                            android:layout_height="52dp"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center"
+                            android:text="@string/_2"
+                            android:textStyle="bold"/>
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonUnforcedErrorSP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onRallyClick"
-                    android:text="@string/unforced_nerror"
-                    android:textAllCaps="false" />
-            </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                    <Button
+                            android:id="@+id/buttonWinnerFP"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onRallyClick"
+                            android:text="@string/winnerButton"
+                            android:textAllCaps="false"/>
 
-                <Button
-                    android:id="@+id/buttonForcedErrorFP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onRallyClick"
-                    android:text="@string/forced_error"
-                    android:textAllCaps="false" />
+                    <Button
+                            android:id="@+id/buttonWinnerSP"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onRallyClick"
+                            android:text="@string/winnerButton"
+                            android:textAllCaps="false"/>
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonForcedErrorSP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:onClick="onRallyClick"
-                    android:text="@string/forced_error"
-                    android:textAllCaps="false" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <Button
+                            android:id="@+id/buttonUnforcedErrorFP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onRallyClick"
+                            android:text="@string/unforced_nerror"
+                            android:textAllCaps="false"/>
+
+                    <Button
+                            android:id="@+id/buttonUnforcedErrorSP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onRallyClick"
+                            android:text="@string/unforced_nerror"
+                            android:textAllCaps="false"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <Button
+                            android:id="@+id/buttonForcedErrorFP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onRallyClick"
+                            android:text="@string/forced_error"
+                            android:textAllCaps="false"/>
+
+                    <Button
+                            android:id="@+id/buttonForcedErrorSP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="#FFFFFF"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="center|center_horizontal|center_vertical"
+                            android:onClick="onRallyClick"
+                            android:text="@string/forced_error"
+                            android:textAllCaps="false"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

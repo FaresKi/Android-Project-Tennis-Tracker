@@ -50,4 +50,14 @@
     <string name="first_server">Premier service</string>
     <string name="game_not_over_message">Le match n\'est pas encore terminé. Que voulez-vous faire?</string>
     <string name="won_game">a remporté le match</string>
+    <string name="general_statistics">Statistiques générales</string>
+    <string name="points_won_on_own_1st_serve">Points gagnés sur 1ère balle</string>
+    <string name="rally_statistics">Statistiques de points</string>
+    <string name="service_statistics">Statistiques de Service</string>
+    <string name="unforced_errors">Fautes provoquées</string>
+    <string name="winners">Points gagnants</string>
+    <string name="won_rallies">Points gagnés</string>
+    <string name="forced_errors">Fautes directes</string>
+    <string name="double_faults">Fautes provoquées</string>
+    <string name="aces">Aces</string>
 </resources>

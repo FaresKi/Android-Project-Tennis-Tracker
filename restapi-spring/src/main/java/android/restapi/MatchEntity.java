@@ -9,7 +9,6 @@ public class MatchEntity {
     @GeneratedValue
     private int id;
     
-    private int accountId;
     private String firstPlayer;
     private String secondPlayer;
 
@@ -22,15 +21,7 @@ public class MatchEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "account_id")
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
+    
 
     @Basic
     @Column(name = "first_player")
@@ -60,7 +51,6 @@ public class MatchEntity {
         MatchEntity that = (MatchEntity) o;
 
         if (id != that.id) return false;
-        if (accountId != that.accountId) return false;
         if (firstPlayer != null ? !firstPlayer.equals(that.firstPlayer) : that.firstPlayer != null) return false;
         if (secondPlayer != null ? !secondPlayer.equals(that.secondPlayer) : that.secondPlayer != null) return false;
 
@@ -70,7 +60,6 @@ public class MatchEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + accountId;
         result = 31 * result + (firstPlayer != null ? firstPlayer.hashCode() : 0);
         result = 31 * result + (secondPlayer != null ? secondPlayer.hashCode() : 0);
         return result;
@@ -80,7 +69,6 @@ public class MatchEntity {
     public String toString() {
         return "MatchEntity{" +
                 "id=" + id +
-                ", accountId=" + accountId +
                 ", firstPlayer='" + firstPlayer + '\'' +
                 ", secondPlayer='" + secondPlayer + '\'' +
                 '}';

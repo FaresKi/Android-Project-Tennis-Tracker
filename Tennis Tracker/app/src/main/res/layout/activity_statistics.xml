@@ -1,396 +1,374 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:background="#79DFEC">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".Activities.StatisticsActivity">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".Activities.StatisticsActivity">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="205dp"
-            android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:orientation="vertical">
 
             <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="2">
-
-                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#003F3E3E">
+                    android:weightSum="2">
 
-                    <TextView
-
-                        android:id="@+id/tabFirstName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="0"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:layout_span="1"
-                        android:background="#003F3E3E"
-                        android:fontFamily="@font/montserrat"
-                        android:text="@string/firstPlayerName" />
-
-                    <TextView
-                        android:id="@+id/tabFirstPlayerScore"
+                <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:layout_span="1"
-                        android:fontFamily="@font/montserrat"
-                        android:text="@string/firstPlayerScore" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#003F3E3E">
 
                     <TextView
-                        android:id="@+id/firstPlayerSet_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="2"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:layout_span="1"
-                        android:fontFamily="@font/montserrat"
-                        android:text="-" />
+
+                            android:id="@+id/tabFirstName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:background="#003F3E3E"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/firstPlayerName"/>
 
                     <TextView
-                        android:id="@+id/firstPlayerSet_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="3"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:fontFamily="@font/montserrat"
-                        android:text="-" />
+                            android:id="@+id/firstPlayerSet_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="2"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:fontFamily="@font/montserrat"
+                            android:text="-"/>
 
                     <TextView
-                        android:id="@+id/firstPlayerSet_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="4"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:fontFamily="@font/montserrat"
-                        android:text="-" />
+                            android:id="@+id/firstPlayerSet_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="3"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:fontFamily="@font/montserrat"
+                            android:text="-"/>
+
+                    <TextView
+                            android:id="@+id/firstPlayerSet_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="4"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:fontFamily="@font/montserrat"
+                            android:text="-"/>
 
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tabSecondName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="0"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:layout_span="1"
-                        android:fontFamily="@font/montserrat"
-                        android:text="@string/secondPlayerName" />
+                            android:id="@+id/tabSecondName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:layout_span="1"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/secondPlayerName"/>
 
                     <TextView
-                        android:id="@+id/tabSecondPlayerScore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:layout_span="1"
-                        android:fontFamily="@font/montserrat"
-                        android:text="@string/secondplayerscore" />
+                            android:id="@+id/secondPlayerSet_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:fontFamily="@font/montserrat"
+                            android:text="-" android:layout_column="2"/>
 
                     <TextView
-                        android:id="@+id/secondPlayerSet_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:fontFamily="@font/montserrat"
-                        android:text="-" />
+                            android:id="@+id/secondPlayerSet_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:fontFamily="@font/montserrat"
+                            android:text="-"/>
 
                     <TextView
-                        android:id="@+id/secondPlayerSet_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:fontFamily="@font/montserrat"
-                        android:text="-" />
-
-                    <TextView
-                        android:id="@+id/secondPlayerSet_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="4"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dip"
-                        android:fontFamily="@font/montserrat"
-                        android:text="-" />
+                            android:id="@+id/secondPlayerSet_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="4"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dip"
+                            android:fontFamily="@font/montserrat"
+                            android:text="-"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp">
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
 
             <ToggleButton
-                android:id="@+id/toggleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="Match"
-                android:textAllCaps="false"
-                android:textOff="Match"
-                android:textOn="Match" />
+                    android:id="@+id/matchToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Match"
+                    android:textAllCaps="false"
+                    android:textOff="Match"
+                    android:textOn="Match" android:onClick="isChecked"/>
 
             <ToggleButton
-                android:id="@+id/toggleButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="Set 1"
-                android:textAllCaps="false"
-                android:textOff="Set 1"
-                android:textOn="Set 1"
-                tools:text="Set 1" />
+                    android:id="@+id/setOneToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Set 1"
+                    android:textAllCaps="false"
+                    android:textOff="Set 1"
+                    android:textOn="Set 1"
+                    tools:text="Set 1" android:onClick="isChecked"/>
 
             <ToggleButton
-                android:id="@+id/toggleButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="Set 2"
-                android:textAllCaps="false"
-                android:textOff="Set 2"
-                android:textOn="Set 2" />
+                    android:id="@+id/setTwoToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Set 2"
+                    android:textAllCaps="false"
+                    android:textOff="Set 2"
+                    android:textOn="Set 2" android:onClick="isChecked"/>
 
             <ToggleButton
-                android:id="@+id/toggleButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:enabled="false"
-                android:fontFamily="@font/montserrat"
-                android:text="Set 3"
-                android:textAllCaps="false"
-                android:textOff="Set 3"
-                android:textOn="Set 3" />
+                    android:id="@+id/setThreeToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Set 3"
+                    android:textAllCaps="false"
+                    android:textOff="Set 3"
+                    android:textOn="Set 3" android:onClick="isChecked"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView5"
-                android:layout_width="157dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:text="General Statistics"
-                android:textAllCaps="true" />
+                    android:id="@+id/textView5"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/general_statistics"
+                    android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/firstPlayerStats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/firstPlayerStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/secondPlayerStats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/secondPlayerStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp">
+                android:layout_width="match_parent"
+                android:layout_height="36dp">
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="157dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="Won rallies"
-                android:textAllCaps="true"
-                android:textStyle="bold" />
+                    android:id="@+id/textView12"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/won_rallies"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/FPWonRallies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/FPWonRallies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/SPWonRallies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/SPWonRallies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView15"
-                android:layout_width="157dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:text="Service Statistics"
-                android:textAllCaps="true" />
+                    android:id="@+id/textView15"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/service_statistics"
+                    android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/firstPlayerServiceStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/first_server"
-                android:textAllCaps="true"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/FPFirstServer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/SPFirstServer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="ACES"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/FPAces"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/SPAces"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/secondPlayerServiceStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
-                android:orientation="horizontal" android:id="@+id/SPDoubleFaults">
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
             <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="152dp"
+                    android:id="@+id/textView18"
+                    android:layout_width="157dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
-                    android:text="DOUBLE FAULTS"
+                    android:text="@string/first_server"
+                    android:textAllCaps="true"
                     android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/FPFirstServer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
+
+            <TextView
+                    android:id="@+id/SPFirstServer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/aces"
+                    android:textStyle="bold" android:textAllCaps="true"/>
+
+            <TextView
+                    android:id="@+id/FPAces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
+
+            <TextView
+                    android:id="@+id/SPAces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/double_faults"
+                    android:textStyle="bold" android:textAllCaps="true"/>
 
             <TextView
                     android:id="@+id/FPDoubleFaults"
@@ -403,7 +381,7 @@
                     android:text="TextView"/>
 
             <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/SPDoubleFaults"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -414,182 +392,181 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView30"
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="POINTS WON ON OWN 1ST SERVE"
-                android:textStyle="bold" />
+                    android:id="@+id/textView30"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/points_won_on_own_1st_serve"
+                    android:textStyle="bold" android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/FPPointsWonOnFirstService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/FPPointsWonOnFirstService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/SPPointsWonOnFirstService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/SPPointsWonOnFirstService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView11"
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:text="RALLY STATISTICS" />
+                    android:id="@+id/textView11"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/rally_statistics" android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/firstPlayerRallyStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView" android:id="@+id/secondPlayerRallyStats"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView32"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="WINNERS"
-                android:textStyle="bold" />
+                    android:id="@+id/textView32"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/winners"
+                    android:textStyle="bold" android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/FPWinners"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/FPWinners"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/SPWinners"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/SPWinners"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView35"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="UNFORCED ERRORS"
-                android:textStyle="bold" />
+                    android:id="@+id/textView35"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/unforced_errors"
+                    android:textStyle="bold" android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/FPUnforcedErrors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/FPUnforcedErrors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/SPUnforcedErrors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/SPUnforcedErrors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView38"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="FORCED ERRORS"
-                android:textStyle="bold" />
+                    android:id="@+id/textView38"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/forced_errors"
+                    android:textStyle="bold" android:textAllCaps="true"/>
 
             <TextView
-                android:id="@+id/FPForcedErrors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/FPForcedErrors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
 
             <TextView
-                android:id="@+id/SPForcedErrors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="TextView" />
+                    android:id="@+id/SPForcedErrors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="TextView"/>
         </LinearLayout>
 
     </LinearLayout>
