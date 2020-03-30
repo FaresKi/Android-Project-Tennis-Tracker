@@ -1,7 +1,5 @@
 package fr.android.tennistracker.Activities;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,7 +35,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
     private TextView server;
 
     private Set setOne, setTwo, setThree;
-    
+
     private Match match;
 
     private Player playerOne;
@@ -121,8 +119,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         tabSecondName = findViewById(R.id.tabSecondName);
         playerTwo = initializePlayer(playerTwoName, tabSecondName);
         secondPlayerStats = playerTwo.getPlayerStats();
-        
-        match = new Match(playerOne,playerTwo);
+
+        match = new Match(playerOne, playerTwo);
         initializeElements();
 
     }
@@ -146,7 +144,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         firstPlayerSet_1.setText("0");
         secondPlayerSet_1.setText("0");
     }
-    
+
     public Player initializePlayer(String name, TextView tabName) {
         Player player = new Player(name);
         tabName.setText(name);
@@ -191,7 +189,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         intent.putExtra("setOne", setOne);
         intent.putExtra("setTwo", setTwo);
         intent.putExtra("setThree", setThree);
-        intent.putExtra("match",match);
+        intent.putExtra("match", match);
         this.startActivity(intent);
     }
 
@@ -276,6 +274,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                     }
                 }
                 break;
+
             case R.id.buttonWinnerSP:
                 scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 secondPlayerStats.setWinners(secondPlayerStats.getWinners() + 1);
@@ -287,22 +286,27 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                     }
                 }
                 break;
+
             case R.id.buttonUnforcedErrorFP:
                 scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 firstPlayerStats.setUnforcedErrors(firstPlayerStats.getUnforcedErrors() + 1);
                 break;
+
             case R.id.buttonUnforcedErrorSP:
                 scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
                 secondPlayerStats.setUnforcedErrors(secondPlayerStats.getUnforcedErrors() + 1);
                 break;
+
             case R.id.buttonForcedErrorFP:
                 scoringPlayer(playerTwo, secondPlayerScore, secondPlayerSet, firstPlayerSet);
                 firstPlayerStats.setForcedErrors(firstPlayerStats.getForcedErrors() + 1);
                 break;
+
             case R.id.buttonForcedErrorSP:
                 scoringPlayer(playerOne, firstPlayerScore, firstPlayerSet, secondPlayerSet);
                 secondPlayerStats.setForcedErrors(secondPlayerStats.getForcedErrors() + 1);
                 break;
+
         }
     }
 
@@ -368,6 +372,9 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
             setOne.setSetScoreSecondPlayer((String) secondPlayerSet_1.getText());
             playerOne.reinitialiseStats();
             playerTwo.reinitialiseStats();
+
+            firstPlayerStats = playerOne.getPlayerStats();
+            secondPlayerStats = playerTwo.getPlayerStats();
         }
         currentSet++;
         switch (currentSet) {
@@ -382,10 +389,13 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
                 setTwo.setSetScoreFirstPlayer((String) firstPlayerSet_2.getText());
                 setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
-                setTwo.setScoreFP((String) tabFirstName.getText());
-                setTwo.setScoreSP((String) tabSecondName.getText());
+                setTwo.setScoreFP((String) firstPlayerScore.getText());
+                setTwo.setScoreSP((String) secondPlayerScore.getText());
                 playerOne.reinitialiseStats();
                 playerTwo.reinitialiseStats();
+
+                firstPlayerStats = playerOne.getPlayerStats();
+                secondPlayerStats = playerTwo.getPlayerStats();
                 break;
             default:
                 setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
@@ -395,6 +405,9 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 setThree.setScoreSP((String) tabSecondName.getText());
                 playerOne.reinitialiseStats();
                 playerTwo.reinitialiseStats();
+
+                firstPlayerStats = playerOne.getPlayerStats();
+                secondPlayerStats = playerTwo.getPlayerStats();
                 break;
 
         }
@@ -427,7 +440,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
             matchFinished = true;
             doneMatchDialog = new DoneMatchDialog();
             doneMatchDialog.show(getSupportFragmentManager(), "doneMatch");
-            
+
         }
     }
 

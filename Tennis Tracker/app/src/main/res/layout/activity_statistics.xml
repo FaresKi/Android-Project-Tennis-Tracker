@@ -133,7 +133,7 @@
                     android:text="Match"
                     android:textAllCaps="false"
                     android:textOff="Match"
-                    android:textOn="Match" android:onClick="isChecked"/>
+                    android:textOn="Match" android:onClick="isChecked" android:checked="true"/>
 
             <ToggleButton
                     android:id="@+id/setOneToggleButton"

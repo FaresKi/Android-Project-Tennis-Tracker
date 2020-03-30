@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import fr.android.tennistracker.DAO.DataAPIAccess;
 import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.Model.Player;
@@ -35,31 +33,37 @@ public class StatisticsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
-        
+
         playerOne = getIntent().getParcelableExtra("playerOne");
         playerTwo = getIntent().getParcelableExtra("playerTwo");
-        
+
         setTitle(playerOne.getName() + " vs " + playerTwo.getName());
-        
+
         matchToggleButton = findViewById(R.id.matchToggleButton);
         setOneToggleButton = findViewById(R.id.setOneToggleButton);
         setTwoToggleButton = findViewById(R.id.setTwoToggleButton);
         setThreeToggleButton = findViewById(R.id.setThreeToggleButton);
+        
+        matchToggleButton.setChecked(true);
 
         setOne = getIntent().getParcelableExtra("setOne");
         setTwo = getIntent().getParcelableExtra("setTwo");
         setThree = getIntent().getParcelableExtra("setThree");
         
+        if(setThree!=null){
+            setThreeToggleButton.setEnabled(true);
+        }
+
         match = getIntent().getParcelableExtra("match");
-        
+
         new APIAccessAsyncTask().execute("");
-        
+
         setStatsLabels();
         setScoreTable();
         initializeValues();
     }
-    
-    public void initializeValues(){
+
+    public void initializeValues() {
         FPWonRallies = findViewById(R.id.FPWonRallies);
         FPFirstServer = findViewById(R.id.FPFirstServer);
         FPAces = findViewById(R.id.FPAces);
@@ -112,8 +116,48 @@ public class StatisticsActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void setMatchStatistics() {
+        if(setThree==null){
+            FPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors()));
+            FPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(0).getFirstServes() + setTwo.getPlayersStats().get(0).getFirstServes()));
+            FPAces.setText(String.valueOf(setOne.getPlayersStats().get(0).getAces() + setTwo.getPlayersStats().get(0).getAces()));
+            FPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(0).getDoubleFaults() + setTwo.getPlayersStats().get(0).getDoubleFaults()));
+            FPPointsWonOnFirstService.setText(String.valueOf(setOne.getPlayersStats().get(0).getPointsWonOnFirstServe() + setTwo.getPlayersStats().get(0).getPointsWonOnFirstServe()));
+            FPWinners.setText(FPWonRallies.getText());
+            FPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors()));
+            FPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getForcedErrors() + setTwo.getPlayersStats().get(0).getForcedErrors()));
+
+            SPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors()));
+            SPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(1).getFirstServes() + setTwo.getPlayersStats().get(1).getFirstServes()));
+            SPAces.setText(String.valueOf(setOne.getPlayersStats().get(1).getAces() + setTwo.getPlayersStats().get(1).getAces()));
+            SPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(1).getDoubleFaults() + setTwo.getPlayersStats().get(1).getDoubleFaults()));
+            SPPointsWonOnFirstService.setText(String.valueOf(setOne.getPlayersStats().get(1).getPointsWonOnFirstServe() + setTwo.getPlayersStats().get(1).getPointsWonOnFirstServe()));
+            SPWinners.setText(SPWonRallies.getText());
+            SPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors()));
+            SPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(1).getForcedErrors() + setTwo.getPlayersStats().get(1).getForcedErrors()));
+        }else{
+            FPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors() + setThree.getPlayersStats().get(0).getUnforcedErrors()));
+            FPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(0).getFirstServes() + setTwo.getPlayersStats().get(0).getFirstServes() + setThree.getPlayersStats().get(0).getFirstServes()));
+            FPAces.setText(String.valueOf(setOne.getPlayersStats().get(0).getAces() + setTwo.getPlayersStats().get(0).getAces() + setThree.getPlayersStats().get(0).getAces() ));
+            FPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(0).getDoubleFaults() + setTwo.getPlayersStats().get(0).getDoubleFaults() + setThree.getPlayersStats().get(0).getDoubleFaults()));
+            FPPointsWonOnFirstService.setText(String.valueOf(setOne.getPlayersStats().get(0).getPointsWonOnFirstServe() + setTwo.getPlayersStats().get(0).getPointsWonOnFirstServe() + setThree.getPlayersStats().get(0).getPointsWonOnFirstServe()));
+            FPWinners.setText(FPWonRallies.getText());
+            FPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors() + setThree.getPlayersStats().get(0).getUnforcedErrors()));
+            FPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getForcedErrors() + setTwo.getPlayersStats().get(0).getForcedErrors() + setThree.getPlayersStats().get(0).getForcedErrors()));
+
+            SPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors() + setThree.getPlayersStats().get(1).getUnforcedErrors()));
+            SPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(1).getFirstServes() + setTwo.getPlayersStats().get(1).getFirstServes() + setThree.getPlayersStats().get(1).getFirstServes()));
+            SPAces.setText(String.valueOf(setOne.getPlayersStats().get(1).getAces() + setTwo.getPlayersStats().get(1).getAces() + setThree.getPlayersStats().get(1).getAces() ));
+            SPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(1).getDoubleFaults() + setTwo.getPlayersStats().get(1).getDoubleFaults() + setThree.getPlayersStats().get(1).getDoubleFaults()));
+            SPPointsWonOnFirstService.setText(String.valueOf(setOne.getPlayersStats().get(1).getPointsWonOnFirstServe() + setTwo.getPlayersStats().get(1).getPointsWonOnFirstServe() + setThree.getPlayersStats().get(1).getPointsWonOnFirstServe()));
+            SPWinners.setText(SPWonRallies.getText());
+            SPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors() + setThree.getPlayersStats().get(1).getUnforcedErrors()));
+            SPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(1).getForcedErrors() + setTwo.getPlayersStats().get(1).getForcedErrors() + setThree.getPlayersStats().get(1).getForcedErrors()));
+
+        }
         
+
 
     }
 
@@ -136,9 +180,10 @@ public class StatisticsActivity extends AppCompatActivity {
         SPWinners.setText(SPWonRallies.getText());
         SPUnforcedErrors.setText(Integer.toString(setOne.getPlayersStats().get(1).getUnforcedErrors()));
         SPForcedErrors.setText(Integer.toString(setOne.getPlayersStats().get(1).getForcedErrors()));
-        
+
     }
 
+    @SuppressLint("SetTextI18n")
     public void setSetTwoStatistics() {
         FPWonRallies.setText(Integer.toString(setTwo.getPlayersStats().get(0).getUnforcedErrors()));
         FPFirstServer.setText(Integer.toString(setTwo.getPlayersStats().get(0).getFirstServes()));
@@ -159,7 +204,25 @@ public class StatisticsActivity extends AppCompatActivity {
         SPForcedErrors.setText(Integer.toString(setTwo.getPlayersStats().get(1).getForcedErrors()));
     }
 
+    @SuppressLint("SetTextI18n")
     public void setSetThreeStatistics() {
+        FPWonRallies.setText(Integer.toString(setThree.getPlayersStats().get(0).getUnforcedErrors()));
+        FPFirstServer.setText(Integer.toString(setThree.getPlayersStats().get(0).getFirstServes()));
+        FPAces.setText(Integer.toString(setThree.getPlayersStats().get(0).getAces()));
+        FPDoubleFaults.setText(Integer.toString(setThree.getPlayersStats().get(0).getDoubleFaults()));
+        FPPointsWonOnFirstService.setText(Integer.toString(setThree.getPlayersStats().get(0).getPointsWonOnFirstServe()));
+        FPWinners.setText(FPWonRallies.getText());
+        FPUnforcedErrors.setText(Integer.toString(setThree.getPlayersStats().get(0).getUnforcedErrors()));
+        FPForcedErrors.setText(Integer.toString(setThree.getPlayersStats().get(0).getForcedErrors()));
+
+        SPWonRallies.setText(Integer.toString(setThree.getPlayersStats().get(1).getUnforcedErrors()));
+        SPFirstServer.setText(Integer.toString(setThree.getPlayersStats().get(1).getFirstServes()));
+        SPAces.setText(Integer.toString(setThree.getPlayersStats().get(1).getAces()));
+        SPDoubleFaults.setText(Integer.toString(setThree.getPlayersStats().get(1).getDoubleFaults()));
+        SPPointsWonOnFirstService.setText(Integer.toString(setThree.getPlayersStats().get(1).getPointsWonOnFirstServe()));
+        SPWinners.setText(SPWonRallies.getText());
+        SPUnforcedErrors.setText(Integer.toString(setThree.getPlayersStats().get(1).getUnforcedErrors()));
+        SPForcedErrors.setText(Integer.toString(setThree.getPlayersStats().get(1).getForcedErrors()));
 
     }
 
@@ -169,7 +232,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         tabFirstName.setText(playerOne.getName());
         tabSecondName.setText(playerTwo.getName());
-        
+
         firstPlayerSet_1 = findViewById(R.id.firstPlayerSet_1);
         secondPlayerSet_1 = findViewById(R.id.secondPlayerSet_1);
 
@@ -181,6 +244,15 @@ public class StatisticsActivity extends AppCompatActivity {
 
         firstPlayerSet_2.setText(setTwo.getSetScoreFirstPlayer());
         secondPlayerSet_2.setText(setTwo.getSetScoreSecondPlayer());
+        
+        firstPlayerSet_3 = findViewById(R.id.firstPlayerSet_3);
+        secondPlayerSet_3 = findViewById(R.id.secondPlayerSet_3);
+        
+        if(setThree!=null){
+            firstPlayerSet_3.setText(setThree.getSetScoreFirstPlayer());
+            secondPlayerSet_3.setText(setThree.getSetScoreSecondPlayer());
+        }
+        
 
 
     }
@@ -206,8 +278,8 @@ public class StatisticsActivity extends AppCompatActivity {
         secondPlayerRallyStats.setText(playerTwo.getName());
 
     }
-    
-    public void clearText(){
+
+    public void clearText() {
         FPWonRallies.setText("");
         FPFirstServer.setText("");
         FPAces.setText("");
@@ -231,6 +303,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         String allMatches;
         DataAPIAccess dataAPIAccess = new DataAPIAccess();
+
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -246,7 +319,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            
+
         }
     }
 }

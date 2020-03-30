@@ -2,7 +2,6 @@ package fr.android.tennistracker.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.google.gson.annotations.Expose;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
