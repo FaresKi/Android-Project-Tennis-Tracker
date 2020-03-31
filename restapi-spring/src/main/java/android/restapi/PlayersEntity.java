@@ -3,13 +3,10 @@ package android.restapi;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Players")
+@Table(name = "Players", schema = "statistics")
 public class PlayersEntity {
-    @Id
-    @GeneratedValue
-    int id;
-    
-    String name;
+    private int id;
+    private String name;
 
     @Id
     @Column(name = "id")
@@ -30,15 +27,6 @@ public class PlayersEntity {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Override
-    public String toString() {
-        return "UsersEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
 
     @Override
     public boolean equals(Object o) {

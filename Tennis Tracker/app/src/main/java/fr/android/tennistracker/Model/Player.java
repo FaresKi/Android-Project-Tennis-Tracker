@@ -18,8 +18,8 @@ public class Player implements Parcelable {
             return new Player[size];
         }
     };
-    private static final AtomicInteger count = new AtomicInteger(0);
-    private int playerId;
+    private transient static final AtomicInteger count = new AtomicInteger(0);
+    private int id;
     private  String name;
     
     private transient int sets;
@@ -36,12 +36,12 @@ public class Player implements Parcelable {
     public Player(String name) {
         sets = 0;
         this.name = name;
-        this.playerId = count.incrementAndGet();
-        playerStats.setPlayerId(playerId);
+        this.id = count.incrementAndGet();
+        playerStats.setPlayerId(id);
     }
 
     protected Player(Parcel in) {
-        playerId = in.readInt();
+        id = in.readInt();
         name = in.readString();
         sets = in.readInt();
         playerStats = in.readParcelable(Statistics.class.getClassLoader());
@@ -81,8 +81,8 @@ public class Player implements Parcelable {
     }
 
 
-    public int getPlayerId() {
-        return playerId;
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -92,7 +92,7 @@ public class Player implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(playerId);
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeInt(sets);
         dest.writeParcelable(playerStats, flags);
@@ -101,7 +101,7 @@ public class Player implements Parcelable {
     @Override
     public String toString() {
         return "Player{" +
-                "playerId=" + playerId +
+                "playerId=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }

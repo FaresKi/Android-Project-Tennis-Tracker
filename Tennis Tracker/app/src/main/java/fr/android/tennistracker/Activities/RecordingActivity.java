@@ -442,6 +442,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
     private void changeSet() {
         if (currentSet == 1) {
             setOne = new Set(1);
+            firstPlayerStats.setSetNumber(setOne.getSetNumber());
+            secondPlayerStats.setSetNumber(setOne.getSetNumber());
             setOne.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
             setOne.setScoreFP((String) firstPlayerScore.getText());
             setOne.setScoreSP((String) secondPlayerScore.getText());
@@ -463,6 +465,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
             case 3:
                 firstPlayerSet_3.setText("0");
                 secondPlayerSet_3.setText("0");
+                firstPlayerStats.setSetNumber(setTwo.getSetNumber());
+                secondPlayerStats.setSetNumber(setTwo.getSetNumber());
                 setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
                 setTwo.setSetScoreFirstPlayer((String) firstPlayerSet_2.getText());
                 setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
@@ -475,6 +479,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 secondPlayerStats = playerTwo.getPlayerStats();
                 break;
             default:
+                firstPlayerStats.setSetNumber(setThree.getSetNumber());
+                secondPlayerStats.setSetNumber(setThree.getSetNumber());
                 setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
                 setThree.setSetScoreFirstPlayer((String) firstPlayerSet_3.getText());
                 setThree.setSetScoreSecondPlayer((String) secondPlayerSet_3.getText());
@@ -839,4 +845,6 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 break;
         }
     }
+    
+    
 }

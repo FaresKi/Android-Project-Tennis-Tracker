@@ -2,7 +2,6 @@ package fr.android.tennistracker.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.google.gson.annotations.Expose;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -30,24 +29,10 @@ public class Statistics implements Parcelable {
     private int winners = 0;
     private int unforcedErrors = 0;
     private int forcedErrors = 0;
-
-    public void setStatsId(int statsId) {
-        this.statsId = statsId;
-    }
+    private int setNumber;
 
     public Statistics() {
         statsId = count.incrementAndGet();
-    }
-
-    public Statistics(int firstServes, int aces, int doubleFaults, int pointsWonOnFirstServe, int winners, int unforcedErrors, int forcedErrors) {
-        this.firstServes = firstServes;
-        this.aces = aces;
-        this.doubleFaults = doubleFaults;
-        this.pointsWonOnFirstServe = pointsWonOnFirstServe;
-        this.winners = winners;
-        this.unforcedErrors = unforcedErrors;
-        this.forcedErrors = forcedErrors;
-        
     }
 
     protected Statistics(Parcel in) {
@@ -60,6 +45,7 @@ public class Statistics implements Parcelable {
         winners = in.readInt();
         unforcedErrors = in.readInt();
         forcedErrors = in.readInt();
+        setNumber = in.readInt();
     }
 
     public int getFirstServes() {
@@ -134,10 +120,15 @@ public class Statistics implements Parcelable {
         dest.writeInt(winners);
         dest.writeInt(unforcedErrors);
         dest.writeInt(forcedErrors);
+        dest.writeInt(setNumber);
     }
 
     public int getStatsId() {
         return statsId;
+    }
+
+    public void setStatsId(int statsId) {
+        this.statsId = statsId;
     }
 
     public int getPlayerId() {
@@ -161,5 +152,13 @@ public class Statistics implements Parcelable {
                 ", unforcedErrors=" + unforcedErrors +
                 ", forcedErrors=" + forcedErrors +
                 '}';
+    }
+
+    public int getSetNumber() {
+        return setNumber;
+    }
+
+    public void setSetNumber(int setNumber) {
+        this.setNumber = setNumber;
     }
 }

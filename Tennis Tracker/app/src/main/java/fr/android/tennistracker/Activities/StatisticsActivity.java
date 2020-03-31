@@ -354,7 +354,8 @@ public class StatisticsActivity extends AppCompatActivity {
             try {
                 /*allMatches = dataAPIAccess.getAllMatches();
                 dataAPIAccess.matchList();*/
-                dataAPIAccess.sendNewMatch(match);
+                //dataAPIAccess.sendNewGame(match);
+                dataAPIAccess.sendNewPlayer(playerOne);
             } catch (IOException e) {
                 e.printStackTrace();
             }
