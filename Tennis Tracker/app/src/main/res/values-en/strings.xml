@@ -59,4 +59,8 @@
     <string name="winners">WINNERS</string>
     <string name="unforced_errors">UNFORCED ERRORS</string>
     <string name="forced_errors">FORCED ERRORS</string>
+    <string name="update_server_text">The server is going to be updated. What do you want to do with the current game?</string>
+    <string name="grant_it_to_player_1">Grant it to Player #1</string>
+    <string name="grant_it_to_player_2">Grant it to Player #2</string>
+    <string name="start_it_over">Start it over</string>
 </resources>

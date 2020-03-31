@@ -33,9 +33,9 @@
                         android:textStyle="bold"/>
                 <ImageButton
                         android:layout_width="34dp"
-                        android:layout_margin=""
                         android:layout_height="35dp" app:srcCompat="@drawable/graphic"
-                        android:id="@+id/imageButtonStats" android:layout_weight="1" android:scaleType="fitCenter"/>
+                        android:id="@+id/imageButtonStats" android:layout_weight="1" android:scaleType="fitCenter"
+                        android:onClick="onImageButtonClick"/>
             </LinearLayout>
 
             <TableLayout
@@ -188,7 +188,8 @@
                 <ImageButton
                         android:layout_width="65dp"
                         android:layout_height="35dp" app:srcCompat="@drawable/refresh"
-                        android:id="@+id/imageButtonService" android:layout_weight="0" android:scaleType="fitCenter"/>
+                        android:id="@+id/imageButtonService" android:layout_weight="0" android:scaleType="fitCenter"
+                        android:onClick="onImageButtonClick"/>
             </LinearLayout>
 
             <LinearLayout
@@ -308,7 +309,8 @@
                 <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/close"
-                        android:id="@+id/imageButtonRally" android:layout_weight="1" android:scaleType="fitCenter"/>
+                        android:id="@+id/imageButtonRally" android:layout_weight="1" android:scaleType="fitCenter"
+                        android:onClick="onImageButtonClick"/>
             </LinearLayout>
 
             <LinearLayout

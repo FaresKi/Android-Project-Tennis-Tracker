@@ -88,6 +88,5 @@ public class NewMatchActivity extends AppCompatActivity {
         savedInstanceState.putString("firstPlayerName", firstPlayerName);
         savedInstanceState.putString("secondPlayerName", secondPlayerName);
     }
-
-
+    
 }
