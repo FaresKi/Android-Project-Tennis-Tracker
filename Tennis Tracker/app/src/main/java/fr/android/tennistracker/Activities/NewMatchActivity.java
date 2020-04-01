@@ -8,12 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
-
-import fr.android.tennistracker.DAO.MyDBHandler;
-import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.R;
 
 public class NewMatchActivity extends AppCompatActivity {
@@ -66,7 +62,6 @@ public class NewMatchActivity extends AppCompatActivity {
                             .putExtra("secondPlayerName", secondPlayerName)
                             .putExtra("matchFormatPos", matchFormatPos)
                             .putExtra("lastSetFormatPos", lastSetFormatPos);
-
                     this.startActivity(intent);
                 }
                 break;

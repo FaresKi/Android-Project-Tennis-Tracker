@@ -381,7 +381,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 break;
 
         }
-    }
+     }
 
     public void onAceClick(View view) {
         List<TextView> sets = selectSet();
@@ -472,25 +472,27 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
                 setTwo.setScoreFP((String) firstPlayerScore.getText());
                 setTwo.setScoreSP((String) secondPlayerScore.getText());
-                playerOne.reinitialiseStats();
-                playerTwo.reinitialiseStats();
-
-                firstPlayerStats = playerOne.getPlayerStats();
-                secondPlayerStats = playerTwo.getPlayerStats();
                 break;
             default:
-                firstPlayerStats.setSetNumber(setThree.getSetNumber());
-                secondPlayerStats.setSetNumber(setThree.getSetNumber());
-                setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
-                setThree.setSetScoreFirstPlayer((String) firstPlayerSet_3.getText());
-                setThree.setSetScoreSecondPlayer((String) secondPlayerSet_3.getText());
-                setThree.setScoreFP((String) tabFirstName.getText());
-                setThree.setScoreSP((String) tabSecondName.getText());
-                playerOne.reinitialiseStats();
-                playerTwo.reinitialiseStats();
+                if(!matchFinished) {
+                    playerOne.reinitialiseStats();
+                    playerTwo.reinitialiseStats();
+                    firstPlayerStats = playerOne.getPlayerStats();
+                    secondPlayerStats = playerTwo.getPlayerStats();
+                    firstPlayerStats.setSetNumber(setThree.getSetNumber());
+                    secondPlayerStats.setSetNumber(setThree.getSetNumber());
+                    setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                    setThree.setSetScoreFirstPlayer((String) firstPlayerSet_3.getText());
+                    setThree.setSetScoreSecondPlayer((String) secondPlayerSet_3.getText());
+                    setThree.setScoreFP((String) tabFirstName.getText());
+                    setThree.setScoreSP((String) tabSecondName.getText());
+                    playerOne.reinitialiseStats();
+                    playerTwo.reinitialiseStats();
 
-                firstPlayerStats = playerOne.getPlayerStats();
-                secondPlayerStats = playerTwo.getPlayerStats();
+                    firstPlayerStats = playerOne.getPlayerStats();
+                    secondPlayerStats = playerTwo.getPlayerStats();
+                    break;
+                }
                 break;
 
         }

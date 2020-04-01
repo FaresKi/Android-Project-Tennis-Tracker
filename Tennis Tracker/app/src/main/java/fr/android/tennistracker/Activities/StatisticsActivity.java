@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.android.tennistracker.DAO.DataAPIAccess;
+import fr.android.tennistracker.DAO.MyDBHandler;
 import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.Model.Set;
@@ -349,16 +350,28 @@ public class StatisticsActivity extends AppCompatActivity {
 
         String allMatches;
         DataAPIAccess dataAPIAccess = new DataAPIAccess();
-
+        MyDBHandler myDBHandler = new MyDBHandler(getApplicationContext());
         @Override
         protected String doInBackground(String... strings) {
             try {
                 /*allMatches = dataAPIAccess.getAllMatches();
                 dataAPIAccess.matchList();*/
                 //dataAPIAccess.sendNewGame(match);
+                
+                /*
+                myDBHandler.onCreate(myDBHandler.getWritableDatabase());
+                
                 dataAPIAccess.sendNewPlayer(playerOne);
+                myDBHandler.addPlayer(playerOne);
                 dataAPIAccess.sendNewPlayer(playerTwo);
+                myDBHandler.addPlayer(playerTwo);
                 dataAPIAccess.sendNewGame(match);
+                
+                
+                
+                myDBHandler.addGame(match);
+                
+                 */
                 Statistics playerOneSetOneStats = setOne.getPlayersStats().get(0);
                 Statistics playerTwoSetOneStats = setOne.getPlayersStats().get(1);
 
@@ -375,9 +388,8 @@ public class StatisticsActivity extends AppCompatActivity {
                 playerOneSetTwoStats.setPlayerId(playerOne.getPlayerId());
 
                 playerTwoSetTwoStats.setSetNumber(2);
-                playerOneSetTwoStats.setPlayerId(playerTwo.getPlayerId());
-
-               
+                playerTwoSetTwoStats.setPlayerId(playerTwo.getPlayerId());
+                
                 
                 playerOneSetOneStats.setMatchId(match.getMatchId());
                 playerTwoSetOneStats.setMatchId(match.getMatchId());
@@ -385,13 +397,20 @@ public class StatisticsActivity extends AppCompatActivity {
                 playerOneSetTwoStats.setMatchId(match.getMatchId());
                 playerTwoSetTwoStats.setMatchId(match.getMatchId());
                 
-                
+                /*
                 dataAPIAccess.sendNewStats(playerOneSetOneStats);
+                myDBHandler.addStats(playerOneSetOneStats);
+                
                 dataAPIAccess.sendNewStats(playerTwoSetOneStats);
+                myDBHandler.addStats(playerTwoSetOneStats);
                 
                 dataAPIAccess.sendNewStats(playerOneSetTwoStats);
-                dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
+                myDBHandler.addStats(playerOneSetTwoStats);
                 
+                dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
+                myDBHandler.addStats(playerTwoSetTwoStats);
+                
+                 */
 
                 if(setThree!=null){
                     Statistics playerOneSetThreeStats = setThree.getPlayersStats().get(0);
@@ -407,12 +426,16 @@ public class StatisticsActivity extends AppCompatActivity {
                     playerTwoSetThreeStats.setMatchId(match.getMatchId());
 
                     dataAPIAccess.sendNewStats(playerOneSetThreeStats);
+                    myDBHandler.addStats(playerOneSetThreeStats);
+                            
                     dataAPIAccess.sendNewStats(playerTwoSetThreeStats);
+                    myDBHandler.addStats(playerTwoSetThreeStats);
+                    
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            
             return allMatches;
         }
 
