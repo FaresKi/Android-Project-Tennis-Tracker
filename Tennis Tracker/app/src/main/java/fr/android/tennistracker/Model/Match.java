@@ -22,41 +22,37 @@ public class Match implements Parcelable {
     };
 
     private static final AtomicInteger count = new AtomicInteger(0);
-    private  int id = 0;
-    private  Player playerOne, playerTwo;
+    @Expose
+    private  int matchId;
+    @Expose
+    private  Player firstPlayer, secondPlayer;
     private transient List<Statistics> playersStats;
 
-    public Match(Player playerOne, Player playerTwo) {
-        id = count.incrementAndGet();
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        playersStats = Arrays.asList(playerOne.getPlayerStats(), playerTwo.getPlayerStats());
-    }
-
-    public Match(String firstPlayer, String secondPlayer) {
-        this.playerOne = new Player(firstPlayer);
-        this.playerTwo = new Player(secondPlayer);
-        playersStats = Arrays.asList(playerOne.getPlayerStats(), playerTwo.getPlayerStats());
+    public Match(Player firstPlayer, Player secondPlayer) {
+        matchId = count.incrementAndGet();
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+        playersStats = Arrays.asList(firstPlayer.getPlayerStats(), secondPlayer.getPlayerStats());
     }
 
     protected Match(Parcel in) {
-        id = in.readInt();
-        playerOne = in.readParcelable(Player.class.getClassLoader());
-        playerTwo = in.readParcelable(Player.class.getClassLoader());
+        matchId = in.readInt();
+        firstPlayer = in.readParcelable(Player.class.getClassLoader());
+        secondPlayer = in.readParcelable(Player.class.getClassLoader());
         playersStats = in.createTypedArrayList(Statistics.CREATOR);
     }
 
-    public int getId() {
-        return id;
+    public int getMatchId() {
+        return matchId;
     }
 
 
-    public Player getPlayerOne() {
-        return playerOne;
+    public Player getFirstPlayer() {
+        return firstPlayer;
     }
 
-    public Player getPlayerTwo() {
-        return playerTwo;
+    public Player getSecondPlayer() {
+        return secondPlayer;
     }
 
     public List<Statistics> getPlayersStats() {
@@ -65,10 +61,10 @@ public class Match implements Parcelable {
 
     @Override
     public String toString() {
-        return "Match{" +
-                "id=" + id +
-                ", playerOne=" + playerOne.getName() +
-                ", playerTwo=" + playerTwo.getName() +
+        return "{" +
+                "\"gameId\":"  +  getMatchId()  + 
+                ",\"firstPlayer\":" + firstPlayer.getPlayerId() +
+                ",\"secondPlayer\":" + secondPlayer.getPlayerId() +
                 '}';
     }
 
@@ -79,9 +75,9 @@ public class Match implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeParcelable(playerOne, flags);
-        dest.writeParcelable(playerTwo, flags);
+        dest.writeInt(matchId);
+        dest.writeParcelable(firstPlayer, flags);
+        dest.writeParcelable(secondPlayer, flags);
         dest.writeTypedList(playersStats);
     }
 }

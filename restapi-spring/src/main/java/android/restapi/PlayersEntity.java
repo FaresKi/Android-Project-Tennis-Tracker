@@ -2,20 +2,21 @@ package android.restapi;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "Players", schema = "statistics")
 public class PlayersEntity {
-    private int id;
+    private int playerId;
     private String name;
 
     @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
+    @Column(name = "player_id")
+    public int getPlayerId() {
+        return playerId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPlayerId(int id) {
+        this.playerId = id;
     }
 
     @Basic
@@ -35,7 +36,7 @@ public class PlayersEntity {
 
         PlayersEntity that = (PlayersEntity) o;
 
-        if (id != that.id) return false;
+        if (playerId != that.playerId) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -43,7 +44,7 @@ public class PlayersEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = playerId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }

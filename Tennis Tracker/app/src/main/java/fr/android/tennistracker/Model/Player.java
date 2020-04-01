@@ -2,6 +2,7 @@ package fr.android.tennistracker.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.google.gson.annotations.Expose;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,7 +20,10 @@ public class Player implements Parcelable {
         }
     };
     private transient static final AtomicInteger count = new AtomicInteger(0);
-    private int id;
+    
+    @Expose
+    private int playerId;
+    
     private  String name;
     
     private transient int sets;
@@ -36,12 +40,12 @@ public class Player implements Parcelable {
     public Player(String name) {
         sets = 0;
         this.name = name;
-        this.id = count.incrementAndGet();
-        playerStats.setPlayerId(id);
+        this.playerId = count.incrementAndGet();
+        playerStats.setPlayerId(playerId);
     }
 
     protected Player(Parcel in) {
-        id = in.readInt();
+        playerId = in.readInt();
         name = in.readString();
         sets = in.readInt();
         playerStats = in.readParcelable(Statistics.class.getClassLoader());
@@ -81,8 +85,8 @@ public class Player implements Parcelable {
     }
 
 
-    public int getId() {
-        return id;
+    public int getPlayerId() {
+        return playerId;
     }
 
     @Override
@@ -92,7 +96,7 @@ public class Player implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeInt(playerId);
         dest.writeString(name);
         dest.writeInt(sets);
         dest.writeParcelable(playerStats, flags);
@@ -101,7 +105,7 @@ public class Player implements Parcelable {
     @Override
     public String toString() {
         return "Player{" +
-                "playerId=" + id +
+                "playerId=" + playerId +
                 ", name='" + name + '\'' +
                 '}';
     }

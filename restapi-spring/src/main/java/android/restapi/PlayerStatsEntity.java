@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "PlayerStats")
+@Table(name = "Stats")
 public class PlayerStatsEntity {
     private int statsId;
     private int aces;
@@ -16,6 +16,7 @@ public class PlayerStatsEntity {
     private int winners;
     private int setNumber;
     private int playerId;
+    private int matchId;
 
     @Id
     @Column(name = "stats_id")
@@ -138,5 +139,15 @@ public class PlayerStatsEntity {
     @Override
     public int hashCode() {
         return Objects.hash(statsId, aces, doubleFaults, firstServes, forcedErrors, pointsWonOnFirstServe, unforcedErrors, winners, setNumber, playerId);
+    }
+
+    @Basic
+    @Column(name = "match_id")
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
     }
 }

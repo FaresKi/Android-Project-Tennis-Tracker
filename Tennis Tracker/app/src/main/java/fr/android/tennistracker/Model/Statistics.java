@@ -30,6 +30,7 @@ public class Statistics implements Parcelable {
     private int unforcedErrors = 0;
     private int forcedErrors = 0;
     private int setNumber;
+    private int matchId;
 
     public Statistics() {
         statsId = count.incrementAndGet();
@@ -160,5 +161,13 @@ public class Statistics implements Parcelable {
 
     public void setSetNumber(int setNumber) {
         this.setNumber = setNumber;
+    }
+
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
     }
 }

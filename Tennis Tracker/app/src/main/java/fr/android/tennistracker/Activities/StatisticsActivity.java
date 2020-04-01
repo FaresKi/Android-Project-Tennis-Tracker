@@ -14,6 +14,7 @@ import fr.android.tennistracker.DAO.DataAPIAccess;
 import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.Model.Set;
+import fr.android.tennistracker.Model.Statistics;
 import fr.android.tennistracker.R;
 
 import java.io.IOException;
@@ -356,6 +357,58 @@ public class StatisticsActivity extends AppCompatActivity {
                 dataAPIAccess.matchList();*/
                 //dataAPIAccess.sendNewGame(match);
                 dataAPIAccess.sendNewPlayer(playerOne);
+                dataAPIAccess.sendNewPlayer(playerTwo);
+                dataAPIAccess.sendNewGame(match);
+                Statistics playerOneSetOneStats = setOne.getPlayersStats().get(0);
+                Statistics playerTwoSetOneStats = setOne.getPlayersStats().get(1);
+
+                Statistics playerOneSetTwoStats = setTwo.getPlayersStats().get(0);
+                Statistics playerTwoSetTwoStats = setTwo.getPlayersStats().get(1);
+                
+                playerOneSetOneStats.setSetNumber(1);
+                playerOneSetOneStats.setPlayerId(playerOne.getPlayerId());
+
+                playerTwoSetOneStats.setSetNumber(1);
+                playerTwoSetOneStats.setPlayerId(playerTwo.getPlayerId());
+
+                playerOneSetTwoStats.setSetNumber(2);
+                playerOneSetTwoStats.setPlayerId(playerOne.getPlayerId());
+
+                playerTwoSetTwoStats.setSetNumber(2);
+                playerOneSetTwoStats.setPlayerId(playerTwo.getPlayerId());
+
+               
+                
+                playerOneSetOneStats.setMatchId(match.getMatchId());
+                playerTwoSetOneStats.setMatchId(match.getMatchId());
+
+                playerOneSetTwoStats.setMatchId(match.getMatchId());
+                playerTwoSetTwoStats.setMatchId(match.getMatchId());
+                
+                
+                dataAPIAccess.sendNewStats(playerOneSetOneStats);
+                dataAPIAccess.sendNewStats(playerTwoSetOneStats);
+                
+                dataAPIAccess.sendNewStats(playerOneSetTwoStats);
+                dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
+                
+
+                if(setThree!=null){
+                    Statistics playerOneSetThreeStats = setThree.getPlayersStats().get(0);
+                    Statistics playerTwoSetThreeStats = setThree.getPlayersStats().get(1);
+
+                    playerOneSetThreeStats.setSetNumber(3);
+                    playerTwoSetThreeStats.setPlayerId(playerOne.getPlayerId());
+
+                    playerOneSetThreeStats.setSetNumber(3);
+                    playerTwoSetThreeStats.setPlayerId(playerTwo.getPlayerId());
+
+                    playerOneSetThreeStats.setMatchId(match.getMatchId());
+                    playerTwoSetThreeStats.setMatchId(match.getMatchId());
+
+                    dataAPIAccess.sendNewStats(playerOneSetThreeStats);
+                    dataAPIAccess.sendNewStats(playerTwoSetThreeStats);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
