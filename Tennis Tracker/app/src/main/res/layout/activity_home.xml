@@ -25,7 +25,7 @@
     <Button
             android:text="@string/nouveau_match"
             android:layout_width="wrap_content"
-            android:onClick="onUpdateServerButtonClick"
+            android:onClick="onClick"
             android:layout_height="wrap_content" android:id="@+id/buttonNewMatch"
             android:foregroundGravity="center"
             android:layout_marginBottom="23dp"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/buttonPreviousMatches"
             android:foregroundGravity="center"
-            android:onClick="onUpdateServerButtonClick"
+            android:onClick="onClick"
             android:layout_marginBottom="23dp"
             android:layout_gravity="center" android:gravity="center|center_vertical" android:textAllCaps="false"
             android:fontFamily="@font/montserrat"/>
@@ -43,7 +43,7 @@
             android:text="@string/take_a_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/buttonNewPicture"
-            android:onClick="onUpdateServerButtonClick"
+            android:onClick="onClick"
             android:layout_marginBottom="97dp"
             android:layout_gravity="center" android:textAllCaps="false" android:fontFamily="@font/montserrat"/>
 
