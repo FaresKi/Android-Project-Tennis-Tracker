@@ -28,6 +28,7 @@ public class Player implements Parcelable {
     
     private transient int sets;
     private transient Statistics playerStats = new Statistics();
+    
 
 
     /**
@@ -42,6 +43,12 @@ public class Player implements Parcelable {
         this.name = name;
         this.playerId = count.incrementAndGet();
         playerStats.setPlayerId(playerId);
+    }
+    
+    public Player(String name, int id){
+        sets = 0;
+        this.name = name;
+        this.playerId=id;
     }
 
     protected Player(Parcel in) {
@@ -88,6 +95,7 @@ public class Player implements Parcelable {
     public int getPlayerId() {
         return playerId;
     }
+    
 
     @Override
     public int describeContents() {

@@ -34,6 +34,11 @@ public class Match implements Parcelable {
         this.secondPlayer = secondPlayer;
         playersStats = Arrays.asList(firstPlayer.getPlayerStats(), secondPlayer.getPlayerStats());
     }
+    public Match(Player firstPlayer, Player secondPlayer, int matchId) {
+        this.matchId = matchId;
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+    }
 
     protected Match(Parcel in) {
         matchId = in.readInt();

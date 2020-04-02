@@ -1,49 +1,39 @@
 package fr.android.tennistracker.Activities;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import fr.android.tennistracker.DAO.DataAPIAccess;
+import fr.android.tennistracker.DAO.MyDBHandler;
+import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.R;
-import org.json.JSONException;
 
-import java.io.IOException;
+import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    private TextView dataAPI;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        dataAPI = findViewById(R.id.dataAPI);
-        new APIAccessAsyncTask().execute("");
-        
-        
-    }
-    
-    
-    private class APIAccessAsyncTask extends AsyncTask <String, Void, String>{
+        TableLayout matchList = findViewById(R.id.matchList);
 
-        String allMatches;
-        DataAPIAccess dataAPIAccess = new DataAPIAccess();
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                allMatches = dataAPIAccess.getAllMatches();
-                dataAPIAccess.matchList();
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-            
-            return allMatches;
+        TableRow matchRow = new TableRow(this);
+        matchRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT));
+
+        MyDBHandler myDBHandler = new MyDBHandler(getApplicationContext());
+        
+        List<Match> matches = myDBHandler.getMatchList();
+        for(Match match : matches){
+            TextView matchLabel = new TextView(this);
+            matchLabel.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT));
+            matchLabel.setText(match.getFirstPlayer().getName() + " vs " + match.getSecondPlayer().getName());
+            matchRow.addView(matchLabel);
+            matchList.addView(matchRow);
         }
         
-        @Override
-        protected void onPostExecute(String s) {
-            dataAPI.setText(s);
-        }
     }
     
+
 }

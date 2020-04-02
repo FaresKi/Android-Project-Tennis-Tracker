@@ -257,6 +257,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         intent.putExtra("setTwo", setTwo);
         intent.putExtra("setThree", setThree);
         intent.putExtra("match", match);
+        intent.putExtra("matchIsDone", matchFinished);
+        intent.putExtra("origin","done");
         this.startActivity(intent);
     }
 
@@ -671,6 +673,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 intent.putExtra("setOne", setOne);
                 intent.putExtra("setTwo", setTwo);
                 intent.putExtra("setThree", setThree);
+                intent.putExtra("origin","done");
+                intent.putExtra("matchIsDone", matchFinished);
                 this.startActivity(intent);
                 break;
             case R.id.buttonFPWinner:
@@ -681,6 +685,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 intent.putExtra("setOne", setOne);
                 intent.putExtra("setTwo", setTwo);
                 intent.putExtra("setThree", setThree);
+                intent.putExtra("origin","done");
+                intent.putExtra("matchIsDone", matchFinished);
                 this.startActivity(intent);
                 break;
             case R.id.buttonSPWinner:
@@ -691,6 +697,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 intent.putExtra("setOne", setOne);
                 intent.putExtra("setTwo", setTwo);
                 intent.putExtra("setThree", setThree);
+                intent.putExtra("origin","done");
+                intent.putExtra("matchIsDone", matchFinished);
                 this.startActivity(intent);
                 break;
         }

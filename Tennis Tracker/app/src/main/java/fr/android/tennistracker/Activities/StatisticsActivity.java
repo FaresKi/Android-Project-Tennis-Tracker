@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import fr.android.tennistracker.DAO.DataAPIAccess;
 import fr.android.tennistracker.DAO.MyDBHandler;
 import fr.android.tennistracker.Model.Match;
@@ -54,7 +55,8 @@ public class StatisticsActivity extends AppCompatActivity {
         if (origin != null && origin.equals("imageButton")) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             matchToggleButton.setEnabled(false);
-        } else {
+        } else if(origin.equals("done")) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             matchToggleButton.setEnabled(true);
         }
 
@@ -79,7 +81,11 @@ public class StatisticsActivity extends AppCompatActivity {
 
         matchToggleButton.setChecked(true);
 
-        new APIAccessAsyncTask().execute("");
+        boolean matchFinished = getIntent().getExtras().getBoolean("matchIsDone");
+        if(matchFinished){
+            new APIAccessAsyncTask().execute("");
+        }
+        
 
         setStatsLabels();
         setScoreTable();
@@ -337,10 +343,17 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        String origin = getIntent().getStringExtra("origin");
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
-                return true;
+                if( origin!=null && origin.equals("imageButton")){
+                    finish();
+                    return true; 
+                }else if(origin.equals("done")){
+                    NavUtils.navigateUpFromSameTask(this);
+                    return true;
+                }
+                
         }
         return true;
     }
@@ -358,20 +371,20 @@ public class StatisticsActivity extends AppCompatActivity {
                 dataAPIAccess.matchList();*/
                 //dataAPIAccess.sendNewGame(match);
                 
-                /*
+                
                 myDBHandler.onCreate(myDBHandler.getWritableDatabase());
                 
-                dataAPIAccess.sendNewPlayer(playerOne);
+                //dataAPIAccess.sendNewPlayer(playerOne);
                 myDBHandler.addPlayer(playerOne);
-                dataAPIAccess.sendNewPlayer(playerTwo);
+                //dataAPIAccess.sendNewPlayer(playerTwo);
                 myDBHandler.addPlayer(playerTwo);
-                dataAPIAccess.sendNewGame(match);
+                //dataAPIAccess.sendNewGame(match);
                 
                 
                 
                 myDBHandler.addGame(match);
                 
-                 */
+                 
                 Statistics playerOneSetOneStats = setOne.getPlayersStats().get(0);
                 Statistics playerTwoSetOneStats = setOne.getPlayersStats().get(1);
 
@@ -396,21 +409,22 @@ public class StatisticsActivity extends AppCompatActivity {
 
                 playerOneSetTwoStats.setMatchId(match.getMatchId());
                 playerTwoSetTwoStats.setMatchId(match.getMatchId());
+                 
                 
-                /*
-                dataAPIAccess.sendNewStats(playerOneSetOneStats);
+                
+                //dataAPIAccess.sendNewStats(playerOneSetOneStats);
                 myDBHandler.addStats(playerOneSetOneStats);
                 
-                dataAPIAccess.sendNewStats(playerTwoSetOneStats);
+                //dataAPIAccess.sendNewStats(playerTwoSetOneStats);
                 myDBHandler.addStats(playerTwoSetOneStats);
                 
-                dataAPIAccess.sendNewStats(playerOneSetTwoStats);
+                //dataAPIAccess.sendNewStats(playerOneSetTwoStats);
                 myDBHandler.addStats(playerOneSetTwoStats);
                 
-                dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
+                //dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
                 myDBHandler.addStats(playerTwoSetTwoStats);
                 
-                 */
+                 
 
                 if(setThree!=null){
                     Statistics playerOneSetThreeStats = setThree.getPlayersStats().get(0);

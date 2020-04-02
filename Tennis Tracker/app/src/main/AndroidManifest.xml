@@ -24,6 +24,7 @@
                 android:value="@string/google_maps_key"/>
         
         <activity android:name=".Activities.StatisticsActivity"
+                  android:parentActivityName=".Activities.HomeActivity"
         >
         </activity>
         <activity android:name=".Activities.HistoryActivity">
