@@ -32,7 +32,7 @@
                         android:text="@string/score"
                         android:textStyle="bold"/>
                 <ImageButton
-                        android:layout_width="34dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp" app:srcCompat="@drawable/graphic"
                         android:id="@+id/imageButtonStats" android:layout_weight="1" android:scaleType="fitCenter"
                         android:onClick="onImageButtonClick"/>
