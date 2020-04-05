@@ -79,9 +79,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "FOREIGN KEY (" + COLUMN_ID_MATCH + ") REFERENCES " + TABLE_NAME_GAME + "(" + COLUMN_ID_MATCH + ")," +
                 "FOREIGN KEY (" + COLUMN_ID_PLAYER + ") REFERENCES " + TABLE_NAME_PLAYER + "(" + COLUMN_ID_PLAYER + ")  );";
 
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_STATS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_GAME);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_PLAYER);
         db.execSQL(CREATE_TABLE_PLAYER);
         db.execSQL(CREATE_TABLE_GAME);
         db.execSQL(CREATE_TABLE_STATS);

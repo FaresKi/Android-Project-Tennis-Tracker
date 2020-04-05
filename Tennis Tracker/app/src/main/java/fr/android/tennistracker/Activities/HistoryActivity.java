@@ -1,14 +1,14 @@
 package fr.android.tennistracker.Activities;
 
 import android.os.Bundle;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import fr.android.tennistracker.DAO.MyDBHandler;
 import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
@@ -17,23 +17,24 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        TableLayout matchList = findViewById(R.id.matchList);
+        ListView matchList = findViewById(R.id.matchList);
 
-        TableRow matchRow = new TableRow(this);
-        matchRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT));
+        List<String> stringList = new ArrayList<>();
 
         MyDBHandler myDBHandler = new MyDBHandler(getApplicationContext());
-        
+
         List<Match> matches = myDBHandler.getMatchList();
-        for(Match match : matches){
-            TextView matchLabel = new TextView(this);
-            matchLabel.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT));
-            matchLabel.setText(match.getFirstPlayer().getName() + " vs " + match.getSecondPlayer().getName());
-            matchRow.addView(matchLabel);
-            matchList.addView(matchRow);
+
+        for (Match match : matches) {
+            stringList.add(match.getFirstPlayer().getName() + " vs " + match.getSecondPlayer().getName());
         }
-        
+
+        ArrayAdapter stringListAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, stringList);
+        matchList.setAdapter(stringListAdapter);
+        stringListAdapter.notifyDataSetChanged();
+
+
     }
-    
+
 
 }

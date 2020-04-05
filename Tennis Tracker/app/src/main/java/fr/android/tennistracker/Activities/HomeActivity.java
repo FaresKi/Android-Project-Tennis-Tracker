@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import fr.android.tennistracker.DAO.MyDBHandler;
 import fr.android.tennistracker.R;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,6 +28,8 @@ public class HomeActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MyDBHandler myDBHandler = new MyDBHandler(this);
+        myDBHandler.emptyDatabase();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Button button = findViewById(R.id.buttonNewMatch);

@@ -369,16 +369,17 @@ public class StatisticsActivity extends AppCompatActivity {
             try {
                 /*allMatches = dataAPIAccess.getAllMatches();
                 dataAPIAccess.matchList();*/
-                //dataAPIAccess.sendNewGame(match);
+                
+                dataAPIAccess.sendNewGame(match);
                 
                 
                 myDBHandler.onCreate(myDBHandler.getWritableDatabase());
                 
-                //dataAPIAccess.sendNewPlayer(playerOne);
+                dataAPIAccess.sendNewPlayer(playerOne);
                 myDBHandler.addPlayer(playerOne);
-                //dataAPIAccess.sendNewPlayer(playerTwo);
+                dataAPIAccess.sendNewPlayer(playerTwo);
                 myDBHandler.addPlayer(playerTwo);
-                //dataAPIAccess.sendNewGame(match);
+                dataAPIAccess.sendNewGame(match);
                 
                 
                 
@@ -412,16 +413,16 @@ public class StatisticsActivity extends AppCompatActivity {
                  
                 
                 
-                //dataAPIAccess.sendNewStats(playerOneSetOneStats);
+                dataAPIAccess.sendNewStats(playerOneSetOneStats);
                 myDBHandler.addStats(playerOneSetOneStats);
                 
-                //dataAPIAccess.sendNewStats(playerTwoSetOneStats);
+                dataAPIAccess.sendNewStats(playerTwoSetOneStats);
                 myDBHandler.addStats(playerTwoSetOneStats);
                 
-                //dataAPIAccess.sendNewStats(playerOneSetTwoStats);
+                dataAPIAccess.sendNewStats(playerOneSetTwoStats);
                 myDBHandler.addStats(playerOneSetTwoStats);
                 
-                //dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
+                dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
                 myDBHandler.addStats(playerTwoSetTwoStats);
                 
                  
