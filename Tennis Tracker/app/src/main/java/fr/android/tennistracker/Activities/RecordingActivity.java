@@ -437,7 +437,9 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         if (setIsDone()) {
             player.winSet();
             matchIsDone();
-            changeSet();
+            if (!matchFinished){
+                changeSet();
+            }
         }
     }
 
