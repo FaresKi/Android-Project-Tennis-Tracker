@@ -257,6 +257,12 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         intent.putExtra("setTwo", setTwo);
         intent.putExtra("setThree", setThree);
         intent.putExtra("match", match);
+        intent.putExtra("playerOneSetTwo",setTwo.getPlayersStats().get(0).getStatsId());
+        intent.putExtra("playerTwoSetTwo", setTwo.getPlayersStats().get(1).getStatsId());
+        if(setThree!=null){
+            intent.putExtra("playerOneSetThree",setThree.getPlayersStats().get(0).getStatsId());
+            intent.putExtra("playerTwoSetThree", setThree.getPlayersStats().get(1).getStatsId());
+        }
         intent.putExtra("matchIsDone", matchFinished);
         intent.putExtra("origin", "done");
         this.startActivity(intent);
@@ -308,17 +314,14 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
 
         switch (currentSet) {
             case 1:
-                setOne = new Set(currentSet);
                 sets.add(firstPlayerSet_1);
                 sets.add(secondPlayerSet_1);
                 break;
             case 2:
-                setTwo = new Set(currentSet);
                 sets.add(firstPlayerSet_2);
                 sets.add(secondPlayerSet_2);
                 break;
             case 3:
-                setThree = new Set(currentSet);
                 sets.add(firstPlayerSet_3);
                 sets.add(secondPlayerSet_3);
                 break;
@@ -437,9 +440,26 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         if (setIsDone()) {
             player.winSet();
             matchIsDone();
-            if (!matchFinished){
+            if(!matchFinished){
                 changeSet();
+            }else{
+                if(currentSet==2){
+                    setTwo = new Set(currentSet);
+                    firstPlayerStats.setPlayerId(playerOne.getPlayerId());
+                    secondPlayerStats.setPlayerId(playerTwo.getPlayerId());
+                    firstPlayerStats.setSetNumber(setTwo.getSetNumber());
+                    secondPlayerStats.setSetNumber(setTwo.getSetNumber());
+                    firstPlayerStats.setSetScore(Integer.parseInt((String) firstPlayerSet_2.getText()));
+                    secondPlayerStats.setSetScore(Integer.parseInt((String) secondPlayerSet_2.getText()));
+                    setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                    setTwo.setSetScoreFirstPlayer((String) firstPlayerSet_2.getText());
+                    setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
+                    setTwo.setScoreFP((String) firstPlayerScore.getText());
+                    setTwo.setScoreSP((String) secondPlayerScore.getText());
+                }
             }
+            
+
         }
     }
 
@@ -448,6 +468,8 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
             setOne = new Set(1);
             firstPlayerStats.setSetNumber(setOne.getSetNumber());
             secondPlayerStats.setSetNumber(setOne.getSetNumber());
+            firstPlayerStats.setSetScore(Integer.parseInt((String) firstPlayerSet_1.getText()));
+            secondPlayerStats.setSetScore(Integer.parseInt((String) secondPlayerSet_1.getText()));
             setOne.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
             setOne.setScoreFP((String) firstPlayerScore.getText());
             setOne.setScoreSP((String) secondPlayerScore.getText());
@@ -462,35 +484,43 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         currentSet++;
         switch (currentSet) {
             case 2:
-                setTwo = new Set(2);
                 firstPlayerSet_2.setText("0");
                 secondPlayerSet_2.setText("0");
                 break;
             case 3:
-                firstPlayerSet_3.setText("0");
-                secondPlayerSet_3.setText("0");
-                firstPlayerStats.setSetNumber(setTwo.getSetNumber());
-                secondPlayerStats.setSetNumber(setTwo.getSetNumber());
-                setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
-                setTwo.setSetScoreFirstPlayer((String) firstPlayerSet_2.getText());
-                setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
-                setTwo.setScoreFP((String) firstPlayerScore.getText());
-                setTwo.setScoreSP((String) secondPlayerScore.getText());
-                break;
+                if(!matchFinished) {
+                    firstPlayerSet_3.setText("0");
+                    secondPlayerSet_3.setText("0");
+                    firstPlayerStats.setSetNumber(setTwo.getSetNumber());
+                    secondPlayerStats.setSetNumber(setTwo.getSetNumber());
+                    firstPlayerStats.setSetScore(Integer.parseInt((String) firstPlayerSet_2.getText()));
+                    secondPlayerStats.setSetScore(Integer.parseInt((String) secondPlayerSet_2.getText()));
+                    setTwo.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
+                    setTwo.setSetScoreFirstPlayer((String) firstPlayerSet_2.getText());
+                    setTwo.setSetScoreSecondPlayer((String) secondPlayerSet_2.getText());
+                    setTwo.setScoreFP((String) firstPlayerScore.getText());
+                    setTwo.setScoreSP((String) secondPlayerScore.getText());
+
+                    playerOne.reinitialiseStats();
+                    playerTwo.reinitialiseStats();
+
+                    firstPlayerStats = playerOne.getPlayerStats();
+                    secondPlayerStats = playerTwo.getPlayerStats();
+                    break;
+                }
             default:
-                playerOne.reinitialiseStats();
-                playerTwo.reinitialiseStats();
-                firstPlayerStats = playerOne.getPlayerStats();
-                secondPlayerStats = playerTwo.getPlayerStats();
+;
                 firstPlayerStats.setSetNumber(setThree.getSetNumber());
                 secondPlayerStats.setSetNumber(setThree.getSetNumber());
+                firstPlayerStats.setSetScore(Integer.parseInt((String) firstPlayerSet_3.getText()));
+                secondPlayerStats.setSetScore(Integer.parseInt((String) secondPlayerSet_3.getText()));
                 setThree.setPlayersStats(Arrays.asList(firstPlayerStats, secondPlayerStats));
                 setThree.setSetScoreFirstPlayer((String) firstPlayerSet_3.getText());
                 setThree.setSetScoreSecondPlayer((String) secondPlayerSet_3.getText());
                 setThree.setScoreFP((String) tabFirstName.getText());
                 setThree.setScoreSP((String) tabSecondName.getText());
                 break;
-                
+
         }
     }
 
@@ -576,7 +606,7 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
         }
     }
 
-    private void scoringTieBreak(Player player, TextView playerScore, TextView playerSet, boolean firstPoint, int TB) {
+    private void scoringTieBreak(TextView playerScore, TextView playerSet, boolean firstPoint, int TB) {
         int score = Integer.parseInt(playerScore.getText().toString()) + 1;
         playerScore.setText(String.valueOf(score));
         if (firstPoint) {
@@ -609,10 +639,10 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
 
     private void lastSetTieBreak(Player player, TextView playerScore, TextView playerSet, int TB) {
         if (tieBreak) {
-            scoringTieBreak(player, playerScore, playerSet, false, TB);
+            scoringTieBreak(playerScore, playerSet, false, TB);
         } else {
             tieBreak = true;
-            scoringTieBreak(player, playerScore, playerSet, true, TB);
+            scoringTieBreak(playerScore, playerSet, true, TB);
         }
     }
 
@@ -629,13 +659,13 @@ public class RecordingActivity extends AppCompatActivity implements DoneMatchDia
                 }
             } else {
                 if (tieBreak) {
-                    scoringTieBreak(player, playerScore, playerSet, false, 7);
+                    scoringTieBreak(playerScore, playerSet, false, 7);
                 } else {
                     int gamesPlayer = Integer.parseInt(playerSet.getText().toString());
                     int gamesChallenger = Integer.parseInt(challengerSet.getText().toString());
                     if (gamesChallenger == pointsTieBreak && gamesPlayer == pointsTieBreak) {
                         tieBreak = true;
-                        scoringTieBreak(player, playerScore, playerSet, true, 7);
+                        scoringTieBreak(playerScore, playerSet, true, 7);
                     } else {
                         if (advantage) {
                             scoringWithAdvantage(player, playerScore, playerSet);

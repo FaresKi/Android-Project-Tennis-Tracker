@@ -55,7 +55,7 @@ public class StatisticsActivity extends AppCompatActivity {
         if (origin != null && origin.equals("imageButton")) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             matchToggleButton.setEnabled(false);
-        } else if(origin.equals("done")) {
+        } else if (origin.equals("done")) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             matchToggleButton.setEnabled(true);
         }
@@ -64,6 +64,13 @@ public class StatisticsActivity extends AppCompatActivity {
         setOne = getIntent().getParcelableExtra("setOne");
         setTwo = getIntent().getParcelableExtra("setTwo");
         setThree = getIntent().getParcelableExtra("setThree");
+        
+        int playerOneSetTwo = getIntent().getIntExtra("playerOneSetTwo",-1);
+        int playerTwoSetTwo = getIntent().getIntExtra("playerTwoSetTwo",-1);
+        
+        setTwo.getPlayersStats().get(0).setStatsId(playerOneSetTwo);
+        setTwo.getPlayersStats().get(1).setStatsId(playerTwoSetTwo);
+        
 
         if (setOne == null) {
             setOneToggleButton.setEnabled(false);
@@ -72,9 +79,14 @@ public class StatisticsActivity extends AppCompatActivity {
         if (setTwo == null) {
             setTwoToggleButton.setEnabled(false);
         }
-        
+
         if (setThree != null) {
             setThreeToggleButton.setEnabled(true);
+            int playerOneSetThree = getIntent().getIntExtra("playerOneSetThree",-1);
+            int playerTwoSetThree = getIntent().getIntExtra("playerTwoSetThree",-1);
+            
+            setThree.getPlayersStats().get(0).setStatsId(playerOneSetThree);
+            setThree.getPlayersStats().get(1).setStatsId(playerTwoSetThree);
         }
 
         match = getIntent().getParcelableExtra("match");
@@ -82,10 +94,10 @@ public class StatisticsActivity extends AppCompatActivity {
         matchToggleButton.setChecked(true);
 
         boolean matchFinished = getIntent().getExtras().getBoolean("matchIsDone");
-        if(matchFinished){
+        if (matchFinished) {
             new APIAccessAsyncTask().execute("");
         }
-        
+
 
         setStatsLabels();
         setScoreTable();
@@ -346,14 +358,14 @@ public class StatisticsActivity extends AppCompatActivity {
         String origin = getIntent().getStringExtra("origin");
         switch (item.getItemId()) {
             case android.R.id.home:
-                if( origin!=null && origin.equals("imageButton")){
+                if ((origin != null && origin.equals("imageButton"))  || (origin.equals("HistoryActivity") )){
                     finish();
-                    return true; 
-                }else if(origin.equals("done")){
+                    return true;
+                } else if ((origin.equals("done") )) {
                     NavUtils.navigateUpFromSameTask(this);
                     return true;
                 }
-                
+
         }
         return true;
     }
@@ -364,34 +376,34 @@ public class StatisticsActivity extends AppCompatActivity {
         String allMatches;
         DataAPIAccess dataAPIAccess = new DataAPIAccess();
         MyDBHandler myDBHandler = new MyDBHandler(getApplicationContext());
+
         @Override
         protected String doInBackground(String... strings) {
             try {
                 /*allMatches = dataAPIAccess.getAllMatches();
                 dataAPIAccess.matchList();*/
-                
+
                 dataAPIAccess.sendNewGame(match);
-                
-                
+
+
                 myDBHandler.onCreate(myDBHandler.getWritableDatabase());
-                
+
                 dataAPIAccess.sendNewPlayer(playerOne);
                 myDBHandler.addPlayer(playerOne);
                 dataAPIAccess.sendNewPlayer(playerTwo);
                 myDBHandler.addPlayer(playerTwo);
                 dataAPIAccess.sendNewGame(match);
-                
-                
-                
+
+
                 myDBHandler.addGame(match);
-                
-                 
+
+
                 Statistics playerOneSetOneStats = setOne.getPlayersStats().get(0);
                 Statistics playerTwoSetOneStats = setOne.getPlayersStats().get(1);
 
                 Statistics playerOneSetTwoStats = setTwo.getPlayersStats().get(0);
                 Statistics playerTwoSetTwoStats = setTwo.getPlayersStats().get(1);
-                
+
                 playerOneSetOneStats.setSetNumber(1);
                 playerOneSetOneStats.setPlayerId(playerOne.getPlayerId());
 
@@ -403,31 +415,29 @@ public class StatisticsActivity extends AppCompatActivity {
 
                 playerTwoSetTwoStats.setSetNumber(2);
                 playerTwoSetTwoStats.setPlayerId(playerTwo.getPlayerId());
-                
-                
+
+
                 playerOneSetOneStats.setMatchId(match.getMatchId());
                 playerTwoSetOneStats.setMatchId(match.getMatchId());
 
                 playerOneSetTwoStats.setMatchId(match.getMatchId());
                 playerTwoSetTwoStats.setMatchId(match.getMatchId());
-                 
-                
-                
+
+
                 dataAPIAccess.sendNewStats(playerOneSetOneStats);
                 myDBHandler.addStats(playerOneSetOneStats);
-                
+
                 dataAPIAccess.sendNewStats(playerTwoSetOneStats);
                 myDBHandler.addStats(playerTwoSetOneStats);
-                
+
                 dataAPIAccess.sendNewStats(playerOneSetTwoStats);
                 myDBHandler.addStats(playerOneSetTwoStats);
-                
+
                 dataAPIAccess.sendNewStats(playerTwoSetTwoStats);
                 myDBHandler.addStats(playerTwoSetTwoStats);
-                
-                 
 
-                if(setThree!=null){
+
+                if (setThree != null) {
                     Statistics playerOneSetThreeStats = setThree.getPlayersStats().get(0);
                     Statistics playerTwoSetThreeStats = setThree.getPlayersStats().get(1);
 
@@ -442,15 +452,15 @@ public class StatisticsActivity extends AppCompatActivity {
 
                     dataAPIAccess.sendNewStats(playerOneSetThreeStats);
                     myDBHandler.addStats(playerOneSetThreeStats);
-                            
+
                     dataAPIAccess.sendNewStats(playerTwoSetThreeStats);
                     myDBHandler.addStats(playerTwoSetThreeStats);
-                    
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+
             return allMatches;
         }
 

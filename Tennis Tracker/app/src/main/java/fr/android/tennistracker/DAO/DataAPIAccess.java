@@ -2,7 +2,6 @@ package fr.android.tennistracker.DAO;
 
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import fr.android.tennistracker.Model.Match;
 import fr.android.tennistracker.Model.Player;
 import fr.android.tennistracker.Model.Statistics;
@@ -42,17 +41,7 @@ public class DataAPIAccess {
 
         return jsonResponse;
     }
-
-    public void matchList() throws JSONException {
-
-        List<Match> matchList = new ArrayList<>();
-        JSONArray array = new JSONArray(jsonResponse);
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject object = array.getJSONObject(i);
-            Match match = g.fromJson(object.toString(), Match.class);
-            matchList.add(match);
-        }
-    }
+    
 
     public void sendNewGame(Match match) throws IOException {
 

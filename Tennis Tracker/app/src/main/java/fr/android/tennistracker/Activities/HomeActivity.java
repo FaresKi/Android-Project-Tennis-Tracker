@@ -28,8 +28,6 @@ public class HomeActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MyDBHandler myDBHandler = new MyDBHandler(this);
-        myDBHandler.emptyDatabase();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Button button = findViewById(R.id.buttonNewMatch);

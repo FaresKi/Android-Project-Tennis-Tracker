@@ -19,7 +19,7 @@ public class Statistics implements Parcelable {
     };
 
 
-    private transient static final AtomicInteger count = new AtomicInteger(0);
+    private transient static int count = 0;
     private int statsId = 0;
     private int playerId;
     private int firstServes = 0;
@@ -31,9 +31,10 @@ public class Statistics implements Parcelable {
     private int forcedErrors = 0;
     private int setNumber;
     private int matchId;
+    private int setScore = 0;
 
     public Statistics() {
-        statsId = count.incrementAndGet();
+        setStatsId(++count);
     }
 
     protected Statistics(Parcel in) {
@@ -47,6 +48,7 @@ public class Statistics implements Parcelable {
         unforcedErrors = in.readInt();
         forcedErrors = in.readInt();
         setNumber = in.readInt();
+        setScore = in.readInt();
     }
 
     public int getFirstServes() {
@@ -122,6 +124,7 @@ public class Statistics implements Parcelable {
         dest.writeInt(unforcedErrors);
         dest.writeInt(forcedErrors);
         dest.writeInt(setNumber);
+        dest.writeInt(setScore);
     }
 
     public int getStatsId() {
@@ -169,5 +172,13 @@ public class Statistics implements Parcelable {
 
     public void setMatchId(int matchId) {
         this.matchId = matchId;
+    }
+
+    public int getSetScore() {
+        return setScore;
+    }
+
+    public void setSetScore(int setScore) {
+        this.setScore = setScore;
     }
 }

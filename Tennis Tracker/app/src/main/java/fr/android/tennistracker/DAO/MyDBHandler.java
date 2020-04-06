@@ -3,6 +3,7 @@ package fr.android.tennistracker.DAO;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_UNFORCED_ERROR = "unforced_error";
     public static final String COLUMN_WINNERS = "winners";
     public static final String COLUMN_SET = "set_number";
+    public static final String COLUMN_SET_SCORE = "set_score";
 
     public static final String TABLE_NAME_GAME = "Game";
     public static final String COLUMN_PLAYER_ONE = "player_one";
@@ -74,11 +76,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_UNFORCED_ERROR + " int not null," +
                 COLUMN_WINNERS + " int not null," +
                 COLUMN_SET + " int not null," +
+                COLUMN_SET_SCORE + " int not null," +
                 COLUMN_ID_MATCH + " int not null," +
                 COLUMN_ID_PLAYER + " int not null," +
                 "FOREIGN KEY (" + COLUMN_ID_MATCH + ") REFERENCES " + TABLE_NAME_GAME + "(" + COLUMN_ID_MATCH + ")," +
                 "FOREIGN KEY (" + COLUMN_ID_PLAYER + ") REFERENCES " + TABLE_NAME_PLAYER + "(" + COLUMN_ID_PLAYER + ")  );";
-
+        
+        
         db.execSQL(CREATE_TABLE_PLAYER);
         db.execSQL(CREATE_TABLE_GAME);
         db.execSQL(CREATE_TABLE_STATS);
@@ -122,6 +126,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_UNFORCED_ERROR, statistics.getUnforcedErrors());
         values.put(COLUMN_WINNERS, statistics.getWinners());
         values.put(COLUMN_SET, statistics.getSetNumber());
+        values.put(COLUMN_SET_SCORE, statistics.getSetScore());
         values.put(COLUMN_ID_MATCH, statistics.getMatchId());
         values.put(COLUMN_ID_PLAYER, statistics.getPlayerId());
 
@@ -136,7 +141,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         database.delete(TABLE_NAME_PLAYER, null, null);
     }
 
-    
+
     public List<Match> getMatchList() {
         List<Match> matchList = new ArrayList<>();
         Match match;
@@ -158,15 +163,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 null
         );
         while (cursor.moveToNext()) {
-            Player firstPlayer = getPlayerId(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_ONE)));
-            Player secondPlayer = getPlayerId(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_TWO)));
+            Player firstPlayer = getPlayerById(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_ONE)));
+            Player secondPlayer = getPlayerById(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_TWO)));
             match = new Match(firstPlayer, secondPlayer, cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MATCH)));
             matchList.add(match);
         }
         return matchList;
     }
 
-    public Player getPlayerId(int playerId) {
+    public Player getPlayerById(int playerId) {
         Player player = null;
         database = this.getReadableDatabase();
         String[] projection = {
@@ -208,21 +213,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_SET,
                 COLUMN_ID_MATCH
         };
-        String selection = COLUMN_ID_PLAYER + "=? AND " + COLUMN_ID_MATCH + "=?";
-        String[] selectionArgs = {String.valueOf(matchId), String.valueOf(playerId)};
-        Cursor cursor = database.query(
-                TABLE_NAME_STATS,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME_STATS + " WHERE " + COLUMN_ID_MATCH + "=" + matchId + " AND " + COLUMN_ID_PLAYER + "="+ playerId,null);
+        System.out.println("Debug SQLite : " + cursor.getCount());
         while (cursor.moveToNext()) {
             statistics = new Statistics();
-            
+
             statistics.setStatsId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
             statistics.setPlayerId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PLAYER)));
             statistics.setAces(cursor.getInt(cursor.getColumnIndex(COLUMN_ACES)));
@@ -233,11 +228,47 @@ public class MyDBHandler extends SQLiteOpenHelper {
             statistics.setUnforcedErrors(cursor.getInt(cursor.getColumnIndex(COLUMN_UNFORCED_ERROR)));
             statistics.setWinners(cursor.getInt(cursor.getColumnIndex(COLUMN_WINNERS)));
             statistics.setSetNumber(cursor.getInt(cursor.getColumnIndex(COLUMN_SET)));
+            statistics.setSetScore(cursor.getInt(cursor.getColumnIndex(COLUMN_SET_SCORE)));
             statistics.setMatchId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MATCH)));
 
             statisticsList.add(statistics);
         }
 
         return statisticsList;
+    }
+    
+    public Match getMatchById(int matchId){
+        Match match = null;
+        database = this.getReadableDatabase();
+        String[] projection ={
+                COLUMN_ID_MATCH,
+                COLUMN_PLAYER_ONE,
+                COLUMN_PLAYER_TWO
+        };
+        
+        String selection = COLUMN_ID_MATCH + "=?";
+        String[] selectionArgs = {String.valueOf(matchId)};
+        Cursor cursor = database.query(
+                TABLE_NAME_GAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        
+        while (cursor.moveToNext()){
+            
+            int playerOneId = cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_ONE));
+            int playerTwoId = cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_TWO));
+            
+            Player playerOne = getPlayerById(playerOneId);
+            Player playerTwo = getPlayerById(playerTwoId);
+            
+            match = new Match(playerOne,playerTwo,matchId);
+        }
+        
+        return match;
     }
 }

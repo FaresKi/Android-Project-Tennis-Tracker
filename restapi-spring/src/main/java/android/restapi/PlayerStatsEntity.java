@@ -17,6 +17,7 @@ public class PlayerStatsEntity {
     private int setNumber;
     private int playerId;
     private int matchId;
+    private int setScore;
 
     @Id
     @Column(name = "stats_id")
@@ -133,6 +134,8 @@ public class PlayerStatsEntity {
                 winners == that.winners &&
                 setNumber == that.setNumber &&
                 playerId == that.playerId &&
+                matchId == that.matchId &&
+                setScore == that.setScore &&
                 Objects.equals(firstServes, that.firstServes);
     }
 
@@ -149,5 +152,16 @@ public class PlayerStatsEntity {
 
     public void setMatchId(int matchId) {
         this.matchId = matchId;
+    }
+
+
+    @Basic
+    @Column(name = "set_score")
+    public int getSetScore() {
+        return setScore;
+    }
+
+    public void setSetScore(int setScore) {
+        this.setScore = setScore;
     }
 }
