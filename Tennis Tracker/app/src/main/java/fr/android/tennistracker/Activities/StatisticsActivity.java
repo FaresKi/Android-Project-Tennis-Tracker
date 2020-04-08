@@ -65,11 +65,16 @@ public class StatisticsActivity extends AppCompatActivity {
         setTwo = getIntent().getParcelableExtra("setTwo");
         setThree = getIntent().getParcelableExtra("setThree");
         
-        int playerOneSetTwo = getIntent().getIntExtra("playerOneSetTwo",-1);
-        int playerTwoSetTwo = getIntent().getIntExtra("playerTwoSetTwo",-1);
+        if( origin!=null && origin.equals("done")){
+            int playerOneSetTwo = getIntent().getIntExtra("playerOneSetTwo",-1);
+            int playerTwoSetTwo = getIntent().getIntExtra("playerTwoSetTwo",-1);
+
+            setTwo.getPlayersStats().get(0).setStatsId(playerOneSetTwo);
+            setTwo.getPlayersStats().get(1).setStatsId(playerTwoSetTwo);
+        }
+       
         
-        setTwo.getPlayersStats().get(0).setStatsId(playerOneSetTwo);
-        setTwo.getPlayersStats().get(1).setStatsId(playerTwoSetTwo);
+       
         
 
         if (setOne == null) {
@@ -82,11 +87,13 @@ public class StatisticsActivity extends AppCompatActivity {
 
         if (setThree != null) {
             setThreeToggleButton.setEnabled(true);
-            int playerOneSetThree = getIntent().getIntExtra("playerOneSetThree",-1);
-            int playerTwoSetThree = getIntent().getIntExtra("playerTwoSetThree",-1);
-            
-            setThree.getPlayersStats().get(0).setStatsId(playerOneSetThree);
-            setThree.getPlayersStats().get(1).setStatsId(playerTwoSetThree);
+            if(origin!=null && origin.equals("done")){
+                int playerOneSetThree = getIntent().getIntExtra("playerOneSetThree",-1);
+                int playerTwoSetThree = getIntent().getIntExtra("playerTwoSetThree",-1);
+
+                setThree.getPlayersStats().get(0).setStatsId(playerOneSetThree);
+                setThree.getPlayersStats().get(1).setStatsId(playerTwoSetThree);
+            }
         }
 
         match = getIntent().getParcelableExtra("match");
