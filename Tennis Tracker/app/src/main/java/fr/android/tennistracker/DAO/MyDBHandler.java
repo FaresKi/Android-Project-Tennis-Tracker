@@ -160,7 +160,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                null
+                null,
+                "5"
         );
         while (cursor.moveToNext()) {
             Player firstPlayer = getPlayerById(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAYER_ONE)));
@@ -200,19 +201,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         List<Statistics> statisticsList = new ArrayList<>();
         Statistics statistics;
         database = this.getReadableDatabase();
-        String[] projection = {
-                COLUMN_ID,
-                COLUMN_ID_PLAYER,
-                COLUMN_ACES,
-                COLUMN_DOUBLE_FAULTS,
-                COLUMN_FIRST_SERVES,
-                COLUMN_FORCED_ERRORS,
-                COLUMN_POINTS_WON_ON_FIRST_SERVE,
-                COLUMN_UNFORCED_ERROR,
-                COLUMN_WINNERS,
-                COLUMN_SET,
-                COLUMN_ID_MATCH
-        };
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME_STATS + " WHERE " + COLUMN_ID_MATCH + "=" + matchId + " AND " + COLUMN_ID_PLAYER + "="+ playerId,null);
         System.out.println("Debug SQLite : " + cursor.getCount());
         while (cursor.moveToNext()) {

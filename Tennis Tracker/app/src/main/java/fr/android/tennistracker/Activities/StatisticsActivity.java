@@ -64,18 +64,15 @@ public class StatisticsActivity extends AppCompatActivity {
         setOne = getIntent().getParcelableExtra("setOne");
         setTwo = getIntent().getParcelableExtra("setTwo");
         setThree = getIntent().getParcelableExtra("setThree");
-        
-        if( origin!=null && origin.equals("done")){
-            int playerOneSetTwo = getIntent().getIntExtra("playerOneSetTwo",-1);
-            int playerTwoSetTwo = getIntent().getIntExtra("playerTwoSetTwo",-1);
+
+        if (origin != null && origin.equals("done")) {
+            int playerOneSetTwo = getIntent().getIntExtra("playerOneSetTwo", -1);
+            int playerTwoSetTwo = getIntent().getIntExtra("playerTwoSetTwo", -1);
 
             setTwo.getPlayersStats().get(0).setStatsId(playerOneSetTwo);
             setTwo.getPlayersStats().get(1).setStatsId(playerTwoSetTwo);
         }
-       
-        
-       
-        
+
 
         if (setOne == null) {
             setOneToggleButton.setEnabled(false);
@@ -87,9 +84,9 @@ public class StatisticsActivity extends AppCompatActivity {
 
         if (setThree != null) {
             setThreeToggleButton.setEnabled(true);
-            if(origin!=null && origin.equals("done")){
-                int playerOneSetThree = getIntent().getIntExtra("playerOneSetThree",-1);
-                int playerTwoSetThree = getIntent().getIntExtra("playerTwoSetThree",-1);
+            if (origin != null && origin.equals("done")) {
+                int playerOneSetThree = getIntent().getIntExtra("playerOneSetThree", -1);
+                int playerTwoSetThree = getIntent().getIntExtra("playerTwoSetThree", -1);
 
                 setThree.getPlayersStats().get(0).setStatsId(playerOneSetThree);
                 setThree.getPlayersStats().get(1).setStatsId(playerTwoSetThree);
@@ -365,10 +362,10 @@ public class StatisticsActivity extends AppCompatActivity {
         String origin = getIntent().getStringExtra("origin");
         switch (item.getItemId()) {
             case android.R.id.home:
-                if ((origin != null && origin.equals("imageButton"))  || (origin.equals("HistoryActivity") )){
+                if ((origin != null && origin.equals("imageButton")) || (origin.equals("HistoryActivity"))) {
                     finish();
                     return true;
-                } else if ((origin.equals("done") )) {
+                } else if ((origin.equals("done"))) {
                     NavUtils.navigateUpFromSameTask(this);
                     return true;
                 }

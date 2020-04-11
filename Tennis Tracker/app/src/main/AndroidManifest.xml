@@ -27,7 +27,9 @@
                   android:parentActivityName=".Activities.HomeActivity"
         >
         </activity>
-        <activity android:name=".Activities.HistoryActivity">
+        <activity
+                android:name=".Activities.HistoryActivity"
+                android:parentActivityName=".Activities.HomeActivity">
         </activity>
         <activity android:name=".Activities.RecordingActivity">
         </activity>

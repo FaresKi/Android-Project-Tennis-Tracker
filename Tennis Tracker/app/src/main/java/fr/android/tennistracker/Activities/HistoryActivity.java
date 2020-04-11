@@ -31,6 +31,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         myDBHandler = new MyDBHandler(getApplicationContext());
         ListView matchList = findViewById(R.id.matchList);
         List<String> stringList = new ArrayList<>();
