@@ -38,7 +38,7 @@ public class APIController {
         gameDAO.saveAndFlush(gameEntity);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/Games/{id}").buildAndExpand(gameEntity.getGameId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
     @PostMapping(value = "/Players", consumes = "application/json", produces="application/json")
@@ -46,7 +46,7 @@ public class APIController {
         playerDAO.saveAndFlush(playersEntity);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/Players/{id}").buildAndExpand(playersEntity.getPlayerId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
     @PostMapping(value = "/Stats", consumes = "application/json", produces="application/json")
@@ -54,7 +54,7 @@ public class APIController {
         statsDAO.saveAndFlush(playerStatsEntity);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/Stats/{id}").buildAndExpand(playerStatsEntity.getPlayerId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(headers, HttpStatus.OK);
     }
     
 }

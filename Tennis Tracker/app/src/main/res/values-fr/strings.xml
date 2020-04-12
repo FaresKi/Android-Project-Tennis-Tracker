@@ -64,4 +64,5 @@
     <string name="grant_it_to_player_2">Le donner au Joueur 2</string>
     <string name="update_server_text">Le serveur va être changé. Que voulez-vous faire du jeu en cours ?</string>
     <string name="start_it_over">Le recommencer à zéro</string>
+    <string name="history">Historique</string>
 </resources>

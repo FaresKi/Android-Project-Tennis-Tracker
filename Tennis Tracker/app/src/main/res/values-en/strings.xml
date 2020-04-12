@@ -63,4 +63,5 @@
     <string name="grant_it_to_player_1">Grant it to Player #1</string>
     <string name="grant_it_to_player_2">Grant it to Player #2</string>
     <string name="start_it_over">Start it over</string>
+    <string name="history">History</string>
 </resources>

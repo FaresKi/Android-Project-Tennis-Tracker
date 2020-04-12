@@ -19,7 +19,7 @@ public class Statistics implements Parcelable {
     };
 
 
-    private transient static int count = 0;
+    private transient static AtomicInteger count = new AtomicInteger(0);
     private int statsId = 0;
     private int playerId;
     private int firstServes = 0;
@@ -34,7 +34,7 @@ public class Statistics implements Parcelable {
     private int setScore = 0;
 
     public Statistics() {
-        setStatsId(++count);
+        setStatsId(count.incrementAndGet());
     }
 
     protected Statistics(Parcel in) {

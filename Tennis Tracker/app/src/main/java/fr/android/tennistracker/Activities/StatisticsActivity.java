@@ -99,7 +99,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         boolean matchFinished = getIntent().getExtras().getBoolean("matchIsDone");
         if (matchFinished) {
-            new APIAccessAsyncTask().execute("");
+            new APIAccessAsyncTask().execute();
         }
 
 
@@ -164,7 +164,7 @@ public class StatisticsActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void setMatchStatistics() {
         if (setThree == null) {
-            FPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors()));
+            FPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(0).getWinners() + setTwo.getPlayersStats().get(0).getWinners()));
             FPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(0).getFirstServes() + setTwo.getPlayersStats().get(0).getFirstServes()));
             FPAces.setText(String.valueOf(setOne.getPlayersStats().get(0).getAces() + setTwo.getPlayersStats().get(0).getAces()));
             FPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(0).getDoubleFaults() + setTwo.getPlayersStats().get(0).getDoubleFaults()));
@@ -173,7 +173,7 @@ public class StatisticsActivity extends AppCompatActivity {
             FPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors()));
             FPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getForcedErrors() + setTwo.getPlayersStats().get(0).getForcedErrors()));
 
-            SPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors()));
+            SPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(1).getWinners() + setTwo.getPlayersStats().get(1).getWinners()));
             SPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(1).getFirstServes() + setTwo.getPlayersStats().get(1).getFirstServes()));
             SPAces.setText(String.valueOf(setOne.getPlayersStats().get(1).getAces() + setTwo.getPlayersStats().get(1).getAces()));
             SPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(1).getDoubleFaults() + setTwo.getPlayersStats().get(1).getDoubleFaults()));
@@ -182,7 +182,7 @@ public class StatisticsActivity extends AppCompatActivity {
             SPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors()));
             SPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(1).getForcedErrors() + setTwo.getPlayersStats().get(1).getForcedErrors()));
         } else {
-            FPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors() + setThree.getPlayersStats().get(0).getUnforcedErrors()));
+            FPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(0).getWinners() + setTwo.getPlayersStats().get(0).getWinners() + setThree.getPlayersStats().get(0).getWinners()));
             FPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(0).getFirstServes() + setTwo.getPlayersStats().get(0).getFirstServes() + setThree.getPlayersStats().get(0).getFirstServes()));
             FPAces.setText(String.valueOf(setOne.getPlayersStats().get(0).getAces() + setTwo.getPlayersStats().get(0).getAces() + setThree.getPlayersStats().get(0).getAces()));
             FPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(0).getDoubleFaults() + setTwo.getPlayersStats().get(0).getDoubleFaults() + setThree.getPlayersStats().get(0).getDoubleFaults()));
@@ -191,7 +191,7 @@ public class StatisticsActivity extends AppCompatActivity {
             FPUnforcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getUnforcedErrors() + setTwo.getPlayersStats().get(0).getUnforcedErrors() + setThree.getPlayersStats().get(0).getUnforcedErrors()));
             FPForcedErrors.setText(String.valueOf(setOne.getPlayersStats().get(0).getForcedErrors() + setTwo.getPlayersStats().get(0).getForcedErrors() + setThree.getPlayersStats().get(0).getForcedErrors()));
 
-            SPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(1).getUnforcedErrors() + setTwo.getPlayersStats().get(1).getUnforcedErrors() + setThree.getPlayersStats().get(1).getUnforcedErrors()));
+            SPWonRallies.setText(String.valueOf(setOne.getPlayersStats().get(1).getWinners() + setTwo.getPlayersStats().get(1).getWinners() + setThree.getPlayersStats().get(1).getWinners()));
             SPFirstServer.setText(String.valueOf(setOne.getPlayersStats().get(1).getFirstServes() + setTwo.getPlayersStats().get(1).getFirstServes() + setThree.getPlayersStats().get(1).getFirstServes()));
             SPAces.setText(String.valueOf(setOne.getPlayersStats().get(1).getAces() + setTwo.getPlayersStats().get(1).getAces() + setThree.getPlayersStats().get(1).getAces()));
             SPDoubleFaults.setText(String.valueOf(setOne.getPlayersStats().get(1).getDoubleFaults() + setTwo.getPlayersStats().get(1).getDoubleFaults() + setThree.getPlayersStats().get(1).getDoubleFaults()));
@@ -208,7 +208,7 @@ public class StatisticsActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void setSetOneStatistics() {
         if (setOne != null) {
-            FPWonRallies.setText(Integer.toString(setOne.getPlayersStats().get(0).getUnforcedErrors()));
+            FPWonRallies.setText(Integer.toString(setOne.getPlayersStats().get(0).getWinners()));
             FPFirstServer.setText(Integer.toString(setOne.getPlayersStats().get(0).getFirstServes()));
             FPAces.setText(Integer.toString(setOne.getPlayersStats().get(0).getAces()));
             FPDoubleFaults.setText(Integer.toString(setOne.getPlayersStats().get(0).getDoubleFaults()));
@@ -217,7 +217,7 @@ public class StatisticsActivity extends AppCompatActivity {
             FPUnforcedErrors.setText(Integer.toString(setOne.getPlayersStats().get(0).getUnforcedErrors()));
             FPForcedErrors.setText(Integer.toString(setOne.getPlayersStats().get(0).getForcedErrors()));
 
-            SPWonRallies.setText(Integer.toString(setOne.getPlayersStats().get(1).getUnforcedErrors()));
+            SPWonRallies.setText(Integer.toString(setOne.getPlayersStats().get(1).getWinners()));
             SPFirstServer.setText(Integer.toString(setOne.getPlayersStats().get(1).getFirstServes()));
             SPAces.setText(Integer.toString(setOne.getPlayersStats().get(1).getAces()));
             SPDoubleFaults.setText(Integer.toString(setOne.getPlayersStats().get(1).getDoubleFaults()));
@@ -233,7 +233,7 @@ public class StatisticsActivity extends AppCompatActivity {
     public void setSetTwoStatistics() {
         if (setTwo != null) {
 
-            FPWonRallies.setText(Integer.toString(setTwo.getPlayersStats().get(0).getUnforcedErrors()));
+            FPWonRallies.setText(Integer.toString(setTwo.getPlayersStats().get(0).getWinners()));
             FPFirstServer.setText(Integer.toString(setTwo.getPlayersStats().get(0).getFirstServes()));
             FPAces.setText(Integer.toString(setTwo.getPlayersStats().get(0).getAces()));
             FPDoubleFaults.setText(Integer.toString(setTwo.getPlayersStats().get(0).getDoubleFaults()));
@@ -242,7 +242,7 @@ public class StatisticsActivity extends AppCompatActivity {
             FPUnforcedErrors.setText(Integer.toString(setTwo.getPlayersStats().get(0).getUnforcedErrors()));
             FPForcedErrors.setText(Integer.toString(setTwo.getPlayersStats().get(0).getForcedErrors()));
 
-            SPWonRallies.setText(Integer.toString(setTwo.getPlayersStats().get(1).getUnforcedErrors()));
+            SPWonRallies.setText(Integer.toString(setTwo.getPlayersStats().get(1).getWinners()));
             SPFirstServer.setText(Integer.toString(setTwo.getPlayersStats().get(1).getFirstServes()));
             SPAces.setText(Integer.toString(setTwo.getPlayersStats().get(1).getAces()));
             SPDoubleFaults.setText(Integer.toString(setTwo.getPlayersStats().get(1).getDoubleFaults()));
@@ -256,7 +256,7 @@ public class StatisticsActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void setSetThreeStatistics() {
         if (setThree != null) {
-            FPWonRallies.setText(Integer.toString(setThree.getPlayersStats().get(0).getUnforcedErrors()));
+            FPWonRallies.setText(Integer.toString(setThree.getPlayersStats().get(0).getWinners()));
             FPFirstServer.setText(Integer.toString(setThree.getPlayersStats().get(0).getFirstServes()));
             FPAces.setText(Integer.toString(setThree.getPlayersStats().get(0).getAces()));
             FPDoubleFaults.setText(Integer.toString(setThree.getPlayersStats().get(0).getDoubleFaults()));
@@ -265,7 +265,7 @@ public class StatisticsActivity extends AppCompatActivity {
             FPUnforcedErrors.setText(Integer.toString(setThree.getPlayersStats().get(0).getUnforcedErrors()));
             FPForcedErrors.setText(Integer.toString(setThree.getPlayersStats().get(0).getForcedErrors()));
 
-            SPWonRallies.setText(Integer.toString(setThree.getPlayersStats().get(1).getUnforcedErrors()));
+            SPWonRallies.setText(Integer.toString(setThree.getPlayersStats().get(1).getWinners()));
             SPFirstServer.setText(Integer.toString(setThree.getPlayersStats().get(1).getFirstServes()));
             SPAces.setText(Integer.toString(setThree.getPlayersStats().get(1).getAces()));
             SPDoubleFaults.setText(Integer.toString(setThree.getPlayersStats().get(1).getDoubleFaults()));
@@ -375,18 +375,14 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
 
-    private class APIAccessAsyncTask extends AsyncTask<String, Void, String> {
+    private class APIAccessAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        String allMatches;
         DataAPIAccess dataAPIAccess = new DataAPIAccess();
         MyDBHandler myDBHandler = new MyDBHandler(getApplicationContext());
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected Void doInBackground(Void... strings) {
             try {
-                /*allMatches = dataAPIAccess.getAllMatches();
-                dataAPIAccess.matchList();*/
-
                 dataAPIAccess.sendNewGame(match);
 
 
@@ -464,13 +460,8 @@ public class StatisticsActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            return allMatches;
+            return null;
         }
 
-        @Override
-        protected void onPostExecute(String s) {
-
-        }
     }
 }
